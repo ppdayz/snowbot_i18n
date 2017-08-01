@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg"
+    tools:context="com.csjbot.snowbot.activity.SettingsActivity">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <TextView
+        android:id="@+id/showText"
+        style="@style/SettingsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/wifi_password" />
+
+    <EditText
+        android:id="@+id/edittext_wifi_ssid"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:inputType="textVisiblePassword"
+        android:layout_below="@+id/showText"
+        android:layout_toStartOf="@+id/set_wifi_btn" />
+
+    <EditText
+        android:id="@+id/edittext_wifi_passwd"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edittext_wifi_ssid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:inputType="textVisiblePassword" />
+
+    <Button
+        android:id="@+id/set_wifi_btn"
+        style="@style/common_button_style"
+        android:layout_width="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edittext_wifi_passwd"
+        android:layout_toRightOf="@+id/edittext_wifi_passwd"
+        android:onClick="setWifi"
+        android:text="@string/ensure"
+        android:layout_alignTop="@+id/edittext_wifi_passwd" />
+
+
+    <View
+        android:layout_width="280dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/edittext_wifi_passwd"
+        android:layout_centerHorizontal="true"
+        android:background="@color/setting_gray_line"
+        android:visibility="gone" />
+
+</RelativeLayout>

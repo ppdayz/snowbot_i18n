@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="#fff2f2f2" />
+
+    <include layout="@layout/camera_view" />
+
+    <include layout="@layout/count_title" />
+
+    <TextView
+        android:id="@+id/count_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:shadowColor="#FFFF6600"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="8"
+        android:textColor="#ffFF6600"
+        android:textSize="130sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tips1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-15dp"
+        android:gravity="center"
+        android:padding="6dp"
+        android:singleLine="true"
+        android:text="@string/find_who"
+        android:textColor="#ffff6600"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/toast_bg"
+        android:gravity="center"
+        android:padding="6dp"
+        android:singleLine="true"
+        android:text="@string/find_who"
+        android:textColor="@android:color/white"
+        android:textSize="19sp" />
+
+    <LinearLayout
+        android:id="@+id/resume_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/toast_photo_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="12dp"
+            android:text="@string/try_again"
+            android:textColor="#ff666666"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/backto"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_margin="15dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/tips_background"
+                android:onClick="topClick"
+                android:text="@string/try_no"
+                android:textColor="#ff666666"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/resumeto"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_margin="15dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/tips_background"
+                android:onClick="topClick"
+                android:text="@string/try_ok"
+                android:textColor="#ff39A8E7"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

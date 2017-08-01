@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_wifi_build"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical"
+    tools:context="com.csjbot.snowbot.activity.settings.WifiConfigActivity">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wifi_info_build"
+        android:textSize="@dimen/dm_36sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dm_20dp"
+        android:layout_marginBottom="@dimen/dm_50dp"
+        />
+
+    <Button
+        android:id="@+id/bt_aiui_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aiui_wifi_config"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/selector_wifiset_bt"
+        android:layout_marginTop="@dimen/dm_20dp"
+        android:paddingLeft="@dimen/dm_50dp"
+        android:paddingRight="@dimen/dm_50dp"
+        android:paddingTop="@dimen/dm_20dp"
+        android:paddingBottom="@dimen/dm_20dp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dm_20sp"
+        />
+
+    <Button
+        android:id="@+id/bt_relay_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wifi_relay_config"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dm_50dp"
+        android:background="@drawable/selector_wifiset_bt"
+        android:paddingLeft="@dimen/dm_50dp"
+        android:paddingRight="@dimen/dm_50dp"
+        android:paddingTop="@dimen/dm_20dp"
+        android:paddingBottom="@dimen/dm_20dp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dm_20sp"
+        />
+
+
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/home_name_tv"
+        style="@style/tv16_blck_mw"
+        android:paddingBottom="@dimen/dm_15dp"
+        android:paddingTop="@dimen/dm_15dp" />
+
+
+</RelativeLayout>

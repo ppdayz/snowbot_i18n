@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/md_transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/content_Layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="@dimen/dm_450dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv16_999999"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/master_num" />
+
+            <EditText
+                android:id="@+id/master_num_ed"
+                style="@style/tv16_999999_mw"
+                android:inputType="phone|number"
+                android:maxLength="15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dm_450dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv16_999999"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/verify_num" />
+
+            <EditText
+                android:id="@+id/verify_num_ed"
+                style="@style/tv16_999999"
+                android:layout_width="@dimen/dm_180dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="15" />
+
+            <Button
+                android:id="@+id/verify_num_btn"
+                style="@style/ww_common_button_style"
+                android:paddingLeft="@dimen/dm_20dp"
+                android:paddingRight="@dimen/dm_20dp"
+                android:text="@string/get_berify_num" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dm_450dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                style="@style/tv16_999999"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/set_password" />
+
+            <EditText
+                android:id="@+id/set_pad_ed"
+                style="@style/tv16_999999"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:digits="@string/input_num_character"
+                android:maxLength="12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dm_450dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv16_999999"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/set_nickname" />
+
+            <EditText
+                android:id="@+id/set_nickname_ed"
+                style="@style/tv16_999999_mw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="15"
+                android:maxLines="1" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/dm_300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/content_Layout"
+        android:layout_below="@+id/content_Layout"
+        android:layout_alignStart="@+id/content_Layout"
+        android:layout_marginTop="@dimen/dm_100dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/no_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="left"
+            android:text="@string/no" />
+
+        <Button
+            android:id="@+id/yes_skip"
+            style="@style/common_button_style"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/yes_btn"
+            android:layout_marginRight="@dimen/dm_20dp"
+             android:text="@string/skip" />
+
+        <Button
+            android:id="@+id/yes_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/yes" />
+    </RelativeLayout>
+
+</RelativeLayout>

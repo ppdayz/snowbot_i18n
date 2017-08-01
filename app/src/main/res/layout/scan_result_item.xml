@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/ssid_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/dark_gray"
+            android:text="@string/ssid"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/pwd_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_gray"
+            android:layout_toRightOf="@id/ssid_tv"
+            android:text="" />
+
+
+        <TextView
+            android:id="@+id/connect_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/dark_gray"
+            android:layout_centerVertical="true"
+            android:text="@string/arrow"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/encrypt_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_gray"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/connect_tv"
+            android:text="" />
+    </RelativeLayout>
+
+</LinearLayout>

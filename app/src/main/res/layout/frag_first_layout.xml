@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/md_transparent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/skip_registration"
+        android:layout_width="@dimen/dm_280dp"
+        android:layout_height="@dimen/dm_280dp" />
+
+    <TextView
+        android:id="@+id/robot_home"
+        style="@style/tv20_999999_ww"
+        android:layout_centerInParent="true"
+        android:text="@string/robot_home" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/dm_300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/robot_home"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/no_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:text="@string/no"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/yes_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:text="@string/yes" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

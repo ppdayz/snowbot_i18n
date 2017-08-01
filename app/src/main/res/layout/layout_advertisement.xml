@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_settings_set_touch_action"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.csjbot.snowbot.activity.settings.SettingsSetTouchAction">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <EditText
+        android:id="@+id/advertisement_et"
+        style="@style/tv16_999999"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="200dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="top"
+        android:hint="@string/ad_content"
+        android:paddingTop="@dimen/dm_20dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="200dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/cb_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dm_40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv16_999999"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/dark_gray"
+                android:layout_height="wrap_content"
+                android:text="@string/repeat_count" />
+
+            <com.jaygoo.widget.RangeSeekBar
+                android:id="@+id/RangeSeekBar"
+                android:layout_width="match_parent"
+                android:padding="@dimen/dm_10dp"
+                android:layout_height="wrap_content"
+                app:max="100"
+                app:min="0"
+                android:layout_marginLeft="500dp"
+                app:cells="4"
+                app:cellMode="other"
+                app:lineColorEdge="@color/dark_gray"
+                app:textSize="15sp"
+                app:thumbSize="@dimen/dm_40dp"
+                app:lineColorSelected="#2ed184"
+                app:textPadding="@dimen/dm_20dp"
+                app:markTextArray="@array/adRepeatArray"
+                app:hideProgressHint="true"
+                app:seekBarMode="single"
+                app:seekBarHeight="8dp"
+                app:seekBarResId="@drawable/seekbar_thumb" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submit_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/submit" />
+    </RelativeLayout>
+</LinearLayout>

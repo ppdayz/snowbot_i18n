@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="exoplayer_buffering">加载中。。。</string>
+    <string name="exoplayer_check_wifi">网络状态差，请检查网络。。。</string>
+    <string name="exoplayer_preparing">准备中。。。</string>
+    <string name="exoplayer_ready">准备好。。。</string>
+    <string name="the_result">结果是:</string>
+    <string name="count_error">错误:表达式不完全,不能计算!</string>
+    <string name="count_error_missing">错误:缺少</string>
+    <string name="count_missing_right_parenthesis">个右括号</string>
+    <string name="count_answer">请输入正确的表达式</string>
+</resources>

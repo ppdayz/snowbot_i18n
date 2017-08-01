@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg"
+    tools:context="com.csjbot.snowbot.activity.SettingsActivity">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/asb_listView"
+        android:layout_height="match_parent"
+        android:layout_below="@id/head_layout"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
+
+</RelativeLayout>

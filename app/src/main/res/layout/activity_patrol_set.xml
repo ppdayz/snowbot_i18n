@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/mapImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"  />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/goHome"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="goHome"
+            android:src="@mipmap/go_home" />
+
+        <ImageView
+            android:id="@+id/setP1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="setPoint1"
+            android:src="@mipmap/setpoint1" />
+
+        <ImageView
+            android:id="@+id/setP2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="setPoint2"
+            android:src="@mipmap/setpoint2" />
+
+        <ImageView
+            android:id="@+id/setP3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="setPoint3"
+            android:src="@mipmap/setpoint3" />
+
+        <ImageView
+            android:id="@+id/addWall"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="addWall"
+            android:src="@mipmap/add_wall" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="clearMap"
+            android:src="@mipmap/clear" />
+
+        <ImageView
+            android:id="@+id/gotoP1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="goToP1"
+            android:src="@mipmap/gotop1" />
+
+        <ImageView
+            android:id="@+id/gotoP2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="goToP2"
+            android:src="@mipmap/gotop2" />
+
+        <ImageView
+            android:id="@+id/gotoP3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="goToP3"
+            android:src="@mipmap/gotop3" />
+
+
+        <ImageView
+            android:id="@+id/clearWall"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:onClick="clearWall"
+            android:src="@mipmap/clean_wall" />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,125 @@
+<resources>
+ 
+    <string name="find_who">来，让我看看你是谁!</string>
+    <string name="find_who1">我不认识你哦，让我认识你吧!\n 给我个正脸看一下呗</string>
+    <string name="find_who2">然后让我看下你的侧脸</string>
+
+    <string name="emo_to_nomal">无论是喜悦、悲伤、惊讶还是愤怒，我都能读懂你的表情哦！</string>
+    <string name="emo_to_joy">嘻嘻，见到美女帅哥我也很开心</string>
+    <string name="emo_to_sub">不用惊讶，我就是这么的机~智~</string>
+    <string name="emo_to_sad">你怎么了，别难过，我会陪着你的~</string>
+    <string name="emo_to_ang">额，你在对我生气吗，不管怎样我先道歉！</string>
+    <string name="cant_found_you">看不到人脸啦</string>
+    <string name="welcome_use_tracking">欢迎使用人脸追踪功能</string>
+
+    <string name="reco_miss">" %s 小姐 "</string>
+    <string name="reco_man">" %s 先生 "</string>
+    <string name="not_found_or_more">未检测到人脸或者人脸多于一个</string>
+    <string name="please_forward">请正脸面对</string>
+    <string name="please_side_face">请侧脸</string>
+    <string name="move_too_fast">角度偏移过快</string>
+    <string name="alread_know_you">已经认识你了哦：%1$s 猜你 %2$s 岁</string>
+    <string name="emo_joy">喜悦</string>
+    <string name="emo_sad_ang">悲愤</string>
+    <string name="emo_sub">惊讶</string>
+    <string name="emo_ang">愤怒</string>
+    <string name="emo_nom">正常</string>
+    <string name="cant_see">看不到人脸啦</string>
+    <string name="smile_take">微笑拍照</string>
+    <string name="give_big_smile">给我一个大大的微笑吧~</string>
+    <string name="come_on_smile">不要这么严肃啦，笑一下嘛~</string>
+    <string name="come_on_smile1">就笑一下嘛~</string>
+    <string name="take_cant_see">我看不到你啊，无法拍照啦</string>
+    <string name="count_three">倒数三秒，靓照拍好~</string>
+    <string name="re_take">重新开始拍照啦</string>
+    <string name="try_again">再来一次?</string>
+    <string name="try_no">不啦</string>
+    <string name="try_ok">好的</string>
+    <string name="reset_db">清除数据库</string>
+    <string name="reset_db_success">清除数据库成功</string>
+
+    <string name="start_1">人脸识别</string>
+    <string name="start_2">表情识别</string>
+    <string name="start_3">微笑拍照</string>
+    <string name="start_4">人脸追踪</string>
+    <string name="start_5">人脸注册</string>
+
+    <string name="face_unlock">人脸解锁</string>
+    <string name="unlock_main_desc">解锁成功就能看到她的样子啦</string>
+    <string name="unlock_sun">立即解锁</string>
+    <string name="test_str">test</string>
+    <string name="add_face">添加人脸</string>
+    <string name="add_face_success">第 %1$s 张人脸添加成功，id = %2$s</string>
+    <string name="add_face_failed">人脸数据添加失败</string>
+    <string name="know_yet">"已经认识你啦，，不用再添加人脸了 id = %1$s"</string>
+
+
+    <string name="unlock_insert_face">录入/清空人脸</string>
+    <string name="insert_face">录入人脸</string>
+    <string name="clear_face_db">清除人脸库</string>
+    <string name="tipe_add1">点击页面底部按钮 - 添加正脸</string>
+    <string name="tips_add3">点击页面底部按钮 - 添加抬头数据</string>
+    <string name="tipe_add4">点击页面底部按钮 - 添加低头数据</string>
+    <string name="tips_add2">点击页面底部按钮 - 添加侧脸数据</string>
+    <string name="insert_now_1">准备添加第一张人脸——正脸(1/4)</string>
+    <string name="insert_now_2">准备添加第二张人脸——侧脸(2/4)</string>
+    <string name="insert_now_3">准备添加第三张人脸——抬头(3/4)</string>
+    <string name="insert_now_4">准备添加第四张人脸——低头(4/4)</string>
+    <string name="dalog_notice">提示</string>
+    <string name="dialog_msg">已识别您为 %1$s ，是否更新您的人脸库？</string>
+    <string name="ignore">忽略</string>
+    <string name="update">更新</string>
+    <string name="i_not_him">我不是他/她</string>
+    <string name="please_face_to">请正脸面对</string>
+    <string name="please_left_20">请侧脸20°</string>
+    <string name="please_up_20">请抬头20°</string>
+    <string name="please_down_20">请低头20°</string>
+    <string name="delete_toast">确认清除所有人脸数据库？</string>
+    <string name="_sure">确定</string>
+    <string name="_not_sure">取消</string>
+    <string name="_sure_out">确定退出</string>
+    <string name="_keep_pre">继续完善</string>
+    <string name="dialog_msg1">你当前共添加 %1$d 张人脸数据，尚未注册完整，确定退出？</string>
+    <string name="dialog_msg2">人脸录入成功，Face ID =  %1$d 请输入昵称 </string>
+    <string name="insert_nickname">请输入昵称，不能为空哦</string>
+    <string name="_dialog_isnext">当前录入完成，是否录入下一个？</string>
+    <string name="_yes">是</string>
+    <string name="_no">否</string>
+
+
+    <string name="count_start_1">人脸库管理</string>
+    <string name="count_start_2">人脸识别</string>
+    <string name="count_start_3">更多功能</string>
+    <string name="count_start_4">测试</string>
+
+    <string name="insert_next">跳过</string>
+    <string name="points">关键点</string>
+    <string name="more_detect_person">活体检测</string>
+    <string name="input_face">录入人脸</string>
+    <string name="photograph_input">拍照录入</string>
+    <string name="video_input">视频录入</string>
+    <string name="start_register">开始注册</string>
+    <string name="start_">开始</string>
+    <string name="manage_edit">编辑</string>
+    <string name="person_list">人脸列表</string>
+    <string name="manage_ending">完成</string>
+    <string name="manage_toast_none_select">未选中任何可删除项！</string>
+    <string name="manage_sure_delete">确定删除选中的人脸数据？</string>
+    <string name="manage_delete">删除</string>
+    <string name="manage_update">更新</string>
+    <string name="image_sure_next">当前录入完成，是否进行人脸识别？</string>
+    <string name="manage_selete_all">全选</string>
+    <string name="video_re_failure">当前录入失败，是否重新注册？</string>
+    <string name="video_tips0">请根据下面的示意图移动的脸,录制一段3秒的视频</string>
+    <string name="verify_success">验证通过</string>
+    <string name="verify_failed">验证失败</string>
+    <string name="liveness_try_more">请张张嘴巴，多试几次</string>
+    <string name="liveness_facing_screen">请将脸对准屏幕</string>
+    <string name="liveness_back">返回</string>
+    <string name="liveness_once_more">再来一次</string>
+    <string name="more_points_str">该功能权限尚未开放，如需体验请联系阅面市场人员</string>
+    <string name="more_points_ok">知道了</string>
+    <string name="image_indert_msg">请按以下示意依次添加照片</string>
+     <string name="_settings">设置及说明</string>
+    <string name="points_switch">切换</string>
+</resources>

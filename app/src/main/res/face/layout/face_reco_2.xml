@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg">
+
+
+    <include
+        android:id="@+id/camera_view"
+        layout="@layout/camera_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <!--<include layout="@layout/unlock_title" />-->
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <ImageView
+        android:id="@+id/pop_rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pop_rotate_re"
+        android:visibility="gone" />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/manage_face"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="30dp"
+        android:text="注册人脸"
+        android:textSize="@dimen/dm_30sp"
+        app:corner="25dp"
+        app:solid="#887bb9ff" />
+</RelativeLayout>

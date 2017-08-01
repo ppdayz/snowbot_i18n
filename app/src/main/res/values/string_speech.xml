@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="open_camera">正在为您打开相机</string>
+    <string name="open_photos">正在为您打开相册</string>
+    <string name="open_photos_finish">已打开相册</string>
+    <string name="open_camera_finish">已打开相机</string>
+    <string name="take_pictures">已打开相机，请您摆个美美的pose，3,2,1，开始拍照，茄子</string>
+    <string name="take_pictures_finish">已拍照，主人可以打开相册查看照片</string>
+</resources>

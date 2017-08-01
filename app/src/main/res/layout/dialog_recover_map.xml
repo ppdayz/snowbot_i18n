@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:background="@android:color/darker_gray"
+        android:id="@+id/recovery_iv"
+        android:layout_width="@dimen/dm_250dp"
+        android:layout_height="@dimen/dm_250dp" />
+    <TextView
+        android:layout_marginLeft="@dimen/dm_20dp"
+        android:layout_gravity="center_vertical"
+        android:text="@string/restore_map"
+        style="@style/tv16_999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

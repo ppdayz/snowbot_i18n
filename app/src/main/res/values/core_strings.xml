@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- listview中的提示 -->
+    <string name="pull_to_refresh_from_bottom_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">正在加载</string>
+    <string name="pull_to_refresh_from_bottom_release_label">松开加载</string>
+    <string name="pull_to_refresh_tap_label">点击刷新</string>
+    <!-- 通用loading中的提示 -->
+    <string name="loading_click_reload">点击屏幕，重新加载</string>
+    <string name="loading_progress_view_text">加载中&#8230;</string>
+    <string name="loading_no_data">暂时没有数据</string>
+    <!-- 通用dailog中的提示 -->
+    <string name="core_dialog">正在加载,请稍后……</string>
+
+    <!-- 服务网络 相关 -->
+    <string name="tip_network_overtime">亲,请检查网络！</string>
+    <string name="tip_network_error">糟糕，网络没信号了！</string>
+    <string name="tip_server_error">昂~服务器好像累坏了，休息一下再来</string>
+
+    <string name="network_wifi">当前为WIFI网络!</string>
+    <string name="network_3g">当前为3G网络!</string>
+    <string name="network_other">当前为2G网络!</string>
+    <!-- swipelistview -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <!--core_progress-->
+    <string name="check_network">连接超时，请检查网络设置</string>
+    <string name="reload">点此重新加载</string>
+    <!--core_toast-->
+    <string name="network_interrupt">网络中断，已进入</string>
+    <string name="offline_pre">离线浏览</string>
+    <string name="model">模式!</string>
+    <!--core_toast_dialog-->
+    <string name="network_offline">当前网络不稳定，处于离线状态！</string>
+    <!--AApplication-->
+    <string name="sd_unavailable">SD卡不能使用</string>
+    <string name="internal_unavailable">内存卡不能用</string>
+    <string name="network_unstable">当前网络不稳定，请稍后再试</string>
+    <string name="no_call_data">没有通话数据</string>
+    <string name="date_format">yyyy年MM月dd日</string>
+    <string name="one_second">1秒前</string>
+    <string name="month_before">月前</string>
+    <string name="day_before">天前</string>
+    <string name="hour__before">小时前</string>
+    <string name="minute_before">分钟前</string>
+    <string name="second_before">秒前</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="quarter">季度</string>
+    <string name="day">日</string>
+    <string name="info">提示：</string>
+    <string name="info1">提示</string>
+    <string name="loading">加载中，请稍后…</string>
+    <string name="download_video">下载视频</string>
+    <string name="complete_download">下载完成</string>
+    <string name="check_network1">请检查网络</string>
+    <string name="check_network_setting">当前无法正常连接网络,请检查网络连接设置是否正确!</string>
+    <string name="network_bad_info">您的网络无法使用!</string>
+    <string name="check_network2">请检查您的网络!</string>
+    <string name="server_error">&#160;服务器异常!</string>
+    <string name="unsprrort_request">&#160;服务器不支持客户端的请求!</string>
+    <string name="request_timeout">&#160;请求超时，请稍后在试!</string>
+    <string name="server_conflict">&#160;服务器内部冲突，响应超时!</string>
+    <string name="login_unauthorized">&#160;登入未授权!</string>
+    <string name="nonexiest0resource">&#160;服务器找不到请求的资源!</string>
+    <string name="server_refuse_request">&#160;&#160;服务器拒绝请求!</string>
+    <string name="cliet_request_error">&#160;客户端请求参数错误!</string>
+    <string name="server_responce_error">&#160;服務器響應錯誤!</string>
+    <string name="request_timeout1">请求超时</string>
+    <string name="server_error1">服务器错误</string>
+    <string name="http_fail">服务器繁忙,请稍后再次尝试</string>
+    <string name="Chinese_string">成语接龙</string>
+</resources>

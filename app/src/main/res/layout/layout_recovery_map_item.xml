@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/map_iv"
+        android:layout_width="@dimen/dm_150dp"
+        android:layout_height="@dimen/dm_150dp"
+        android:layout_marginLeft="@dimen/dm_40dp"
+        android:paddingBottom="@dimen/dm_20dp"
+        android:paddingTop="@dimen/dm_20dp"
+        android:src="@drawable/default_map" />
+
+    <TextView
+        android:id="@+id/time_tv"
+        style="@style/tv20_999999_ww"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dm_150dp"
+        android:layout_toRightOf="@+id/map_iv"
+        android:gravity="center" />
+
+    <TextView
+        style="@style/tv20_999999_ww"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:drawableTop="@drawable/recovery_map"
+        android:paddingRight="@dimen/dm_150dp"
+        android:text="@string/regeneration" />
+
+</RelativeLayout>

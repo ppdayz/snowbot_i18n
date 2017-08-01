@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical"
+    tools:context="com.csjbot.snowbot.activity.settings.WifiConfigAutomaticActivity">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dm_50dp"
+        android:layout_marginTop="@dimen/dm_20dp"
+        android:text="@string/wifi_info_build"
+        android:textSize="@dimen/dm_36sp" />
+
+    <Button
+        android:id="@+id/btn_setSlam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dm_20dp"
+        android:background="@drawable/selector_wifiset_bt"
+        android:paddingBottom="@dimen/dm_20dp"
+        android:paddingLeft="@dimen/dm_50dp"
+        android:paddingRight="@dimen/dm_50dp"
+        android:paddingTop="@dimen/dm_20dp"
+        android:text="@string/wifi_setup_slam"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dm_20sp" />
+
+    <Button
+        android:id="@+id/bt_automatic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dm_50dp"
+        android:background="@drawable/selector_wifiset_bt"
+        android:paddingBottom="@dimen/dm_20dp"
+        android:paddingLeft="@dimen/dm_50dp"
+        android:paddingRight="@dimen/dm_50dp"
+        android:paddingTop="@dimen/dm_20dp"
+        android:text="@string/wifi_automatic"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dm_20sp" />
+
+    <Button
+        android:id="@+id/bt_manual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dm_50dp"
+        android:background="@drawable/selector_wifiset_bt"
+        android:paddingBottom="@dimen/dm_20dp"
+        android:paddingLeft="@dimen/dm_50dp"
+        android:paddingRight="@dimen/dm_50dp"
+        android:paddingTop="@dimen/dm_20dp"
+        android:text="@string/wifi_manual"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dm_20sp" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+</LinearLayout>

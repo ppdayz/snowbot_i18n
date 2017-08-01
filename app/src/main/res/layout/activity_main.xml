@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnLeftArm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/left_arm" />
+
+    <Button
+        android:id="@+id/btnRightArm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/right_arm" />
+
+    <Button
+        android:id="@+id/btnDoubleArm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/double_arm" />
+
+    <Button
+        android:id="@+id/btnTurnOnAirCleaner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/turn_on_air_cleaner" />
+
+    <Button
+        android:id="@+id/btnTurnOffAirCleaner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/turn_off_air_cleaner" />
+
+    <Button
+        android:id="@+id/btnOpenSensor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_sensor" />
+
+    <Button
+        android:id="@+id/btnTurnOffSensor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/close_sensor" />
+
+    <Button
+        android:id="@+id/btnRequireSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/require_send" />
+
+    <Button
+        android:id="@+id/btnRequireSendALL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/require_send_all" />
+
+    <Button
+        android:id="@+id/btnSnowBotSN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snowbot_SN" />
+
+    <Button
+        android:id="@+id/btnStartMic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_mic" />
+
+    <Button
+        android:id="@+id/btnStopMic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/power_state" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_db" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+
+        <TextView
+            android:id="@+id/textViewInfoShow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black" />
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_help"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/count_title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="1. 应用启动时，会将一部分默认的图片复制到设备/sdcard/img/test_facescore中,若不存在此文件夹或此文件夹中文件数为0，就会复制默认的图片到其中
+
+\n\n2. 若想要对其他照片进行测试，将需要测试的图片放置入/sdcard/img/test_facescore即可
+
+\n\n3. 点击图片展示年龄、性别及颜值
+
+\n\n4. 文件夹中的图片发生改变请重新打开应用
+
+"
+        android:textSize="16sp" />
+
+</RelativeLayout>

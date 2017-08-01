@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="adRepeatArray">
+        <item>5</item>
+        <item>10</item>
+        <item>60</item>
+        <item>100</item>
+        <item>无限</item>
+    </string-array>
+</resources>

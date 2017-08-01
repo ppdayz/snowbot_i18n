@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="@dimen/dm_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <LinearLayout
+                android:id="@+id/btn_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/register_btn"
+                    style="@style/common_button_style"
+                    android:text="@string/start_registration" />
+
+                <Button
+                    android:id="@+id/recognition_btn"
+                    style="@style/common_button_style"
+                    android:layout_marginLeft="@dimen/dm_60dp"
+                    android:text="@string/start_identify" />
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_centerHorizontal="true"
+                android:layout_width="@dimen/dm_450dp"
+                android:layout_height="@dimen/dm_450dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="50dp">
+                <com.csjbot.snowbot_rogue.camera.preview.CameraSurfaceView
+                    android:id="@+id/surfaceview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.csjbot.snowbot_rogue.camera.ui.FaceView
+                    android:id="@+id/faceView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:visibility="invisible"
+                    android:id="@+id/cropedImageView"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dm_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name_tv"
+                style="@style/tv16_999999"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dm_50dp"
+                android:layout_marginTop="@dimen/dm_40dp"
+                android:gravity="center_vertical"
+                android:text="@string/name" />
+
+            <TextView
+                android:id="@+id/age_tv"
+                style="@style/tv16_999999"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dm_50dp"
+                android:layout_marginTop="@dimen/dm_40dp"
+                android:gravity="center_vertical"
+                android:text="@string/age" />
+
+            <TextView
+                android:id="@+id/sex_tv"
+                style="@style/tv16_999999"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dm_50dp"
+                android:layout_marginTop="@dimen/dm_40dp"
+                android:gravity="center_vertical"
+                android:text="@string/sex" />
+
+            <TextView
+                android:id="@+id/appearance_tv"
+                style="@style/tv16_999999"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dm_50dp"
+                android:layout_marginTop="@dimen/dm_40dp"
+                android:gravity="center_vertical"
+                android:text="@string/appearance" />
+
+            <TextView
+                android:id="@+id/smile_tv"
+                style="@style/tv16_999999"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dm_50dp"
+                android:layout_marginTop="@dimen/dm_40dp"
+                android:gravity="center_vertical"
+                android:text="@string/smile" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

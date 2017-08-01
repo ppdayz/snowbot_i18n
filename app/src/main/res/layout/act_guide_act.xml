@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+ <net.lucode.hackware.magicindicator.MagicIndicator
+     android:layout_marginTop="@dimen/dm_20dp"
+     android:layout_gravity="center"
+     android:id="@+id/magic_indicator3"
+     android:layout_width="wrap_content"
+     android:layout_height="@dimen/dm_50dp">
+
+
+
+ </net.lucode.hackware.magicindicator.MagicIndicator>
+
+    <com.csjbot.snowbot.views.MyViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+</com.csjbot.snowbot.views.MyViewPager>
+
+
+
+
+</LinearLayout>

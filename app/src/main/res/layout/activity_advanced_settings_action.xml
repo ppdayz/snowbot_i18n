@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_settings_set_touch_action"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg"
+    tools:context="com.csjbot.snowbot.activity.settings.SettingsSetTouchAction">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head_layout"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/SettingsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/face_recognition_open" />
+
+            <com.hanks.library.AnimateCheckBox
+                android:id="@+id/firstCheckbox"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="200dp"
+                android:padding="15dp"
+                app:animDuration="200"
+                app:checkedColor="#00f"
+                app:lineColor="#fff"
+                app:lineWidth="1.2dp"
+                app:unCheckColor="#ff0" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/setting_gray_line" />
+
+    </LinearLayout>
+
+</RelativeLayout>

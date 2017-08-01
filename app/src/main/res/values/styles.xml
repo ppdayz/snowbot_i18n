@@ -1,0 +1,238 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:theme">@android:style/Theme.NoTitleBar.Fullscreen</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="SettingsTextView">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/setting_gray</item>
+    </style>
+
+    <style name="StartAppTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/start_app</item>
+    </style>
+    a
+
+    <style name="NoTitle" parent="android:Theme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- 999999颜色值字体样式 -->
+    <style name="tv12_999999">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_12sp</item>
+    </style>
+
+    <style name="tv12_999999_ww" parent="BASE4">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_12sp</item>
+    </style>
+
+    <style name="tv12_999999_mm" parent="BASE1">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_12sp</item>
+    </style>
+
+    <style name="tv12_999999_wm" parent="BASE3">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_12sp</item>
+    </style>
+
+    <style name="tv12_999999_mw" parent="BASE2">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_12sp</item>
+    </style>
+
+    <style name="tv14_999999">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_14sp</item>
+    </style>
+
+    <style name="tv14_999999_ww" parent="BASE4">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_14sp</item>
+    </style>
+
+    <style name="tv14_999999_mm" parent="BASE1">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_14sp</item>
+    </style>
+
+    <style name="tv14_999999_wm" parent="BASE3">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_14sp</item>
+    </style>
+
+    <style name="tv14_999999_mw" parent="BASE2">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_14sp</item>
+    </style>
+
+    <style name="tv16_999999">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <style name="tv16_999999_ww" parent="BASE4">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <style name="tv16_999999_mm" parent="BASE1">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <style name="tv16_999999_wm" parent="BASE3">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <style name="tv16_999999_mw" parent="BASE2">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <style name="tv18_999999">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_18sp</item>
+    </style>
+
+    <style name="tv18_999999_ww" parent="BASE4">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_18sp</item>
+    </style>
+
+    <style name="tv18_999999_mm" parent="BASE1">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_18sp</item>
+    </style>
+
+    <style name="tv18_999999_wm" parent="BASE3">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_18sp</item>
+    </style>
+
+    <style name="tv18_999999_mw" parent="BASE2">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_18sp</item>
+    </style>
+
+    <style name="tv20_999999">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_20sp</item>
+    </style>
+
+    <style name="tv20_999999_ww" parent="BASE4">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_20sp</item>
+    </style>
+
+    <style name="tv20_999999_mm" parent="BASE1">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_20sp</item>
+    </style>
+
+    <style name="tv20_999999_wm" parent="BASE3">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_20sp</item>
+    </style>
+
+    <style name="tv20_999999_mw" parent="BASE2">
+        <item name="android:textColor">@color/tv999999</item>
+        <item name="android:textSize">@dimen/dm_20sp</item>
+    </style>
+
+
+    <!--黑色字体样式-->
+    <style name="tv16_blck_ww" parent="BASE4">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <style name="tv16_blck_mm" parent="BASE1">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <style name="tv16_blck_mw" parent="BASE2">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/dm_16sp</item>
+    </style>
+
+    <!--动画弹出效果-->
+    <style name="PopFadeLeftUp">
+        <item name="android:windowEnterAnimation">@anim/fade_left_up_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_left_up_out</item>
+    </style>
+
+    <style name="PopFadeSuspendLeftUp">
+        <item name="android:windowEnterAnimation">@anim/fade_suspend_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_suspend_out</item>
+    </style>
+
+    <style name="PopFadeRightUp">
+        <item name="android:windowEnterAnimation">@anim/fade_left_up_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_left_up_out</item>
+    </style>
+
+    <style name="PopFadeLeftdown">
+        <item name="android:windowEnterAnimation">@anim/fade_left_up_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_left_up_out</item>
+    </style>
+
+    <style name="PopFadeRightDown">
+        <item name="android:windowEnterAnimation">@anim/fade_left_up_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_left_up_out</item>
+    </style>
+
+    <style name="PopFadeCenter">
+        <item name="android:windowEnterAnimation">@anim/fade_center_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_center_out</item>
+    </style>
+
+    <style name="common_button_style" parent="tv16_999999">
+        <item name="android:background">@drawable/common_btn</item>
+        <item name="android:layout_width">@dimen/dm_150dp</item>
+        <item name="android:layout_height">@dimen/dm_40dp</item>
+    </style>
+
+    <style name="ww_common_button_style" parent="tv16_999999_ww">
+        <item name="android:background">@drawable/common_btn</item>
+    </style>
+
+    <style name="loading_dialog" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="MyDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        设置dialog的背景，此处为系统给定的透明值
+        <item name="android:windowFrame">@null</item>
+        Dialog的windowFrame框为无
+        <item name="android:windowNoTitle">true</item>　　　　　　　　 是否显示标题
+        <item name="android:windowIsFloating">true</item>
+        是否浮现在activity之上
+        <item name="android:windowIsTranslucent">true</item>
+        是否半透明
+        <item name="android:windowContentOverlay">@null</item>
+        是否有覆盖
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        设置Activity出现方式
+        <item name="android:backgroundDimEnabled">true</item>
+        背景是否模糊显示
+    </style>
+</resources>

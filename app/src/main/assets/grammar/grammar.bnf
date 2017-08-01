@@ -1,0 +1,14 @@
+#BNF+IAT 1.0 UTF-8;
+!grammar nlp31;
+
+!slot <destination>;
+
+!start <operation>;
+<operation>:<devices>;
+
+<devices>:拍照!id(4001)|打开相机!id(4001)|茄子!id(4001)|照相!id(4001)|合影!id(4001)|再拍一张!id(4001)|给我拍张照!id(4001)
+		|打开相册!id(4002)|我想看照片!id(4002)|打开照片!id(4002);
+
+
+
+

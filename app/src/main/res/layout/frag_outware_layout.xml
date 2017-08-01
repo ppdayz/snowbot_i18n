@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/md_transparent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/out_ware_hint_tv"
+        style="@style/tv20_999999_ww"
+        android:layout_centerInParent="true"
+        android:text="@string/out_ware_hint" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/dm_300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dm_100dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/our_ware_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:text="@string/non_out_ware" />
+
+        <Button
+            android:id="@+id/see_qr_code_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="left"
+            android:text="@string/no" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

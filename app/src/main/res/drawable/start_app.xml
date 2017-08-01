@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:left="@dimen/dm_0dp"
+        android:top="@dimen/dm_0dp">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/main_bg"></bitmap>
+
+    </item>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/csjbot"></bitmap>
+    </item>
+
+</layer-list>

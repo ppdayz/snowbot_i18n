@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/md_transparent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/robot_nickname"
+        style="@style/tv20_999999_ww"
+        android:layout_centerInParent="true"
+        android:text="@string/set_robot_nickname" />
+
+    <EditText
+        android:id="@+id/set_robot_nickname"
+        style="@style/tv16_999999"
+        android:layout_width="@dimen/dm_200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/robot_nickname"
+        android:layout_centerInParent="true"
+        android:text="@string/snowbot_name1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:layout_marginTop="@dimen/dm_10dp" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/dm_300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dm_100dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/no_btn"
+            style="@style/common_button_style"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:text="@string/no"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/yes_btn"
+            style="@style/common_button_style"
+            android:layout_centerInParent="true"
+            android:text="@string/yes" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

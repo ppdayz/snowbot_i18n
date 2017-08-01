@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <include layout="@layout/camera_view" />
+
+    <include
+        android:id="@+id/view_title"
+        layout="@layout/count_title" />
+
+
+    <RelativeLayout
+        android:id="@+id/buttom_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:paddingBottom="15dp"
+        android:layout_below="@+id/pop_rotate"
+        android:layout_alignParentStart="true" />
+
+
+    <ImageView
+        android:id="@+id/pop_rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pop_rotate_re"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="topClick"
+        android:text="拍视频"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/popView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view_title"
+        android:scaleType="fitStart" />
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/video_start_selector"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="6dp"
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+
+    <View
+        android:id="@+id/myLine"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ff1f388c"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/icon"
+        android:layout_width="145dp"
+        android:layout_height="29dp"
+        android:visibility="gone"
+        android:layout_below="@id/view_title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/icon_readsense" />
+</RelativeLayout>

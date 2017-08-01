@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@mipmap/main_bg"
+              android:orientation="vertical">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="@dimen/dm_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/question_et"
+                style="@style/tv16_999999"
+                android:layout_width="@dimen/dm_600dp"
+                android:layout_height="@dimen/dm_50dp"
+                android:layout_marginTop="@dimen/dm_20dp"
+                android:background="@color/white"
+                android:hint="@string/custom_issues"/>
+
+            <EditText
+                android:id="@+id/answer_et"
+                style="@style/tv16_999999"
+                android:layout_width="@dimen/dm_600dp"
+                android:layout_height="@dimen/dm_473dp"
+                android:layout_marginTop="@dimen/dm_20dp"
+                android:background="@color/white"
+                android:gravity="top"
+                android:hint="@string/custom_answer"
+                android:paddingTop="@dimen/dm_20dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/cancle_btn"
+                    style="@style/common_button_style"
+                    android:layout_marginTop="@dimen/dm_10dp"
+                    android:text="@string/cancle"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/del_btn"
+                    style="@style/common_button_style"
+                    android:layout_marginLeft="@dimen/dm_20dp"
+                    android:layout_marginTop="@dimen/dm_10dp"
+                    android:text="@string/delete"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/submit_btn"
+                    style="@style/common_button_style"
+                    android:layout_marginLeft="@dimen/dm_20dp"
+                    android:layout_marginTop="@dimen/dm_20dp"
+                    android:text="@string/submit"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/dm_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/no_content"
+                style="@style/tv16_999999_mm"
+                android:gravity="center"
+                android:text="@string/speech_empty"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/answer_recylervew"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

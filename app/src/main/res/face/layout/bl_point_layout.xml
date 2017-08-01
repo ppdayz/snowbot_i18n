@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <include layout="@layout/camera_view" />
+
+    <include layout="@layout/count_title"  android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/video_start_selector"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="6dp"
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+
+    <RelativeLayout
+        android:id="@+id/buttom_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:paddingBottom="15dp" />
+
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-20dp"
+        android:layout_marginRight="5dp"
+        android:visibility="gone"
+        android:background="@drawable/icon_readface" />
+
+    <ImageView
+        android:id="@+id/pop_rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pop_rotate_re"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="topClick"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/myLine"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ff1f388c"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/pop_aline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:src="@drawable/insert_hold7"
+        android:visibility="gone" />
+
+
+
+
+    <ImageView
+        android:id="@+id/iv_room"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="80dp"
+        android:src="@mipmap/room"/>
+
+    <TextView
+        android:id="@+id/tv_room"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/iv_room"
+        android:layout_marginRight="20dp"
+        android:src="@mipmap/room"
+        android:text="扫码关注BroadLink提前进入体验间"
+        android:textSize="12sp"/>
+
+
+    <ImageView
+        android:id="@+id/iv_app"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_room"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/app"/>
+
+
+    <TextView
+        android:id="@+id/tv_app"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/iv_app"
+        android:layout_marginRight="20dp"
+        android:src="@mipmap/room"
+        android:text="立即下载智慧星App享受智慧生活"
+        android:textSize="12sp"/>
+
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/iv_ym"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ym_logo"/>
+
+
+    <ImageView
+        android:id="@+id/iv_ym"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="30dp"
+        android:src="@mipmap/ym"/>
+
+    <TextView
+        android:id="@+id/tv_ym"
+        android:layout_width="wrap_content"
+        android:layout_toLeftOf="@+id/iv_logo"
+        android:layout_alignTop="@+id/iv_logo"
+        android:ems="1"
+        android:textSize="11sp"
+        android:text="人脸识别技术支持"
+        android:layout_marginRight="20dp"
+        android:layout_height="120dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_name_layout"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/wif_name_tv"
+        style="@style/tv16_999999_ww"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dm_10dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/wif_commect_status_tv"
+        style="@style/tv16_999999_ww"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/dm_10dp"
+        android:gravity="center" />
+
+</RelativeLayout>

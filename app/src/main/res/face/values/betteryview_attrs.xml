@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="BatteryLoadingView">
+        <attr name="outBWidth" format="dimension"/>
+        <attr name="outBHeight" format="dimension"/>
+        <attr name="bRadius" format="float"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="bColor" format="color"/>
+    </declare-styleable>
+    
+</resources>

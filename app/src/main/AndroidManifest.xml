@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.csjbot.snowbot">
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.usb.host" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 必选 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 获取设备信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取MAC地址 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读写sdcard，storage等等 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 允许程序调节亮度 -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".app.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:name">
+        <activity
+            android:name=".activity.LauncherActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity
+            android:name=".activity.GuideAct"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SplashAct"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.HOME" />
+
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity
+            android:name=".activity.MapActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.VidyoSampleActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.RecoveryMapAct"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.VideoRecordActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdvancedSettingsAboutActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.FaceRecognitionAct"
+            android:screenOrientation="landscape" />
+
+        <service
+            android:name=".services.FloatingWindowsService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".activity.FamilyFunActivity"
+            android:label="@string/title_activity_family_fun"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.PhotoActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.SmartHomeActivity1"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.SmartHomeActivity2"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.GalleryActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.VideoPlayActivity"
+            android:label="@string/title_activity_video_play"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.settings.SettingsAboutActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.CustomVoiceActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdvertisementActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdvertisementAct"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.settings.VideoPlay"
+            android:screenOrientation="landscape"
+            android:theme="@style/NoTitle" />
+        <activity android:name=".activity.settings.SettingsChangeFaceActivity" />
+        <activity android:name=".activity.settings.SettingsTestActivity" />
+        <activity android:name=".activity.UsbMediaShowActivity" />
+        <activity android:name=".activity.settings.AIUIWifiActivity" />
+        <activity
+            android:name=".activity.PatrolSetActivity"
+            android:label="@string/title_activity_patrol_set"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.settings.SettingsSetTouchAction" />
+        <activity android:name=".activity.settings.SetWifiActivity" />
+        <activity android:name=".activity.settings.SetWifiActivityNew" />
+        <activity android:name=".activity.settings.SetWifiManualActivity" />
+        <activity
+            android:name=".activity.aiui.SpeechActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.WingedWordActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.WebActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.VideoActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.WeatherAcitvity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.MusicActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.NewsActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.JokeActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.CountActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.NewsActivityBean"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.CookActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.CookActivityBean"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.StoryActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.StoryActivityDemo"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.PoetryActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.DacneActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.DanceAct"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.aiui.DateTimeActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name="com.iflytek.autoupdate.IFlytekUpdateDialog" />
+
+        <!-- 阅面科技 人脸识别 -->
+        <!-- 阅面科技 人脸识别 -->
+        <!-- 阅面科技 人脸识别 -->
+        <!-- 阅面科技 人脸识别 -->
+        <activity
+            android:name=".activity.face.ui.icount.CountStartActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.face.ui.icount.MoreActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.face.ui.icount.ManageFaceActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.face.ui.icount.RegisterImageCameraActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.face.ui.icount.RegisterVideoCameraActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.face.ui.SmilePhotoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.face.ui.DetactPersonActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.face.ui.FaceRecoActivity"
+            android:configChanges="screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.face.ui.PointsActivity"
+            android:configChanges="screenSize|keyboardHidden"
+            android:label="postImage"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.face.ui.SettingActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.settings.UpdateSNParamsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".activity.face.ui.ManageAttrActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:icon="@drawable/icon_readsense_1"
+            android:label="颜值检测"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".activity.face.ui.HelpActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <!-- 阅面科技 人脸识别 -->
+        <!-- 阅面科技 人脸识别 -->
+        <!-- 阅面科技 人脸识别 -->
+        <!-- 阅面科技 人脸识别 -->
+
+        <service android:name="com.iflytek.autoupdate.IFlytekDownloadService" />
+        <service android:name=".services.AdvertisementService" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <service
+            android:name=".services.AIUIService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="uEL5j3ymyYRefG7BebzN3Rug49CXQalB" />
+        <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="574bf6c0" />
+        <meta-data
+            android:name="IFLYTEK_CHANNEL"
+            android:value="" />
+
+        <!-- 必选 -->
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="c9d85e30e634c02a063644ccd82ddeed" />
+
+        <service
+            android:name=".services.SearchUSBService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.ClientService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.settings.HardwareTest" />
+        <activity
+            android:name=".activity.bean.DialogAct"
+            android:theme="@style/MyDialogStyle" />
+        <activity android:name=".activity.VideoRecordActivity2" />
+        <activity android:name=".activity.VideoRecordActivity3" />
+        <activity
+            android:name=".activity.LayoutTestActivity"
+            android:label="@string/title_activity_layout_test_activity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.settings.ShowSNQRCodeActivity"
+            android:label="@string/title_activity_show_snqrcode"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.settings.WifiConfigActivity" />
+        <activity android:name=".activity.settings.WifiConfigManualActivity" />
+        <activity android:name=".activity.settings.WifiConfigRelayActivity" />
+
+        <service
+            android:name=".services.CheckEthernetService"
+            android:exported="false" />
+
+        <activity android:name=".activity.settings.WifiConfigAutomaticActivity" />
+        <activity android:name=".activity.MaterialLockActivity" />
+    </application>
+
+</manifest>

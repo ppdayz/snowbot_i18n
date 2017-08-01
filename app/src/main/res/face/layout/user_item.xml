@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:background="#ffffff"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/select_radio"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="14dp"
+        android:background="#ff0000" />
+
+    <ImageView
+        android:id="@+id/select_head"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/select_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+
+</LinearLayout>

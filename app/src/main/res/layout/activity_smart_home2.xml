@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context="com.csjbot.snowbot.activity.SmartHomeActivity2">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+    <!--<ImageButton-->
+    <!--android:id="@+id/ib_head_return_2"-->
+    <!--android:background="@null"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:src="@mipmap/abc_ic_ab_back_mtrl_am_alpha"/>-->
+    <RelativeLayout
+        android:id="@+id/rootview"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/head_layout">
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_smartHome2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/rootview"
+        android:gravity="center"
+        android:textSize="@dimen/font_size" />
+
+    <Button
+        android:id="@+id/btn_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_smartHome2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/yes_blue_btn"
+        android:text="@string/ensure"
+        android:textColor="@color/fontcolor"
+        android:textSize="@dimen/air_rent" />
+
+
+</RelativeLayout>

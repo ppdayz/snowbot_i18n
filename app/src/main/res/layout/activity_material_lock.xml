@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lockview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_bg"
+    tools:context="com.csjbot.snowbot.activity.MaterialLockActivity">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <com.csjbot.snowbot.views.MaterialLockView
+        android:id="@+id/material_lock_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head_layout"
+        android:layout_centerInParent="true"
+        lockview:CORRECT_COLOR="#00ff00"
+        lockview:LOCK_COLOR="@color/dark_gray"
+        lockview:WRONG_COLOR="#ff0000" />
+</RelativeLayout>
