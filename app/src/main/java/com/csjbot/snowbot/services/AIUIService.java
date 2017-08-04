@@ -547,7 +547,7 @@ public class AIUIService extends CsjBaseService {
                         JSONObject wakeInfo = new JSONObject(contentBean.getInfo());
                         int wakeAngle = wakeInfo.getInt(KEY_ANGLE);
                         postEvent(new EventWakeup(0, wakeAngle));
-//                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("旋转 " + String.valueOf(wakeAngle) + " 度", null);
+//                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("旋转 " + String.valueOf(wakeAngle) + " 度", null);
                         Csjlogger.info("wakeup Angle {}", wakeAngle);
                         mIsHandleError = false;
                         mIsWakeUp = true;

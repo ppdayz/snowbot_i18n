@@ -43,7 +43,7 @@ public class PgyApplication extends CsjApplication {
             startService(backgroundPlayService);
             startService(rogueBGServiceIntent);
             startService(searchUsbService);
-            startService(aiuiService);
+//            startService(aiuiService);
             startService(floatingWindowsService);
         }).start();
     }

@@ -1,0 +1,31 @@
+<configuration debug="false" scan="true" scanPeriod="60 seconds">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--启用 zip 压缩-->
+            <fileNamePattern>/sdcard/csjbot/logs/logFile.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <!--最大保存30天的日志-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss} %-5level [%thread] [%file:%M:%line] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOGCAT" class="ch.qos.logback.classic.android.LogcatAppender">
+        <encoder>
+            <pattern>%msg [%thread]</pattern>
+        </encoder>
+        <tagEncoder>
+            <pattern>%logger{1}</pattern>
+        </tagEncoder>
+    </appender>
+
+
+    <root level="ALL">
+        <appender-ref ref="ASYNC" />
+        <appender-ref ref="LOGCAT" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

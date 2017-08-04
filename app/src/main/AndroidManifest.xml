@@ -325,6 +325,7 @@
 
         <service android:name="com.iflytek.autoupdate.IFlytekDownloadService" />
         <service android:name=".services.AdvertisementService" />
+        <service android:name=".services.EnglishSampleService" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -362,8 +363,6 @@
         <activity
             android:name=".activity.bean.DialogAct"
             android:theme="@style/MyDialogStyle" />
-        <activity android:name=".activity.VideoRecordActivity2" />
-        <activity android:name=".activity.VideoRecordActivity3" />
         <activity
             android:name=".activity.LayoutTestActivity"
             android:label="@string/title_activity_layout_test_activity"

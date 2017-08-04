@@ -1033,7 +1033,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
 //    public void robotStatusUpdated(RobotStatusUpdateEvent event) {
 //        int powerPercent = event.getBatteryPercentage();
 //        if (powerPercent < Constants.LOW_POWER_GO_HOME && isPartol) {
-//            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getString(R.string.low_power_waring), null);
+//            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getString(R.string.low_power_waring), null);
 //            snowBot.cancelAction();
 //        }
 //    }

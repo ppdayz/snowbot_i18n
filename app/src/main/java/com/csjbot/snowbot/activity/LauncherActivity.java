@@ -28,9 +28,8 @@ import com.csjbot.snowbot.activity.aiui.SpeechActivity;
 import com.csjbot.snowbot.activity.face.ui.FaceRecoActivity;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.bean.Home;
-import com.csjbot.snowbot.services.CheckEthernetService;
 import com.csjbot.snowbot.services.ClientService;
-import com.csjbot.snowbot.services.FourMicUnderstandService;
+import com.csjbot.snowbot.services.EnglishSampleService;
 import com.csjbot.snowbot.utils.BackUpMapTool;
 import com.csjbot.snowbot.utils.PowerStatus;
 import com.csjbot.snowbot.utils.SharedKey;
@@ -156,8 +155,8 @@ public class LauncherActivity extends CsjUIActivity {
     public void afterViewCreated(Bundle savedInstanceState) {
 
         // 开启以太网检查服务
-        startService(new Intent(this, CheckEthernetService.class));
-        startService(new Intent(this, FourMicUnderstandService.class));
+//        startService(new Intent(this, CheckEthernetService.class));
+        startService(new Intent(this, EnglishSampleService.class));
 
         UpdateApkManagerUtil mUpdateApkManagerUtil = new UpdateApkManagerUtil(LauncherActivity.this, false);
         mUpdateApkManagerUtil.checkUpdateInfo();

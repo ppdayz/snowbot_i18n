@@ -7,4 +7,10 @@
         <item>100</item>
         <item>无限</item>
     </string-array>
+    <string-array name="wakeup_array_en" >
+        <item>I am Here!</item>
+        <item>Yes </item>
+        <item>I am ready</item>
+        <item>May I help you?</item>
+    </string-array>
 </resources>

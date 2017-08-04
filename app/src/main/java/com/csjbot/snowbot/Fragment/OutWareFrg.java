@@ -189,7 +189,7 @@ public class OutWareFrg extends BaseFrg {
                             || error.getReason() == OkHttpException.REASON_RESP_BLANK
                             || error.getReason() == OkHttpException.REASON_PARSER_JSON_ERROR
                             || error.getReason() == OkHttpException.REANSON_UNKNOW) {
-//                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
+//                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
                         CSJToast.showToast(getActivity(), getResources().getString(R.string.aliyun_exist));
                     }
                 }
