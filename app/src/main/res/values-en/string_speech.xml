@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="open_camera">Opening the camera now</string>
+    <string name="open_photos">Opening the album now</string>
+    <string name="open_photos_finish">Finished</string>
+    <string name="open_camera_finish">Finished</string>
+    <string name="take_pictures">Camera ready, give a nice pose.Three, Two, One, Cheese!</string>
+    <string name="take_pictures_finish">Photos completed, you may preview it in the album now</string>
+</resources>

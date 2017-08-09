@@ -19,22 +19,25 @@ import android.view.animation.Animation;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.core.util.SharedUtil;
 import com.csjbot.csjbase.event.BusFactory;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.SpeechActivity;
+import com.csjbot.snowbot.activity.face.FaceRecoBackground;
 import com.csjbot.snowbot.activity.face.ui.FaceRecoActivity;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.bean.Home;
+import com.csjbot.snowbot.services.CheckEthernetService;
 import com.csjbot.snowbot.services.ClientService;
-import com.csjbot.snowbot.services.EnglishSampleService;
 import com.csjbot.snowbot.utils.BackUpMapTool;
 import com.csjbot.snowbot.utils.PowerStatus;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot.utils.UpdateApkManagerUtil;
+import com.csjbot.snowbot.utils.camera.CameraStatusManager;
 import com.csjbot.snowbot_rogue.Events.TestDataEvent;
 import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.bean.MapDataBean;
@@ -59,6 +62,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
 
 public class LauncherActivity extends CsjUIActivity {
     // 低电量Dialog显示间隔时间
@@ -90,13 +94,18 @@ public class LauncherActivity extends CsjUIActivity {
     private int lowPowerToGoHomeCD = LOWPOWER_TO_GOHOME_CD;
     private boolean notShowUntilNextCharing;
     private long firstTimeReach100 = 0;
+    private FaceRecoBackground faceRecoBackground;
+
+    private boolean needGotoChargingActivity = true;
+    private CameraStatusManager cameraStatusManager = CameraStatusManager.getInstance();
 
     public void partol(View view) {
-        if(!snowBot.isSlamConnected()){
-            CSJToast.showToast(this, "请等待底盘连接");
+        if (!snowBot.isSlamConnected()) {
+            CSJToast.showToast(this, getString(R.string.wait_toconnect));
             return;
         }
         if (!snowBot.isPartol()) {
+
             List<Home> homeLists;
             homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
             if (null == homeLists) {
@@ -132,7 +141,7 @@ public class LauncherActivity extends CsjUIActivity {
             CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getResources().getString(R.string.start_patrol_speech), null);
             CSJToast.showToast(this, getResources().getString(R.string.start_patrol_speech), 1000);
             snowBot.partol(poses);
-            mLoadToast.setText("正在巡逻");
+            mLoadToast.setText(getString(R.string.patroling));
             mLoadToast.show();
         } else {
             snowBot.stopPartol();
@@ -146,6 +155,7 @@ public class LauncherActivity extends CsjUIActivity {
      *
      * @return false
      */
+
     @Override
     public boolean useEventBus() {
         return false;
@@ -154,9 +164,9 @@ public class LauncherActivity extends CsjUIActivity {
     @Override
     public void afterViewCreated(Bundle savedInstanceState) {
 
+
         // 开启以太网检查服务
-//        startService(new Intent(this, CheckEthernetService.class));
-        startService(new Intent(this, EnglishSampleService.class));
+        startService(new Intent(this, CheckEthernetService.class));
 
         UpdateApkManagerUtil mUpdateApkManagerUtil = new UpdateApkManagerUtil(LauncherActivity.this, false);
         mUpdateApkManagerUtil.checkUpdateInfo();
@@ -199,13 +209,7 @@ public class LauncherActivity extends CsjUIActivity {
         startService(clientService);
         registerReceiver(powerTestReceiver, new IntentFilter("com.csjbot.snowbot.powertest"));
 
-//        mHandler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                EventBus.getDefault().post(new RobotStatusUpdateEvent(25, false, 22));
-//                mHandler.postDelayed(this, 6000);
-//            }
-//        }, 6000);
+
     }
 
 
@@ -219,7 +223,7 @@ public class LauncherActivity extends CsjUIActivity {
             } else {
                 lowpower30DialogTime = System.currentTimeMillis();
                 lowPowerToGoHomeCD = LOWPOWER_TO_GOHOME_CD;
-                mLoadToast.setText("正在巡逻");
+                mLoadToast.setText(getString(R.string.patroling));
                 mLoadToast.success();
                 mHandler.removeCallbacks(goHomeCountDownRunnable);
                 lowpower30Dialog.dismiss();
@@ -261,7 +265,7 @@ public class LauncherActivity extends CsjUIActivity {
         lowpower30Dialog.setOnDismissListener((dialogInterface) -> {
             lowpower30DialogTime = System.currentTimeMillis();
             lowPowerToGoHomeCD = LOWPOWER_TO_GOHOME_CD;
-            mLoadToast.setText("正在巡逻");
+            mLoadToast.setText(getString(R.string.patroling));
             mLoadToast.success();
             mHandler.removeCallbacks(goHomeCountDownRunnable);
             SpeechStatus.getIstance().setAiuiResponse(true);
@@ -287,7 +291,7 @@ public class LauncherActivity extends CsjUIActivity {
         View view = inflater.inflate(R.layout.low_power_waring_dialog, null);
 
         lowpowerDialog = builder.setView(view)
-                .setPositiveButton("确定", (dialogInterface, i) -> {
+                .setPositiveButton(R.string.queding, (dialogInterface, i) -> {
                     CheckBox cb = (CheckBox) view.findViewById(R.id.low_power_waring_checkBox);
                     if (cb.isChecked()) {
                         notShowUntilNextCharing = true;
@@ -335,7 +339,7 @@ public class LauncherActivity extends CsjUIActivity {
         if (snowBot.isSlamConnected()) {
             startActivity(new Intent(this, MapActivity.class));
         } else {
-            CSJToast.showToast(this, "请等待底盘连接");
+            CSJToast.showToast(this, getString(R.string.wait_toconnect));
         }
     }
 
@@ -367,15 +371,39 @@ public class LauncherActivity extends CsjUIActivity {
         }
     }
 
+    private boolean clickFaceRe = false;
+
     public void startFaceRecognition(View view) {
-        startActivity(new Intent(this, FaceRecoActivity.class));
+        mHandler.postDelayed(() -> clickVideoRecord = false, 500);
+        if (!clickVideoRecord) {
+            if (cameraStatusManager.isOpen()) {
+                // 等待相机打开，这样跳转的时候可以正确的关闭
+                startActivity(new Intent(this, FaceRecoActivity.class));
+            } else {
+                Toast.makeText(LauncherActivity.this,
+                        R.string.camera_not_ready, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
+
+    private boolean clickVideoRecord = false;
+    private boolean USE_BACKFACE_DET = false;
 
     public void startVideoRecord(View view) {
 //        Intent intent = new Intent(this, MaterialLockActivity.class);
 //        intent.putExtra("nextActivityName", LauncherActivity.class.getName());
 //        startActivity(intent);
-        startActivity(new Intent(this, VideoRecordActivity.class));
+        mHandler.postDelayed(() -> clickVideoRecord = false, 500);
+        if (!clickVideoRecord) {
+            if (cameraStatusManager.isOpen()) {
+                // 等待相机打开，这样跳转的时候可以正确的关闭
+                startActivity(new Intent(this, VideoRecordActivity.class));
+            } else {
+                Toast.makeText(LauncherActivity.this,
+                        R.string.camera_not_ready, Toast.LENGTH_SHORT).show();
+            }
+        }
+        clickVideoRecord = true;
     }
 
     public void goToStudyPage(View view) {
@@ -395,7 +423,7 @@ public class LauncherActivity extends CsjUIActivity {
     }
 
     public void startAdvertisement(View view) {
-        startActivity(new Intent(this, AdvertisementAct.class));
+        startActivity(new Intent(this, NewAdvertisementActivity.class));
     }
 
     @Override
@@ -407,9 +435,10 @@ public class LauncherActivity extends CsjUIActivity {
     protected void onStart() {
         ibus = BusFactory.getBus();
         ibus.register(this);
-
         super.onStart();
+
     }
+
 
     @Override
     protected void onDestroy() {
@@ -423,10 +452,18 @@ public class LauncherActivity extends CsjUIActivity {
         super.onDestroy();
     }
 
+    boolean isOpen = false;
+    boolean openRecoBackground = true;
+    boolean willOpen = false;
+
     @Override
     protected void onResume() {
         SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 1);
         super.onResume();
+
+        if (cameraStatusManager.checkHasCamera()) {
+            openBackgroundReco();
+        }
     }
 
     @Override
@@ -434,6 +471,32 @@ public class LauncherActivity extends CsjUIActivity {
         super.onPause();
         snowBot.stopPartol();
         mLoadToast.success();
+
+        if (cameraStatusManager.checkHasCamera()) {
+            stopBackgroundReco();
+        }
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        if (isOpen) {
+//            faceRecoBackground.onPause();
+//            faceRecoBackground.stopPreview();
+//            faceRecoBackground.stopCamera();
+//            isOpen = false;
+//        } else if (willOpen) {
+//            // 将要打开，但是没来得及打开就要进入另一个界面了
+//            mHandler.postDelayed(() -> {
+//                faceRecoBackground.onPause();
+//                faceRecoBackground.stopPreview();
+//                faceRecoBackground.stopCamera();
+//                isOpen = false;
+//                willOpen = false;
+//            }, 1000);
+//        }
+//        stopBackgroundReco();
     }
 
     private void recoveryMapData() {
@@ -497,7 +560,6 @@ public class LauncherActivity extends CsjUIActivity {
         alphaAnimation1.cancel();
     }
 
-    //  power show
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void robotStatusUpdated(RobotStatusUpdateEvent event) {
 //        Csjlogger.debug("Robot is isCharging {} , BatteryPercentage is {}, LocalizationQuality is {}",
@@ -543,6 +605,7 @@ public class LauncherActivity extends CsjUIActivity {
                 }
             }
         } else {
+            needGotoChargingActivity = true;
             firstTimeReach100 = 0;
             if (chargeFullDialog.isShowing()) {
                 chargeFullDialog.dismiss();
@@ -641,5 +704,49 @@ public class LauncherActivity extends CsjUIActivity {
         powerIv.setVisibility(View.VISIBLE);
         disconnectIv.setVisibility(View.INVISIBLE);
         chargingIv.setVisibility(View.INVISIBLE);
+    }
+
+
+//    boolean isOpen = false;
+//    boolean openRecoBackground = true;
+//    boolean willOpen = false;
+
+    private void openBackgroundReco() {
+        if (cameraStatusManager.canOpen()) {
+            cameraStatusManager.setOpenFuture(true);
+            mHandler.postDelayed(() -> {
+                faceRecoBackground = new FaceRecoBackground();
+                faceRecoBackground.init(this);
+                cameraStatusManager.setOpen(true);
+                cameraStatusManager.setOpenFuture(false);
+            }, 1000);
+        }
+//        else if (openRecoBackground) {
+//            // 上面没打开相机，1秒后重新尝试打开相机
+//            Csjlogger.info("打开相机失败，尝试重新打开... isOpen = " + isOpen + " : willOpen = " + willOpen);
+//            mHandler.postDelayed(this::openBackgroundReco, 1000);
+//        }
+    }
+
+    private void stopBackgroundReco() {
+        if (cameraStatusManager.isOpen()) {
+            cameraStatusManager.setRelease(true);
+            faceRecoBackground.onPause();
+            faceRecoBackground.stopPreview();
+            faceRecoBackground.stopCamera();
+            cameraStatusManager.setOpen(false);
+            cameraStatusManager.setRelease(false);
+        } else if (!cameraStatusManager.isOpen() && cameraStatusManager.isOpenFuture()) {
+            // 将要打开，但是没来得及打开就要进入另一个界面了
+            mHandler.postDelayed(() -> {
+                faceRecoBackground.onPause();
+                faceRecoBackground.stopPreview();
+                faceRecoBackground.stopCamera();
+//                isOpen = false;
+//                willOpen = false;
+                cameraStatusManager.setOpen(false);
+                cameraStatusManager.setOpenFuture(false);
+            }, 1000);
+        }
     }
 }

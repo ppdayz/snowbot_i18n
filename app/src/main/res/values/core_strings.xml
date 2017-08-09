@@ -74,4 +74,6 @@
     <string name="server_error1">服务器错误</string>
     <string name="http_fail">服务器繁忙,请稍后再次尝试</string>
     <string name="Chinese_string">成语接龙</string>
+    <string name="tip_acquire_failure">获取上位机失败,请检查！</string>
+    <string name="SN_failtoget">SN获取失败,请联系管理员</string>
 </resources>

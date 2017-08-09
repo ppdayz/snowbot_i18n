@@ -7,10 +7,20 @@
         <item>100</item>
         <item>无限</item>
     </string-array>
-    <string-array name="wakeup_array_en" >
+
+    <string-array name="type_select">
+        <item>文字</item>
+        <item>音频</item>
+    </string-array>
+
+    <string-array name="type_guide_play_select">
+        <item>图片</item>
+        <item>视频</item>
+    </string-array>
+    <string-array name="wakeup_array_en">
         <item>I am Here!</item>
         <item>Yes </item>
-        <item>I am ready</item>
-        <item>May I help you?</item>
+        <item>I am Ready!</item>
     </string-array>
+
 </resources>

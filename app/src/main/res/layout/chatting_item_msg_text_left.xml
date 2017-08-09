@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/iv_userhead"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/mini_avatar_shadow"

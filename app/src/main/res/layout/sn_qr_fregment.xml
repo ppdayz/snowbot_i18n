@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sn_qr_imageView"
         android:layout_centerHorizontal="true"
-        android:text="上身板SN"
+        android:text="@string/snshang"
         android:textColor="@color/black"
         android:textSize="@dimen/dm_60sp" />
 
@@ -28,7 +28,7 @@
         android:layout_below="@+id/sn_qr_imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="上身板SN"
+        android:text="@string/snshang"
         android:textColor="@color/black"
         android:textSize="@dimen/dm_30sp" />
 </RelativeLayout>

@@ -15,15 +15,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:text="1. 应用启动时，会将一部分默认的图片复制到设备/sdcard/img/test_facescore中,若不存在此文件夹或此文件夹中文件数为0，就会复制默认的图片到其中
-
-\n\n2. 若想要对其他照片进行测试，将需要测试的图片放置入/sdcard/img/test_facescore即可
-
-\n\n3. 点击图片展示年龄、性别及颜值
-
-\n\n4. 文件夹中的图片发生改变请重新打开应用
-
-"
+        android:text="@string/sdcard_"
         android:textSize="16sp" />
 
 </RelativeLayout>

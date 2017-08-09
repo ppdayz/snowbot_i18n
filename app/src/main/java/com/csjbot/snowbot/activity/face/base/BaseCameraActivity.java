@@ -3,6 +3,7 @@ package com.csjbot.snowbot.activity.face.base;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
+import android.util.Log;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 
@@ -213,6 +214,7 @@ public abstract class BaseCameraActivity extends BaseActivity implements CameraH
                 }
             } else {
                 scale_bit = surface_h / (float) ih;
+                Log.e("scale_bit", "scale_bit = " + scale_bit);
                 orientation = YMFaceTrack.FACE_0;
 
                 if (mCameraHelper.getCameraId() == Camera.CameraInfo.CAMERA_FACING_FRONT) {
@@ -221,6 +223,7 @@ public abstract class BaseCameraActivity extends BaseActivity implements CameraH
                     }
                 }
             }
+            Log.e("scale_bit", "my scale_bit = " + scale_bit);
 
             if (faceTrack == null) {
                 iw = 0;

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.csjbot.snowbot.activity.TourGuideSettingActivity">
+
+
+
+    <Button
+        android:id="@+id/bt_tourguide_pre"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/dm_10dp"
+        android:background="@drawable/selector_tourguide_bt"
+        android:text="@string/preview_map"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dm_22sp" />
+
+    <Button
+        android:id="@+id/bt_singe_tourguide"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/dm_10dp"
+        android:background="@drawable/selector_tourguide_bt"
+        android:text="@string/singe_tourguide"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dm_22sp" />
+
+    <Button
+        android:id="@+id/bt_tourguide_change"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/dm_10dp"
+        android:background="@drawable/selector_tourguide_bt"
+        android:text="@string/update_config"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dm_22sp" />
+
+    <Button
+        android:id="@+id/bt_mode"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/dm_10dp"
+        android:background="@drawable/selector_tourguide_bt"
+        android:text="@string/mode_config_"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dm_22sp" />
+
+
+</LinearLayout>

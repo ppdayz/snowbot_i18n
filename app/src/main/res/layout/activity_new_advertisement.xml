@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/main_bg"
+    tools:context="com.csjbot.snowbot.activity.NewAdvertisementActivity">
+
+    <include
+        android:id="@+id/head_layout"
+        layout="@layout/head_layout" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <Button
+            android:id="@+id/bt_sd"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/advertisement_sdcard"
+            android:textSize="@dimen/dm_24sp"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@drawable/selector_tab_bt_sd_bg"
+            />
+        <Button
+            android:id="@+id/bt_mount"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dm_24sp"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:text="@string/advertisement_mount"
+            android:background="@drawable/selector_tab_bt_mount_bg"
+            />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

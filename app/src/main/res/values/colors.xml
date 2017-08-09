@@ -73,4 +73,8 @@
     <color name="grey_d3d3d3">#d3d3d3</color>
 
     <color name="colorSeekBarDefalut">#c3c3c3</color>
+
+    <color name="white_pressed">#FFCFCFCF</color>
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
 </resources>

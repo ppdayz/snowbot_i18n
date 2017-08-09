@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <string name="aliyun_exist">Aliyun registration exists</string>
+  <string name="check_chassis_connect">Please check your chassis connect</string>
+  <string name="check_file_correct">Check if the file exists</string>
+  <string name="close_cycle">Cancel single mode</string>
+  <string name="close_loop">Cancel cycle mode</string>
+  <string name="configuration">In the configuration</string>
+  <string name="connect_out_time">Connect timeout, please check your network setting</string>
+  <string name="connect_outtime">Connect timeout, please check your network setting</string>
+  <string name="connect_text">Connect</string>
+  <string name="copy_custom_success">Success</string>
+  <string name="copy_failed">Copy failure</string>
+  <string name="copy_success">Copy success</string>
+  <string name="delete_fail">Delete failure!</string>
+  <string name="enter_current_info">Please enter the correct password</string>
+  <string name="enter_password">passport</string>
+  <string name="enture_restore_map">Are you sure to continue restoring the map?</string>
+  <string name="file_notexist_bad">File null or broken!</string>
+  <string name="insert_U">Please insert the U flash disk</string>
+  <string name="insufficient_memory">Insufficient memory</string>
+  <string name="IP_save">IP saved</string>
+  <string name="make_sure_delete">Confirm to delete ?</string>
+  <string name="map_not_exist">No map available,please save the map</string>
+  <string name="map_save_success">Saved success</string>
+  <string name="open_cycle">Start single mode</string>
+  <string name="open_loop">Start circle mode</string>
+  <string name="please_enter">Please enter</string>
+  <string name="power_low">Battery is lower than 20%</string>
+  <string name="power_too_low">Warning: power is too low, please plug in</string>
+  <string name="remind_again">Buzz again?</string>
+  <string name="restore">Restore</string>
+  <string name="restore_map_succeed">Map restore success</string>
+  <string name="set_more_patrol_point">Patrolling point is less than two,please add more</string>
+  <string name="set_patrol_point">No patrolling point available,please add</string>
+  <string name="sex_boy">Male</string>
+  <string name="sex_girl">Female</string>
+  <string name="sex_unknown">Unknown</string>
+  <string name="snowbot_name_fail">Failure</string>
+  <string name="snowbot_registration_exist">Aliyun registration exists</string>
+  <string name="start_patrol_speech">Start</string>
+  <string name="stop_patrol_speech">Finish</string>
+  <string name="try_to_connect">Connecting...</string>
+  <string name="user_accounts">Please enter the account</string>
+  <string name="user_password">Please enter the password</string>
+</resources>

@@ -21,16 +21,15 @@
             android:layout_height="wrap_content"
 
             android:layout_weight="1"
-            android:text="上身板SN获取"
+            android:text="@string/sn_top"
             android:textSize="@dimen/dm_18sp" />
 
         <Button
             android:id="@+id/SnowBotGetDownSN"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="下身板SN获取"
+            android:text="@string/sn_bottom"
             android:textSize="@dimen/dm_18sp" />
 
         <Button
@@ -38,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="获取自检信息"
+            android:text="@string/get_self"
             android:textSize="@dimen/dm_18sp" />
 
 
@@ -48,7 +47,7 @@
 
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="双臂摆动"
+            android:text="@string/arm_rock"
             android:textSize="@dimen/dm_18sp" />
 
         <Button
@@ -57,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
-            android:text="左臂摆动"
+            android:text="@string/leftarm_rock"
             android:textSize="@dimen/dm_18sp" />
 
         <Button
@@ -66,7 +65,7 @@
             android:layout_height="wrap_content"
 
             android:layout_weight="1"
-            android:text="右臂摆动"
+            android:text="@string/rightarm_rock"
             android:textSize="@dimen/dm_18sp" />
 
         <Button
@@ -76,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="TTS_Test"
-            android:text="发声测试"
+            android:text="@string/sound_test"
             android:textSize="@dimen/dm_18sp" />
 
         <Button
@@ -85,7 +84,7 @@
             android:layout_height="wrap_content"
 
             android:layout_weight="1"
-            android:text="面部表情变换"
+            android:text="@string/change_face"
             android:textSize="@dimen/dm_18sp" />
 
 
@@ -94,7 +93,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="回去充电"
+            android:text="@string/goback"
+            android:textSize="@dimen/dm_18sp" />
+
+        <Button
+            android:id="@+id/startAdTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/get_licheng"
             android:textSize="@dimen/dm_18sp" />
 
         <Button
@@ -102,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="结束测试"
+            android:text="@string/finish_test"
 
             android:textSize="@dimen/dm_18sp" />
     </LinearLayout>

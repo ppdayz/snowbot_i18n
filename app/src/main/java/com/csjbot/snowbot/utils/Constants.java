@@ -15,5 +15,8 @@ public class Constants {
 //    public static final String SERVER_IPADDR = "114.55.238.115";
 
     public static final String ACTION_ADUIO_VOLUME = "com.csjbot.snowbot.action_aduio_volume";
-
+    // 是否是导览的人脸识别
+    public static volatile boolean isGuideReco = false;
+    // 是否主动导览
+    public static volatile boolean isGuidePositive = false;
 }

@@ -22,7 +22,7 @@
         android:layout_below="@+id/low_power_waring_text"
         android:layout_marginStart="25dp"
         android:layout_marginTop="60dp"
-        android:text="  充电之前不再显示" />
+        android:text="@string/no_show_before" />
 
 
 </RelativeLayout>

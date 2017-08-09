@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/iv_userhead"
-            android:layout_width="70dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="143dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/snowbot_photo"

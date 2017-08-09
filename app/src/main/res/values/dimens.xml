@@ -154,4 +154,7 @@
     <dimen name="dm_355sp">358sp</dimen>
     <dimen name="dm_400sp">400sp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+
+    <dimen name="item_height">60dp</dimen>
+    <dimen name="item_width">60dp</dimen>
 </resources>

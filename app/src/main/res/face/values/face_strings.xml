@@ -3,7 +3,6 @@
     <string name="find_who">来，让我看看你是谁!</string>
     <string name="find_who1">我不认识你哦，让我认识你吧!\n 给我个正脸看一下呗</string>
     <string name="find_who2">然后让我看下你的侧脸</string>
-
     <string name="emo_to_nomal">无论是喜悦、悲伤、惊讶还是愤怒，我都能读懂你的表情哦！</string>
     <string name="emo_to_joy">嘻嘻，见到美女帅哥我也很开心</string>
     <string name="emo_to_sub">不用惊讶，我就是这么的机~智~</string>
@@ -11,8 +10,9 @@
     <string name="emo_to_ang">额，你在对我生气吗，不管怎样我先道歉！</string>
     <string name="cant_found_you">看不到人脸啦</string>
     <string name="welcome_use_tracking">欢迎使用人脸追踪功能</string>
-
     <string name="reco_miss">" %s 小姐 "</string>
+    <string name="restorea">正在恢复地图</string>
+    <string name="queding">确定</string>
     <string name="reco_man">" %s 先生 "</string>
     <string name="not_found_or_more">未检测到人脸或者人脸多于一个</string>
     <string name="please_forward">请正脸面对</string>
@@ -20,6 +20,8 @@
     <string name="move_too_fast">角度偏移过快</string>
     <string name="alread_know_you">已经认识你了哦：%1$s 猜你 %2$s 岁</string>
     <string name="emo_joy">喜悦</string>
+    <string name="patroling">正在巡逻</string>
+    <string name="total_sd">SD卡总空间：</string>
     <string name="emo_sad_ang">悲愤</string>
     <string name="emo_sub">惊讶</string>
     <string name="emo_ang">愤怒</string>
@@ -37,13 +39,11 @@
     <string name="try_ok">好的</string>
     <string name="reset_db">清除数据库</string>
     <string name="reset_db_success">清除数据库成功</string>
-
     <string name="start_1">人脸识别</string>
     <string name="start_2">表情识别</string>
     <string name="start_3">微笑拍照</string>
     <string name="start_4">人脸追踪</string>
     <string name="start_5">人脸注册</string>
-
     <string name="face_unlock">人脸解锁</string>
     <string name="unlock_main_desc">解锁成功就能看到她的样子啦</string>
     <string name="unlock_sun">立即解锁</string>
@@ -52,8 +52,6 @@
     <string name="add_face_success">第 %1$s 张人脸添加成功，id = %2$s</string>
     <string name="add_face_failed">人脸数据添加失败</string>
     <string name="know_yet">"已经认识你啦，，不用再添加人脸了 id = %1$s"</string>
-
-
     <string name="unlock_insert_face">录入/清空人脸</string>
     <string name="insert_face">录入人脸</string>
     <string name="clear_face_db">清除人脸库</string>
@@ -85,13 +83,10 @@
     <string name="_dialog_isnext">当前录入完成，是否录入下一个？</string>
     <string name="_yes">是</string>
     <string name="_no">否</string>
-
-
     <string name="count_start_1">人脸库管理</string>
     <string name="count_start_2">人脸识别</string>
     <string name="count_start_3">更多功能</string>
     <string name="count_start_4">测试</string>
-
     <string name="insert_next">跳过</string>
     <string name="points">关键点</string>
     <string name="more_detect_person">活体检测</string>
@@ -122,4 +117,16 @@
     <string name="image_indert_msg">请按以下示意依次添加照片</string>
      <string name="_settings">设置及说明</string>
     <string name="points_switch">切换</string>
+    <string name="wait_toconnect">请等待底盘连接</string>
+    <string name="name_snow">小雪</string>
+    <!--    app下的添加在下面  2017-07-19                             -->
+
+
+
+
+
+
+
+
+
 </resources>

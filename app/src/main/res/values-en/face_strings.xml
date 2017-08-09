@@ -1,0 +1,690 @@
+<resources>
+    <string name="find_who">Let me see who you are.</string>
+    <string name="find_who1">I am not familiar with you yet...\n Please turn your face towards the camera.</string>
+    <string name="find_who2">Now let me see either side of your face.</string>
+    <string name="emo_to_nomal">Yes, I can read your mind : )</string>
+    <string name="emo_to_joy">I am glad to see you too.</string>
+    <string name="emo_to_sub">Am I surprising you?~</string>
+    <string name="emo_to_sad">Do not be sad.~</string>
+    <string name="emo_to_ang">Why are you mad at me?</string>
+    <string name="cant_found_you">I can not see your face now.</string>
+    <string name="welcome_use_tracking">Welcome to Face Tracking.</string>
+    <string name="reco_miss">" Miss  "</string>
+    <string name="our_ware_save">READ SN</string>
+    <string name="reco_man">" Mr.  "</string>
+    <string name="not_found_or_more">None or multiple face detected(Only one ID is needed.)</string>
+    <string name="please_forward">Please show your frontal face</string>
+    <string name="please_side_face">Please show your side face</string>
+    <string name="move_too_fast">Sorry, you are turning too fast.</string>
+    <string name="alread_know_you">We have met before. %1$s I Guess %2$s You -ish..</string>
+    <string name="emo_joy">Happy</string>
+    <string name="emo_sad_ang">Sad/Angry</string>
+    <string name="emo_sub">Surprise</string>
+    <string name="emo_ang">Angry</string>
+    <string name="emo_nom">Neutral</string>
+    <string name="cant_see">I can not see you.</string>
+    <string name="smile_take">Smile Shutter</string>
+    <string name="give_big_smile">Show me a huge smile.~</string>
+    <string name="come_on_smile">Come on. Do not be so serious. Let us smile.~</string>
+    <string name="come_on_smile1">Come on. Just one smile.~</string>
+    <string name="take_cant_see">I can not see you now.</string>
+    <string name="count_three">I am counting to three.</string>
+    <string name="re_take">Retake</string>
+    <string name="try_again">Let us try one more time?</string>
+    <string name="try_no">No.</string>
+    <string name="try_ok">Yes.</string>
+    <string name="reset_db">Reset DB</string>
+    <string name="reset_db_success">Reset DB Success</string>
+    <string name="start_1">Face Recognition</string>
+    <string name="start_2">Emotion Recognition</string>
+    <string name="start_3">Smile Shutter</string>
+    <string name="start_4">Face Tracking</string>
+    <string name="start_5">Face Unlock</string>
+    <string name="unlock_insert_face">Enroll Delete Face ID</string>
+    <string name="insert_face">Enroll Face ID</string>
+    <string name="clear_face_db">Clear Face ID Database</string>
+    <string name="tipe_add1">please click the bottom button - add frontal face</string>
+    <string name="tips_add3">please click the bottom button - add tilted up face</string>
+    <string name="tipe_add4">please click the bottom button - add tilted down face</string>
+    <string name="tips_add2">please click the bottom button - add profile view</string>
+    <string name="insert_now_1">Ready to add the first face —— frontal face(1/4)</string>
+    <string name="insert_now_2">Ready to add the second face —— profile view(2/4)</string>
+    <string name="insert_now_3">Ready to add the third face —— tilt up(3/4)</string>
+    <string name="insert_now_4">Ready to add the fourth face —— tilt down(4/4)</string>
+    <string name="dalog_notice">Tips</string>
+    <string name="dialog_msg">You are already known as %1$s. Delete your face data and update？</string>
+    <string name="ignore">Ignore</string>
+    <string name="update">Update</string>
+    <string name="i_not_him">That’s not me.</string>
+    <string name="please_face_to">Please face torwards front</string>
+    <string name="please_left_20">Please turn to left side 20°</string>
+    <string name="please_up_20">Please tilt up 20°</string>
+    <string name="please_down_20">Please tilt down 20°</string>
+    <string name="delete_toast">Delete all face ID data?</string>
+    <string name="_sure">Yes</string>
+    <string name="_not_sure">Cancel</string>
+    <string name="_sure_out">Yes&amp;Exit</string>
+    <string name="_keep_pre">Continue</string>
+    <string name="dialog_msg1">You have already added %1$d face photos. The enrolling process isn’t complete. Are you sure to cancel？</string>
+    <string name="dialog_msg2">Successfully enrolled，Face ID =  %1$d Please input nickname </string>
+    <string name="insert_nickname">Nickname can’t be empty</string>
+    <string name="_dialog_isnext">Current enrollment is complete. Continue to enroll next face ID?</string>
+    <string name="_yes">Yes</string>
+    <string name="_no">No</string>
+    <string name="insert_next">Next</string>
+    <string name="add_face">Add face</string>
+    <string name="count_start_1">Face ID Manager</string>
+    <string name="count_start_2">Face Recognition</string>
+    <string name="count_start_3">More Functions</string>
+    <string name="points">Facial Landmarks</string>
+    <string name="input_face">Record person face</string>
+    <string name="photograph_input">Camera</string>
+    <string name="video_input">Video</string>
+    <string name="start_register">Start</string>
+    <string name="start_">Start</string>
+    <string name="city_choose">Choose City</string>
+    <string name="manage_edit">Edit</string>
+    <string name="person_list">Person Lists</string>
+    <string name="manage_ending">Ending</string>
+    <string name="manage_toast_none_select">Please choose items to delete！</string>
+    <string name="manage_sure_delete">Are you sure to delete the selected data？</string>
+    <string name="manage_delete">Update</string>
+    <string name="queding">Yes</string>
+    <string name="image_sure_next">Face enrollment complete, start face recognition now？</string>
+    <string name="manage_selete_all">Selete All</string>
+    <string name="video_re_failure">Face enrollments failed, retry now？</string>
+    <string name="video_tips0">To record a 3-second enrollment video, please slowly turn your head up-and-down and side-to-side in any order as shown below."</string>
+    <string name="camera_error">This device does not support Camera2 API.</string>
+    <string name="more_detect_person">Liveness Detect</string>
+    <string name="verify_success">Verify Success</string>
+    <string name="verify_failed">Verify Failed</string>
+    <string name="liveness_try_more">Please open mouth for a few seconds</string>
+    <string name="liveness_facing_screen">Please face the screen</string>
+    <string name="liveness_back">Back</string>
+    <string name="liveness_once_more">Again</string>
+    <string name="more_points_str">This feature is not publicly available yet. Please contact us for authorization</string>
+    <string name="more_points_ok">Ok</string>
+    <string name="image_indert_msg">Please add in the following order </string>
+    <string name="_settings">Setting and Explanation</string>
+    <string name="points_switch">Switch Camera</string>
+    <string name="about">About</string>
+    <string name="accessories">Accessories</string>
+    <string name="ad_content">Please enter the ads content</string>
+    <string name="add_home">Add Room</string>
+    <string name="add_wall">Add Wall</string>
+    <string name="advanced_options">Advanced Options</string>
+    <string name="advertisement">Advertisement</string>
+    <string name="advertisement_cancel">Cancel</string>
+    <string name="advertisement_copy_sd_msg">Confirm copy to SD card?</string>
+    <string name="advertisement_copy_suc">Success</string>
+    <string name="advertisement_is_copy">Copying...</string>
+    <string name="advertisement_mount">U-Disk</string>
+    <string name="advertisement_ok">Yes</string>
+    <string name="advertisement_sdcard">Local</string>
+
+    <string name="age">Age:</string>
+
+    <string name="air_quality">Air Quality:</string>
+
+    <string name="air_rent">AQI</string>
+
+    <string name="aiui_network">AIUI Network</string>
+
+    <string name="aiui_wifi_config">Voice WIFI</string>
+
+    <string name="alreadly_out_ware">Completed</string>
+
+    <string name="answer">Answer：</string>
+
+    <string name="answer_empty">Answer cannot be empty</string>
+
+    <string name="app_name">SnowBot</string>
+
+    <string name="appearance">Appearance Level:</string>
+
+    <string name="arm_rock">Arms Wave</string>
+
+    <string name="audio_module">Audio Module</string>
+
+    <string name="back">Back</string>
+
+    <string name="brightness">Brightness</string>
+
+    <string name="broadlink">Scan QR and follow BroadLink to enter experience room in advance</string>
+
+    <string name="call_settings">Call Settings</string>
+
+    <string name="camera_not_ready">Camera not ready</string>
+
+    <string name="cancle">Cancel</string>
+
+    <string name="cancle_add_home">Cancel Room</string>
+
+    <string name="cancle_add_wall">Cancel</string>
+
+    <string name="change_expression">Change face expression</string>
+
+    <string name="change_face">Face expression change</string>
+
+    <string name="check_for_updates">Check for Updates</string>
+
+    <string name="check_phone_num">Verification code received failure, please check your phone number</string>
+
+    <string name="check_phone_num_fail">Verification code received failure,please resend</string>
+
+    <string name="choose_right_home">Choose the right room within map area</string>
+
+    <string name="clear_data">Clear Data</string>
+
+    <string name="clear_data_hint">Continue to delete all local and registered data?</string>
+    <string name="cle">Clear</string>
+    <string name="clear_map">Clear Map</string>
+    <string name="clear_all">If map is cleared，all data will disappear！</string>
+    <string name="close_sensor">Close</string>
+    <string name="clearing">Clearing</string>
+    <string name="complete">Done</string>
+    <string name="huanyuan">Restore</string>
+    <string name="complete_btn">Done</string>
+    <string name="total_sd">SD Card:</string>
+    <string name="restorea">Restoring...</string>
+    <string name="config_fail">Failed</string>
+
+    <string name="config_slam_info">Automatically configuring now...</string>
+
+    <string name="config_success">Success</string>
+
+    <string name="config_wifi_info">Configuring WIFI now...</string>
+
+    <string name="custom_advertisement">Custom Ads</string>
+
+    <string name="custom_answer">Please enter the custom answer</string>
+
+    <string name="custom_file_copy">Read Custom Answers</string>
+
+    <string name="custom_issues">Please enter the custom question</string>
+
+    <string name="custom_questions_answers">Custom QAs</string>
+
+    <string name="define_situtation">Click here to auto setting profiles</string>
+
+    <string name="del_wall">Delete Wall</string>
+
+    <string name="delete">Delete</string>
+
+    <string name="delete_failed">Failed</string>
+
+    <string name="delete_home">Delete Room</string>
+
+    <string name="delete_succeeded">Success</string>
+
+    <string name="detection_again">Recognize again</string>
+
+    <string name="detection_fail">Recognize failure</string>
+
+    <string name="detection_suc">Recognize success</string>
+
+    <string name="dialog_hit">Prompt</string>
+
+    <string name="double_arm">Arms Wave</string>
+
+    <string name="down_plate_not_null">Lower board null</string>
+
+    <string name="download_enjoy">Download Wisdom Star APP to enjoy smart life</string>
+    <string name="within_china">（China Only）</string>
+    <string name="ensure">Confirm</string>
+
+    <string name="error_drm_not_supported">API less than 18 is not supported</string>
+
+    <string name="error_drm_unknown">Unknown DRM error</string>
+
+    <string name="error_drm_unsupported_scheme">This device does not support DRM scheme</string>
+
+    <string name="error_instantiating_decoder">Unable to instantiate decoder</string>
+
+    <string name="error_no_decoder">No decoder provided</string>
+
+    <string name="error_no_secure_decoder">No secure decoder provided</string>
+
+    <string name="error_querying_decoders">Unable to query decoder</string>
+
+    <string name="face_recognition">Face Recognition</string>
+
+    <string name="face_recognition_open">Face recognition open</string>
+
+    <string name="facecode1101">Face recognition failure</string>
+
+    <string name="facecode1102">Pic decoding failure</string>
+
+    <string name="facecode1103">Characteristics processing failure</string>
+
+    <string name="facecode1104">Shape extracted error</string>
+
+    <string name="facecode1105">Gender extracted error</string>
+
+    <string name="facecode1106">Face expression extracted error</string>
+
+    <string name="facecode1107">Age extracted error</string>
+
+    <string name="facecode1108">Gesture extracted error</string>
+
+    <string name="facecode1109">Glasses extracted error</string>
+
+    <string name="facecode1200">Characteristics error</string>
+
+    <string name="facecode1300">Picture null</string>
+
+    <string name="facecode1301">Parameter null</string>
+
+    <string name="facecode1302">Individual exists</string>
+
+    <string name="facecode1303">Individual exists</string>
+
+    <string name="facecode1304">Parameter too long</string>
+
+    <string name="facecode1305">Face does not exist</string>
+
+    <string name="facecode1306">Group does not exist</string>
+
+    <string name="facecode1307">Group list does not exist</string>
+
+    <string name="facecode1308">url picture downloaded failure</string>
+
+    <string name="facecode1309">No. of faces exceedsthe limit</string>
+
+    <string name="facecode1310">No. of individuals exceeds the limit</string>
+
+    <string name="facecode1311">No. of groups exceeds the limit</string>
+
+    <string name="facecode1312">Face almost same</string>
+
+    <string name="facecode1400">Illegal pic format</string>
+
+    <string name="facecode1403">Download failed</string>
+
+    <string name="facecode2001">json error</string>
+
+    <string name="facecode2017">failure</string>
+
+    <string name="facecodeother">Others</string>
+
+    <string name="facedetecterror">Face recognized failure</string>
+
+    <string name="faceidentifyerror">Face retrieval failure</string>
+
+    <string name="faceregisterror">Face registered failure</string>
+
+    <string name="facetracking">Face track</string>
+
+    <string name="family_education">Family Education</string>
+
+    <string name="fast_click">Click too frequently, please try again later</string>
+
+    <string name="finish_test">End test</string>
+
+    <string name="five_step">Fifth Step</string>
+
+    <string name="four_step">Fourth Step</string>
+
+    <string name="get_berify_num">Get</string>
+
+    <string name="get_licheng">Click to get milemeter</string>
+
+    <string name="get_no_data">No data</string>
+
+    <string name="get_self">Self-check information</string>
+
+    <string name="get_video">Take video</string>
+
+    <string name="getting">Getting</string>
+
+    <string name="go_home">Auto Docking</string>
+
+    <string name="goback">Auto Docking</string>
+
+    <string name="hardware_version">Hardware Version</string>
+
+    <string name="head_name">Air Purifier</string>
+
+    <string name="home_empty">Room null</string>
+
+    <string name="home_name_duplicate">Name repeats,please enter again</string>
+
+    <string name="hue">Hue</string>
+
+    <string name="humidity">Humidity</string>
+
+    <string name="identify_suc">Identify success</string>
+
+    <string name="input_group">Enter the company</string>
+
+    <string name="input_name">Enter the name</string>
+
+    <string name="input_num_character">BNM</string>
+
+    <string name="input_rome_name">Enter room name</string>
+
+    <string name="language">Language</string>
+
+    <string name="learn_the_ropes">Touch Head</string>
+
+    <string name="left_arm">Left arm wave</string>
+
+    <string name="leftarm_rock">Left arm wave</string>
+
+    <string name="loading_page">Loading the page....</string>
+
+    <string name="low_power_30_warning">Power is too low, robot will be back to charge in %1$d second</string>
+
+    <string name="low_power_30_warning_stop_partol">Power is too low, robot will stop patrol, please plug in</string>
+
+    <string name="low_power_30_warning_stop_partol_to_gohome">Power is too low, robot has stopped patrol now and will be back to charge in %1$d second</string>
+
+    <string name="low_power_warning">Low power, please connect with adaptor!</string>
+
+    <string name="mac_address">MAC Address</string>
+
+    <string name="main_ingredient">Majors</string>
+
+    <string name="make_sure">Yes</string>
+
+    <string name="map_empty">Indoor map null</string>
+
+    <string name="map_restore">Map Restore</string>
+
+    <string name="map_set">Map Setting</string>
+
+    <string name="master_num">Owner Mobile</string>
+
+    <string name="master_num_empaty">Owner mobile null</string>
+
+    <string name="max_home">Max. 10 rooms</string>
+
+    <string name="modify_sn_params">Hardware SN</string>
+
+    <string name="music_name1">Music Name1</string>
+
+    <string name="music_name2">Music Name2</string>
+
+    <string name="music_name3">Music Name3</string>
+
+    <string name="name">Name:</string>
+
+    <string name="name_text">Xiao Hong</string>
+
+    <string name="navigation_not_null">Navigation core board null</string>
+
+    <string name="nickname_empaty">Owner nickname null</string>
+
+    <string name="no">No</string>
+
+    <string name="no_map_data">No map</string>
+
+    <string name="no_show_before">Never show again before charging</string>
+
+    <string name="non_out_ware">Output</string>
+
+    <string name="one_step">First Step</string>
+
+    <string name="open_sensor">Open the sensor</string>
+
+    <string name="out_home">Exceed the map area</string>
+
+    <string name="out_ware_hint">Please click the button to finish delivery</string>
+
+    <string name="owner">My owner is</string>
+
+    <string name="patrol">One-key Patrol</string>
+
+    <string name="patrol_point">No patrolling point available,please add</string>
+
+    <string name="photo_album">Album</string>
+
+    <string name="pic_your_area">Choose your location</string>
+
+    <string name="plese_check_network">Please check the network</string>
+
+    <string name="plese_restart">Please restart SnowBot.</string>
+
+    <string name="point_patrol">Fixed Point Patrol</string>
+    <string name="patroling">Patrolling</string>
+    <string name="power_state">Power state</string>
+
+    <string name="prompt">Note</string>
+
+    <string name="psd_error">Password error,please re-input</string>
+
+    <string name="psd_num_empaty">Password null</string>
+
+    <string name="psd_num_style">Password should be 4-12 characters</string>
+
+    <string name="question">Question：</string>
+
+    <string name="question_empty">Question cannot be empty</string>
+
+    <string name="reboot">Restart</string>
+
+    <string name="reboot_hint">Continue to restart?</string>
+
+    <string name="reboot_robot">Please restart SnowBot at the charing point.</string>
+
+    <string name="regeneration">Restore</string>
+
+    <string name="regist_face">Start</string>
+
+    <string name="register_fail">Register failure</string>
+
+    <string name="register_suc">Register success</string>
+
+    <string name="relative_humidity">Humidity:</string>
+
+    <string name="repeat_count">Repeat count</string>
+
+    <string name="require_send">Sensor data request for sending</string>
+
+    <string name="require_send_all">Sensor data request for sending all</string>
+
+    <string name="restore_map">Backup map detected, are you going to restore?</string>
+
+    <string name="result">Result: 0.000000</string>
+
+    <string name="right_arm">Right arm wave</string>
+
+    <string name="rightarm_rock">Right arm wave</string>
+
+    <string name="robot_home">Settle down Snows home at the charging point, are you sure to set this place?</string>
+
+    <string name="robot_nickname_empty">Nickname null</string>
+
+    <string name="robot_params_down_plate">Lower Board</string>
+
+    <string name="robot_params_navigation">Navigation Core Board</string>
+
+    <string name="robot_params_ok">Yes</string>
+
+    <string name="robot_params_read">Read</string>
+
+    <string name="robot_params_up_computer">Upper Computer</string>
+
+    <string name="robot_params_up_plate">Upper Board</string>
+
+    <string name="roome_name_empty">Room name null,please enter again.</string>
+
+    <string name="saturation">Saturability</string>
+
+    <string name="save_map">Save Map</string>
+
+    <string name="scan_qrcode">Scan the QR code to download an app.</string>
+
+    <string name="sd_size">SD Size</string>
+
+    <string name="sdcard_">1.When app starts, it will copy some default pics to device/sdcard/img/test_facecore, if this file folder inexistent or zero, it will copy default pics； 2.Should you want other pics tested, please put them into /sdcard/img/test_facescore 3.Click to show age, gender and appearance level 4.Picture changed, please reopen the app</string>
+
+    <string name="serial_number">SN</string>
+
+    <string name="set_nickname">Owner Nickname</string>
+
+    <string name="set_password">Password Setting</string>
+
+    <string name="set_robot_nickname">Please give Snow a nickname.</string>
+
+    <string name="setting">Setting</string>
+
+    <string name="setwifi">Wifi setting</string>
+
+    <string name="sex">Gender:</string>
+
+    <string name="shut_down">Power Off</string>
+
+    <string name="shut_down_hint">Continue to power off?</string>
+
+
+    <string name="skip">Skip</string>
+
+    <string name="smile">Recognize again</string>
+
+    <string name="sn_bottom">Lower board SN</string>
+
+    <string name="sn_not_null">Robot SN null</string>
+
+    <string name="sn_see_qr"> QR CODE</string>
+
+    <string name="sn_top">Upper board SN</string>
+
+    <string name="snow_face_color">Face Color</string>
+
+    <string name="snowbot_already_outware">Already output,please wait for automatic reboot</string>
+
+    <string name="snowbot_appDownload">Scan the QR code to download an app.</string>
+
+    <string name="snowbot_dance">Dance</string>
+
+    <string name="snowbot_home">Are you sure here is Snow’s home?</string>
+
+    <string name="snowbot_low_power_cant_partol">%1$s Power is too low, fuel me full firstly to start heavy loads again</string>
+
+    <string name="snowbot_name">Please give Snow a name</string>
+
+    <string name="snowbot_name_text">Name</string>
+
+    <string name="snowbot_name1">Snow</string>
+
+    <string name="snowbot_outware">Please fill in related info to prepare for Snow’s delivery</string>
+
+    <string name="snowbot_registration">Please input owner’s mobile to register</string>
+
+    <string name="snowbot_restart">Please choose a network for configuration</string>
+
+    <string name="snowbot_SN">Getting the SN</string>
+
+    <string name="snshang">Upper board SN</string>
+
+    <string name="software_version">Software Version</string>
+
+    <string name="sound_test">Sound test</string>
+
+    <string name="speech_empty">No custom voice,please add</string>
+
+    <string name="speed_now">Speed Now</string>
+
+    <string name="start_add_home">Add room</string>
+
+    <string name="start_add_wall">Start to add virtual walls</string>
+
+    <string name="start_go_home">Start to go to </string>
+
+    <string name="start_identify">Start identify</string>
+
+    <string name="start_mic">Start the mic</string>
+
+    <string name="start_patrol">Start to patrol,there are overall patrolling points</string>
+
+    <string name="start_registration">Start register</string>
+
+    <string name="steps">Steps</string>
+
+    <string name="storage_permission_denied">Storage permission denied</string>
+
+    <string name="submit">Submit</string>
+
+    <string name="support_face">Support face recognition technology</string>
+
+    <string name="sure">Confirm </string>
+
+    <string name="system_version">System Version</string>
+
+    <string name="temp">Temperature</string>
+
+    <string name="thr_step">Third Step</string>
+
+    <string name="timed_shutdown">Timing Shutdown</string>
+
+    <string name="title">Input IP:</string>
+
+    <string name="too_low_power_waring">Power is too low, please connect to the adaptor!</string>
+
+    <string name="touch_head_patrol">Touch head to start patrolling</string>
+
+    <string name="touch_head_weather">Touch head to forcast weather</string>
+
+    <string name="transparency">Transparency</string>
+
+    <string name="travel_advice">Travel Advice:</string>
+
+    <string name="try_to_request">Requesting....</string>
+
+    <string name="turn_off_air_cleaner">Turn off the air purifier</string>
+
+    <string name="turn_on_air_cleaner">Turn on the air purifier</string>
+
+    <string name="two_step">Second Step</string>
+
+    <string name="unlimited_repeat">Infinite loop</string>
+
+    <string name="up_computer_not_null">Upper computer null</string>
+
+    <string name="up_plate_not_null">Upper board null</string>
+
+    <string name="update_message">New version detected,please update to the newest one.</string>
+
+    <string name="update_params_success">Updated success</string>
+
+    <string name="update_sure">Update</string>
+
+    <string name="update_title">Version update</string>
+
+    <string name="verify_num">Verification Code</string>
+
+    <string name="verify_num_empaty">Verification code null</string>
+
+    <string name="video_call">Video Call</string>
+
+    <string name="video_record">Video Record</string>
+
+    <string name="volume">Volume</string>
+
+    <string name="wifi">WIFI</string>
+
+    <string name="wifi_automatic">Automatically configuring Wifi</string>
+
+    <string name="wifi_info_build">WIFI</string>
+
+    <string name="wifi_manual">Manual WIFI Setting</string>
+
+    <string name="wifi_password">WIFI password</string>
+
+    <string name="wifi_relay_config">WIFI Relay Setting</string>
+
+    <string name="wifi_setup_slam">Automatically configuring the chassis</string>
+
+    <string name="wind_direction_speed">Performance wind:</string>
+
+    <string name="wind_speed_adjustment">Wind Speed</string>
+
+    <string name="wise_family">Smart Home</string>
+    <string name="name_snow">SnowBot</string>
+    <string name="yes">Yes,next</string>
+
+    <string name="wait_toconnect">Please wait for connect to chassis</string>
+    <!--    app下的添加在下面  2017-07-19                             -->
+
+</resources>

@@ -93,7 +93,7 @@
         android:layout_below="@+id/iv_room"
         android:layout_marginRight="20dp"
         android:src="@mipmap/room"
-        android:text="扫码关注BroadLink提前进入体验间"
+        android:text="@string/broadlink"
         android:textSize="12sp"/>
 
 
@@ -116,7 +116,7 @@
         android:layout_below="@+id/iv_app"
         android:layout_marginRight="20dp"
         android:src="@mipmap/room"
-        android:text="立即下载智慧星App享受智慧生活"
+        android:text="@string/download_enjoy"
         android:textSize="12sp"/>
 
 
@@ -150,7 +150,7 @@
         android:layout_alignTop="@+id/iv_logo"
         android:ems="1"
         android:textSize="11sp"
-        android:text="人脸识别技术支持"
+        android:text="@string/support_face"
         android:layout_marginRight="20dp"
         android:layout_height="120dp"/>
 

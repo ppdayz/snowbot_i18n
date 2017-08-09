@@ -1,359 +1,89 @@
-<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
-    <string name="app_name">小雪机器人</string>
-    <string name="title">输入IP地址</string>
-    <string name="title_activity_family_fun">FamilyFunActivity</string>
-    <string name="head_name">空气净化器</string>
-    <string name="air_rent">空气指数</string>
-    <string name="temp">温度</string>
-    <string name="initial_temperature">33</string>
-    <string name="degrees_celsius">℃</string>
-    <string name="humidity">湿度</string>
-    <string name="initial_humidity">45</string>
-    <string name="percent_sign">%</string>
-    <string name="define_situtation">点击添加自动开启情景</string>
-    <string name="wind_speed_adjustment">风速调节</string>
-    <string name="timed_shutdown">定时关机</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
-    <string name="title_activity_patrol_set">PatrolSetActivity</string>
-    <string name="snowbot_home">请确认这里是否是小雪的家？</string>
-    <!--<string name="snowbot_outware">请出库按钮完成出库</string>-->
-    <string name="snowbot_outware">请填写小雪相关信息，准备出库</string>
-    <string name="snowbot_already_outware">已完成出库，请稍后，小雪稍后会自动重启</string>
-    <string name="snowbot_restart">请选择一个无线网络进行配置</string>
-    <string name="snowbot_registration">请输入主人手机号，注册主人信息。</string>
-    <string name="snowbot_name">请给小雪请个名字吧。</string>
-    <string name="snowbot_appDownload">请扫描二维码，下载手机app。</string>
-    <!--outWare-->
-    <string name="out_ware_hint">请点击出库按钮进行出库,当按钮显示为出库完成时,说明已经完成出库</string>
-    <string name="non_out_ware">出库</string>
-    <string name="alreadly_out_ware">完成出库</string>
-    <!--updateRobotParams-->
-    <string name="robot_params_read">读取</string>
-    <string name="robot_params_ok">确定</string>
-    <string name="robot_params_up_computer">上位机</string>
-    <string name="robot_params_up_plate">上身板</string>
-    <string name="robot_params_down_plate">下身板</string>
-    <string name="robot_params_navigation">导航核心板</string>
-    <string name="sn_not_null">机器人唯一识别码SN不能为空</string>
-    <string name="up_computer_not_null">上位机内容不能为空</string>
-    <string name="up_plate_not_null">上身板内容不能为空</string>
-    <string name="down_plate_not_null">下身板内容不能为空</string>
-    <string name="navigation_not_null">导航核心板内容不能为空</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
 
-    <!--firstFrag-->
-    <string name="robot_home">给小雪安个家吧,这里是否是小雪的家(充电的位置)？</string>
-    <string name="no">否</string>
-    <string name="yes">是,下一步</string>
-    <string name="skip">跳过注册</string>
-    <string name="sn_see_qr">查看二维码</string>
-    <!--secFrag-->
-    <string name="reboot_robot">请把小雪推到充电的地方，点击重启，重新启动小雪</string>
-    <string name="reboot">重启</string>
-    <!--thrFrag-->
-    <string name="master_num">主人手机号码</string>
-    <string name="verify_num">收到的验证码</string>
-    <string name="set_password">设置密码</string>
-    <string name="input_num_character">0123456789abcdefghigklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM</string>
-    <string name="set_nickname">主人昵称</string>
-    <string name="get_berify_num">获取</string>
-    <string name="check_phone_num">获取验证码失败,请检查手机号码是否填写正确</string>
-    <string name="check_phone_num_fail">获取验证码失败,请重新获取</string>
-    <!--fourthFrag-->
-    <string name="set_robot_nickname">给小雪起个名字吧</string>
-    <string name="robot_nickname_empty">小雪名字不能为空</string>
-    <!--fifthFrag-->
-    <string name="scan_qrcode">扫描二维码下载手机app</string>
-    <string name="complete">完成</string>
-    <string name="master_num_empaty">主人手机号码不能为空</string>
-    <string name="verify_num_empaty">验证码不能为空</string>
-    <string name="psd_num_empaty">密码不能为空</string>
-    <string name="psd_num_style">密码长度应为4-12位</string>
-    <string name="nickname_empaty">主人昵称不能为空</string>
+    <string name="stop_hint_info">停障提示信息：</string>
+    <string name="guide_key_point_conf">导览关键点配置</string>
+    <string name="key_point_name">关键点名称</string>
+    <string name="sel_file">选择文件</string>
+    <string name="pre_map">预览地图</string>
+    <string name="sor_please_go_away">让一下，你挡着人家啦</string>
+    <string name="add_new_key_point">新增关键点</string>
+    <string name="timeunit_seconds">单位：秒(s)</string>
+    <string name="no_set_keypoint_yet">还未设置关键点！</string>
+    <string name="no_set_cant_del">该点还未设置，无法删除！</string>
+    <string name="pls_sel_file">请选择文件</string>
+    <string name="use_default_config">已启用默认全局配置</string>
+    <string name="have_no_want_file">当前文件夹下没有指定格式的文件</string>
+    <string name="this_finish_go_next">该点设置完成，您可以继续设置下一个点。</string>
+    <string name="plz_check_u_file">请检查您的文件是否有问题</string>
+    <string name="keypoint_cant_null">关键点名称不可为空</string>
+    <string name="wait_time_cant_null">等待时间不能为空</string>
+    <string name="input_correct_time">请输入正确格式的时间</string>
+    <string name="no_sel_file">未选择播报文件</string>
+    <string name="continues">继续</string>
+    <string name="data_error">数据出错，请重新设置</string>
+    <string name="current_loc">当前坐标：</string>
+    <string name="cant_get_loc">暂时无法获取</string>
+    <string name="last_no_complete_continue">上次尚未设置完，是否继续设置？</string>
+    <string name="save_change">保存修改</string>
 
-    <!--mapActivity-->
-    <string name="save_map">保存地图</string>
-    <string name="add_home">添加房间</string>
-    <string name="delete_home">删除房间</string>
-    <string name="patrol">一键巡逻</string>
-    <string name="go_home">回去充电</string>
-    <string name="start_add_home">开始添加房间</string>
-    <string name="cancle_add_home">取消添加房间</string>
-    <string name="add_wall">添加虚拟墙</string>
-    <string name="del_wall">删除虚拟墙</string>
-    <string name="clear_map">清除地图</string>
-    <string name="complete_btn">完成</string>
-    <string name="max_home">最多可设置十个房间</string>
-    <string name="out_home">点击区域已超出地图</string>
-    <string name="home_empty">当前房间为空</string>
-    <string name="home_name_duplicate">房间名重复，请修改</string>
-    <string name="choose_right_home">请在地图范围内,选择正确的房间点</string>
-    <string name="input_rome_name">请输入房间名称</string>
-    <string name="dialog_hit">提示</string>
-    <string name="cancle">取消</string>
-    <string name="sure">确认添加</string>
-    <string name="make_sure">确认</string>
-    <string name="roome_name_empty">房间名称不能为空,请重新输入</string>
-    <string name="start_go_home">开始前往房间:</string>
-    <string name="start_patrol">开始巡逻,一共%1$d个巡逻点</string>
-    <string name="start_add_wall">开始添加虚拟墙</string>
-    <string name="cancle_add_wall">取消添加虚拟墙</string>
-    <string name="one_step">第一步</string>
-    <string name="two_step">第二步</string>
-    <string name="thr_step">第三步</string>
-    <string name="four_step">第四步</string>
-    <string name="five_step">第五步</string>
-    <string name="map_empty">当前室内地图为空,无法进行该操作</string>
-    <!--splash-->
-    <string name="update_title">版本更新</string>
-    <string name="update_sure">更新</string>
-    <string name="update_message">有新版本可更新，请更新</string>
-    <string name="patrol_point">无巡逻点,请添加巡逻点</string>
-    <!--FaceRecognitionAct-->
-    <string name="name">姓名:</string>
-    <string name="age">年龄:</string>
-    <string name="sex">性别:</string>
-    <string name="appearance">颜值:</string>
-    <string name="smile">笑容:</string>
-    <string name="detection_again">重新检测</string>
-    <string name="input_name">请输入名字</string>
-    <string name="input_group">请输入所属单位名称</string>
-    <string name="ensure">确定</string>
-    <string name="start_registration">开始注册</string>
-    <string name="start_identify">开始识别</string>
-    <string name="detection_fail">识别失败</string>
-    <string name="detection_suc">识别成功</string>
-    <string name="register_suc">注册成功</string>
-    <string name="register_fail">注册失败</string>
-    <string name="identify_suc">检索成功</string>
-    <string name="identify_fail">检索失败</string>
-    <string name="identify_cancel">取消</string>
-
-    <!--LauncherActivity-->
-    <string name="restore_map">检测到有备份地图，是否需要还原?</string>
-    <string name="map_set">地图设置</string>
-    <string name="video_call">视频通话</string>
-    <string name="video_record">录像</string>
-    <string name="face_recognition">人脸识别</string>
-    <string name="point_patrol">定点巡逻</string>
-    <string name="advertisement">广告</string>
-    <string name="photo_album">相册</string>
-    <string name="family_education">家庭教育</string>
-    <string name="wise_family">智慧家庭</string>
-    <string name="snowbot_dance">舞蹈</string>
-    <string name="setting">设置</string>
-
-    <!--settingActivity-->
-    <string name="owner">我的主人是</string>
-    <string name="face_recognition_open">人脸识别开启</string>
-    <string name="touch_head_patrol">触摸头部进行巡逻</string>
-    <string name="touch_head_weather">触摸头部播报天气预报</string>
-    <string name="volume">音量</string>
-    <string name="brightness">亮度</string>
-    <string name="getting">获取中</string>
-    <string name="call_settings">通话设置</string>
-    <string name="advanced_options">高级选项</string>
-    <string name="map_restore">地图恢复</string>
-    <string name="custom_questions_answers">自定义语音问答</string>
-    <string name="custom_advertisement">自定义广告语</string>
-    <string name="about">关于</string>
-    <string name="shut_down">关机</string>
-    <string name="clear_data">清除数据</string>
-    <string name="shut_down_hint">执行此操作将会关闭系统,确定关机吗？</string>
-    <string name="reboot_hint">执行此操作将会重启系统,确定重启吗？</string>
-    <string name="clear_data_hint">执行此操作将会删除应用本地数据,确定删除吗？</string>
-    <string name="psd_error">密码错误,请重新输入</string>
-    <string name="delete_succeeded">删除成功</string>
-    <string name="delete_failed">删除失败</string>
-
-    <!--GralleryAdapter-->
-    <string name="date">2016-08-26</string>
-
-    <!--Hardware-->
-    <string name="left_arm">左臂摆动</string>
-    <string name="right_arm">右臂摆动</string>
-    <string name="double_arm">双臂摆动</string>
-    <string name="turn_on_air_cleaner">净化器开机</string>
-    <string name="turn_off_air_cleaner">净化器关机</string>
-    <string name="open_sensor">开启传感器</string>
-    <string name="close_sensor">关闭传感器</string>
-    <string name="require_send">传感器数据请求发送</string>
-    <string name="require_send_all">传感器数据请求发送 ALL</string>
-    <string name="snowbot_SN">获取机器人SN</string>
-    <string name="start_mic">开启麦克风</string>
-    <string name="power_state">获取电量和状态</string>
-    <string name="reset">Reset</string>
-    <string name="change_expression">脸部表情切换</string>
-
-    <!--setWifi-->
-    <string name="setwifi">请设置WIFI</string>
-    <string name="ssid">ssid</string>
-    <string name="wifi_password">请输入WIFI密码</string>
-    <string name="wifi">无线网络</string>
-    <string name="TP_LINK_YF">TP_LINK_YF</string>
-    <string name="try_to_request">努力请求中...</string>
-    <string name="aiui_network">AIUI网络</string>
-
-    <!--RecoveryMapAct-->
-    <string name="no_map_data">暂无地图数据</string>
-    <string name="regeneration">恢复</string>
-
-    <!--AdvertisementActivity-->
-    <string name="ad_content">请输入广告内容</string>
-    <string name="unlimited_repeat">无限重复</string>
-    <string name="submit">提交</string>
-    <string name="repeat_count">重复次数</string>
-    <string name="speech_empty">暂无自定义语音,请添加</string>
-
-    <!--CustomVoiceActivity-->
-    <string name="custom_issues">请输入自定义问题</string>
-    <string name="custom_answer">请输入自定义答案</string>
-    <string name="delete">删除</string>
-    <string name="question_empty">问题不能为空</string>
-    <string name="answer_empty">答案不能为空</string>
-
-    <!--SettingsChangeFaceActivity-->
-    <string name="saturation">饱和度</string>
-    <string name="hue">色  调</string>
-    <string name="transparency">透明度</string>
-
-    <!--aiuiActivity-->
-    <string name="question">问 ：  </string>
-    <string name="answer">答 ：  </string>
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="back">返回</string>
-    <string name="speech_snowBot">Speech  SnowBot</string>
-    <string name="arrow">></string>
-    <string name="zero">0</string>
-    <string name="one">1</string>
-    <string name="two">2</string>
-    <string name="three">3</string>
-    <string name="four">4</string>
-    <string name="five">5</string>
-    <string name="six">6</string>
-    <string name="seven">7</string>
-    <string name="eight">8</string>
-    <string name="nine">9</string>
-    <string name="point">.</string>
-    <string name="division">÷</string>
-    <string name="multiplication">×</string>
-    <string name="subtraction">-</string>
-    <string name="addition">+</string>
-    <string name="clear">C</string>
-    <string name="equals_sign">=</string>
-    <string name="accessories">辅料</string>
-    <string name="main_ingredient">主料</string>
-    <string name="steps">步骤</string>
-    <string name="wind_direction_speed">风向风速 ： </string>
-    <string name="relative_humidity">相对湿度 ： </string>
-    <string name="air_quality">空气质量 ：</string>
-    <string name="travel_advice">出行建议 ： </string>
-
-    <string name="error_drm_not_supported">保护内容不受支持的API级别低于18</string>
-    <string name="error_drm_unsupported_scheme">这个设备不支持所需的数字版权管理方案</string>
-    <string name="error_drm_unknown">一个未知的DRM错误发生</string>
-    <string name="error_no_decoder">这个设备不提供一个译码器 <xliff:g id="mime_type">%1$s</xliff:g></string>
-    <string name="error_no_secure_decoder">这个设备不提供一个安全的解码器 <xliff:g id="mime_type">%1$s</xliff:g></string>
-    <string name="error_querying_decoders">无法查询设备解码器</string>
-    <string name="error_instantiating_decoder">不能实例化译码器 <xliff:g id="decoder_name">%1$s</xliff:g></string>
-    <string name="storage_permission_denied">权限访问存储被拒绝</string>
-
-    <!--About-->
-    <string name="snowbot_name_text">小雪人名字</string>
-    <string name="name_text">小红</string>
-    <string name="software_version">软件版本</string>
-    <string name="system_version">系统版本</string>
-    <string name="hardware_version">硬件版本</string>
-    <string name="serial_number">序列号</string>
-    <string name="snow_face_color">小雪脸的颜色</string>
-    <string name="mac_address">MAC地址</string>
-    <string name="audio_module">音频模块</string>
-    <string name="learn_the_ropes">摸头动作</string>
-    <string name="check_for_updates">检查更新</string>
-    <string name="modify_sn_params">修改SN参数</string>
-    <string name="custom_file_copy">批量导入自定义语义</string>
-
-    <!--updateRobotParamsActivity-->
-    <string name="update_params_success">机器人参数更新成功</string>
-
-    <string name="login">Login</string>
-    <string name="join_button_text">Join Own Room</string>
-    <string name="join_dialog_title">Join My own room</string>
-    <string name="secured_checkbox">secured</string>
-
-    <!--CommTool-->
-    <string name="fast_click">您的点击太频繁,请稍后点击</string>
-
-    <string name="faceidentifyerror">人脸检索失败,%s</string>
-    <string name="facedetecterror">人脸识别失败,%s</string>
-    <string name="faceregisterror">人脸注册失败,%s</string>
-    <string name="facecode1101">人脸检测失败</string>
-    <string name="facecode1102">图片解码失败</string>
-    <string name="facecode1103">特征处理失败</string>
-    <string name="facecode1104">提取轮廓错误</string>
-    <string name="facecode1105">提取性别错误</string>
-    <string name="facecode1106">提取表情错误</string>
-    <string name="facecode1107">提取年龄错误</string>
-    <string name="facecode1108">提取姿态错误</string>
-    <string name="facecode1109">提取眼镜错误</string>
-    <string name="facecode1200">特征存储错误</string>
-    <string name="facecode1300">图片为空</string>
-    <string name="facecode1301">参数为空</string>
-    <string name="facecode1302">个体已存在</string>
-    <string name="facecode1303">个体不存在</string>
-    <string name="facecode1305">人脸不存在</string>
-    <string name="facecode1304">参数过长</string>
-    <string name="facecode1306">组不存在</string>
-    <string name="facecode1307">组列表不存在</string>
-    <string name="facecode1308">url图片下载失败</string>
-    <string name="facecode1309">人脸个数超过限制</string>
-    <string name="facecode1310">个体个数超过限制</string>
-    <string name="facecode1311">组个数超过限制</string>
-    <string name="facecode1312">对个体添加了几乎相同的人脸</string>
-    <string name="facecode1400">非法的图片格式</string>
-    <string name="facecode1403">图片下载失败</string>
-    <string name="facecode2001">json格式错误</string>
-    <string name="facecode2017">数据库操作失败</string>
-    <string name="facecodeother">其他原因</string>
-
-    <!--danceAct-->
-    <string name="music_name1">舞蹈一\n歌曲名:成都</string>
-    <string name="music_name2">舞蹈二\n歌曲名:安和桥</string>
-    <string name="music_name3">舞蹈三\n歌曲名:奇妙能力歌</string>
-
-    <string name="snowbot_name1">小雪</string>
-    <string name="set_wifi_manual">点击手动输入wifi</string>
-
-    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
-    <string name="snowbot_low_power_cant_partol">%1$s电量过低，不适合干重活，请先给%1$s吃饱饱再让人家干活嘛。</string>
-    <string name="low_power_warning">电量低，请连接充电器！</string>
-    <string name="low_power_30_warning_stop_partol_to_gohome">电量过低，已经停止巡逻，小雪将在%1$d秒后自动回去充电。</string>
-    <string name="low_power_30_warning_stop_partol">电量过低，已经停止巡逻,请您连接充电器。</string>
-    <string name="low_power_30_warning">电量过低，小雪将在%1$d秒后自动回去充电。</string>
-    <string name="too_low_power_waring">电量过低，请连接充电器！</string>
-    <string name="title_activity_layout_test_activity">layout_test_activity</string>
-    <string name="title_activity_show_snqrcode">ShowSNQRCodeActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-
-
-    <!-- wifi settings -->
-    <string name="wifi_manual">手动配置Wifi信息</string>
-    <string name="wifi_automatic">自动配置Wifi信息</string>
-    <string name="wifi_setup_slam">自动配置底盘</string>
-    <string name="wifi_info_build">Wifi信息配置</string>
-    <string name="plese_check_network">请检查网络</string>
-    <string name="prompt">提示:</string>
-    <string name="loading_page">正在加载页面...</string>
-    <string name="config_fail">配置失败</string>
-    <string name="config_success">配置成功</string>
-    <string name="config_wifi_info">正在配置Wifi信息...</string>
-    <string name="config_slam_info">正在自动配置底盘，请稍后...</string>
-    <string name="wifi_relay_config">Wifi中继信息配置</string>
-    <string name="aiui_wifi_config">语音Wifi信息配置</string>
-    <string name="pic_your_area">选择您的地点</string>
-    <string name="plese_restart">请重启机器!</string>
-
-    <!-- dialog提示信息 -->
+    <!-- TourGuiideActivity-->
+    <string name="read_data">读取数据</string>
+    <string name="read_in">读取中...</string>
+    <string name="manual_tourguide">开始导览</string>
+    <string name="tourguide_config">导览配置</string>
+    <string name="preview_map">预览地图</string>
+    <string name="singe_tourguide">单项导览</string>
+    <string name="update_config">修改配置</string>
+    <string name="mode_config_">模式配置</string>
+    <string name="wait_loading">等待加载</string>
+    <string name="data_loading_in">数据加载中</string>
+    <string name="place_name">地点名称:</string>
+    <string name="data_is_null">暂无数据</string>
+    <string name="current_mode">当前模式:</string>
+    <string name="save_success">保存成功</string>
+    <string name="img_loading_in">图片加载中</string>
+    <string name="confirm_update">确认修改</string>
+    <string name="start_singe_tourguide">开始单项导览</string>
+    <string name="global_info_config">全局信息配置</string>
+    <string name="notice">注意</string>
+    <string name="new_point">新增点</string>
+    <string name="update_coordinate">更改坐标</string>
+    <string name="update_coordinate_msg">是否更改当前坐标，坐标将影响小雪前往的位置</string>
+    <string name="no_read_usb">未读取到U盘</string>
+    <string name="save_data">保存数据</string>
+    <string name="data_save_in">数据存储中...</string>
+    <string name="save_update_success">保存修改成功</string>
+    <string name="no_click_target">未点击有效目标</string>
+    <string name="introduce_type">介绍类型</string>
+    <string name="wait_time">停留时间</string>
+    <string name="file_content">文件内容</string>
+    <string name="read">读取</string>
+    <string name="reading">数据读取中</string>
+    <string name="snow_go_home">旅程结束啦,小雪回去喽!</string>
+    <string name="start_touguide">开始出发喽!</string>
+    <string name="sel_img_content">选择图片内容：</string>
+    <string name="guide_play_content">首页播放内容：</string>
+    <string name="sel_video_content">选择视频内容：</string>
+    <string name="img_path_null_sel_img">图片未选择，请选择图片</string>
+    <string name="video_path_null">视频未选择，请选择视频</string>
+    <string name="clear_all_path">清除所有路径</string>
+    <string name="play_music_no_sel">播放音乐未选择，请选择音乐</string>
+    <string name="sel_img">选择图片</string>
+    <string name="sel_video">选择视频</string>
+    <string name="sel_music">选择音乐</string>
+    <string name="add_new_point">新增点</string>
+    <string name="sel_music_content">选择音频内容：</string>
+    <string name="no_conf_plz_conf_finish_pre">您尚未配置导览，请先配置完毕再预览</string>
+    <string name="mode_config">模式配置</string>
+    <string name="no_conf_yet_cant_change">您尚未设配置信息，无法修改</string>
+    <string name="plz_insert_disk">请插入U盘</string>
+    <string name="disk_no_files">U盘下无文件</string>
+    <string name="plz_set_before_save">请先设置再保存</string>
+    <string name="set_start_atleast_one_keypoint">设置起点和至少一个关键点</string>
+    <string name="memory_not_enough">内存空间不足，请清理不必要文件</string>
+    <string name="save_err_check_disk_out">保存数据出错，请检查U盘是否被拔出？</string>
+    <string name="recovery_data">是否恢复地图数据?</string>
+    <string name="put_source_in_udisk">请将资源都存放在U盘根目录下</string>
 
 </resources>

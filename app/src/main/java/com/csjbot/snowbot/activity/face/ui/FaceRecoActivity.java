@@ -306,7 +306,7 @@ public class FaceRecoActivity extends BaseCameraActivity implements DrawUtil.Fin
             userFindTime.put(user.getPersonId(), System.currentTimeMillis());
 
             if (isSpeeakingOver) {
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking("hello  " + user.getName(), new CsjSynthesizerListener() {
+                CsjSpeechSynthesizer.getSynthesizer().startSpeaking("你好 " + user.getName(), new CsjSynthesizerListener() {
                     @Override
                     public void onSpeakBegin() {
                         isSpeeakingOver = false;

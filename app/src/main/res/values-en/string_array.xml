@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <array name="repeat_time">
+    <item >Please choose</item>
+    <item >One</item>
+    <item >Two</item>
+    <item >Three</item>
+    <item >Four</item>
+    <item >Five</item>
+    <item >Six</item>
+    <item >Seven</item>
+    <item >Eight</item>
+    <item >Nine</item>
+    <item >Ten</item>
+  </array>
+</resources>

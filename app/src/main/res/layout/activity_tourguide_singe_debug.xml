@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@mipmap/main_bg">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="@dimen/dm_0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        />
+
+    <LinearLayout
+        android:layout_width="@dimen/dm_0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dm_28sp"
+            android:textColor="@color/black"
+            />
+        <Button
+            android:id="@+id/bt_start"
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:textSize="@dimen/dm_18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/selector_tourguide_bt"
+            android:layout_margin="@dimen/dm_10dp"
+            android:text="@string/start_singe_tourguide"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

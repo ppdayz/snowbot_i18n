@@ -40,7 +40,7 @@
         android:maxLength="150"
         android:paddingLeft="@dimen/valx_10"
         android:paddingTop="@dimen/valx_20"
-        android:text="运行结果是:0.000000"
+        android:text="@string/result"
         android:textColor="#000000"
         android:textSize="@dimen/valx_38"/>
 

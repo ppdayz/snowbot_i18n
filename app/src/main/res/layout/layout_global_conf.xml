@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="20sp"
+            android:text="@string/stop_hint_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/et_stop_hint_text"
+            android:hint="@string/sor_please_go_away"
+            android:text="@string/sor_please_go_away"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:singleLine="true"
+            android:background="@drawable/bg_line_blac"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="20sp"
+            android:text="@string/guide_play_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/sp_guide_sel"
+            android:hint="@string/sor_please_go_away"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_sel_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="20sp"
+            android:text="@string/sel_img_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_img_path"
+            android:padding="8dp"
+            android:layout_width="400dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:maxLines="8"
+            android:textSize="18sp"
+            android:scrollbars="vertical"
+            android:background="@drawable/bg_line_blac"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_sel_video"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="20sp"
+            android:text="@string/sel_video_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_video_path"
+            android:padding="8dp"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:maxLines="8"
+            android:textSize="18sp"
+            android:scrollbars="vertical"
+            android:background="@drawable/bg_line_blac"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_clear"
+        android:text="@string/clear_all_path"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/sel_bg_white_grey"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/ll_sel_music"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="20sp"
+            android:text="@string/sel_music_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_music_path"
+            android:padding="8dp"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:maxLines="8"
+            android:scrollbars="vertical"
+            android:background="@drawable/bg_line_blac"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_sure"
+        android:text="@string/make_sure"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="32dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/sel_bg_white_grey"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

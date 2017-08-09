@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <string name="exoplayer_check_wifi">Network poor,please check it......</string>
+  <string name="exoplayer_preparing">Preparing......</string>
+  <string name="exoplayer_ready">Ready......</string>
+  <string name="the_result">The result is :</string>
+  <string name="count_error">Error:Incomplete formula</string>
+  <string name="count_error_missing">Error:Missing</string>
+  <string name="count_missing_right_parenthesis">( ) right parenthesis</string>
+  <string name="count_answer">Enter the right formula</string>
+</resources>

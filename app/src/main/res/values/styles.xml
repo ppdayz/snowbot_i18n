@@ -9,9 +9,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="SettingsTextView">
         <item name="android:layout_gravity">center_vertical</item>
@@ -22,7 +22,7 @@
     <style name="StartAppTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/start_app</item>
     </style>
-    a
+
 
     <style name="NoTitle" parent="android:Theme">
         <item name="android:windowFullscreen">true</item>
@@ -82,7 +82,7 @@
 
     <style name="tv16_999999">
         <item name="android:textColor">@color/tv999999</item>
-        <item name="android:textSize">@dimen/dm_16sp</item>
+        <item name="android:textSize">@dimen/dm_18sp</item>
     </style>
 
     <style name="tv16_999999_ww" parent="BASE4">
@@ -102,7 +102,7 @@
 
     <style name="tv16_999999_mw" parent="BASE2">
         <item name="android:textColor">@color/tv999999</item>
-        <item name="android:textSize">@dimen/dm_16sp</item>
+        <item name="android:textSize">@dimen/dm_20sp</item>
     </style>
 
     <style name="tv18_999999">
@@ -217,6 +217,8 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="keyPointAct" parent="Base.Theme.AppCompat.Light" />
 
     <style name="MyDialogStyle">
         <item name="android:windowBackground">@android:color/transparent</item>

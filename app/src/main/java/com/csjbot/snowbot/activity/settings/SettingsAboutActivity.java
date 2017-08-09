@@ -1,8 +1,10 @@
 package com.csjbot.snowbot.activity.settings;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -21,6 +23,8 @@ import com.android.core.entry.Static;
 import com.android.core.util.SharedUtil;
 import com.android.core.util.StrUtil;
 import com.csjbot.snowbot.R;
+import com.csjbot.snowbot.activity.LauncherActivity;
+import com.csjbot.snowbot.activity.MaterialLockActivity;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.utils.CommonViewHolder;
 import com.csjbot.snowbot.utils.DialogUtil;
@@ -38,6 +42,7 @@ import net.steamcrafted.loadtoast.LoadToast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import dou.utils.CpuUtil;
 
@@ -50,9 +55,13 @@ public class SettingsAboutActivity extends CsjUIActivity {
      * 点击次数
      */
     int mClickCount;
+    private SettingsAboutActivity myContext;
+    private String[] items;
+    private int mI;
 
     @Override
     public void afterViewCreated(Bundle savedInstanceState) {
+        myContext = this;
         setupBack();
 
         initAboutList();
@@ -75,16 +84,21 @@ public class SettingsAboutActivity extends CsjUIActivity {
                 onDisplayClearData();
             } else if (trmpStr.equals(Static.CONTEXT.getString(R.string.clear_data))) {
                 clearDataDialog();
+            } else if (trmpStr.equals(Static.CONTEXT.getString(R.string.language))) {
+                //选择语言
+                showLanguagedialog();
+
+
             } else if (trmpStr.equals(Static.CONTEXT.getString(R.string.custom_file_copy))) {
                 copyFile();
             } else if (trmpStr.equals(Static.CONTEXT.getString(R.string.software_version))) {
                 mClickCount++;
                 if (mClickCount == 6) {
                     // 进入wifi自动配置管理页面
-//                    Intent intent = new Intent(this, MaterialLockActivity.class);
-//                    intent.putExtra("nextActivityName", WifiConfigAutomaticActivity.class.getName());
-//                    startActivity(intent);
-                    startActivity(new Intent(SettingsAboutActivity.this, WifiConfigAutomaticActivity.class));
+                    Intent intent = new Intent(this, MaterialLockActivity.class);
+                    intent.putExtra("nextActivityName", WifiConfigAutomaticActivity.class.getName());
+                    startActivity(intent);
+//                    startActivity(new Intent(SettingsAboutActivity.this, WifiConfigAutomaticActivity.class));
                     mClickCount = 0;
                 }
             } else {
@@ -96,6 +110,50 @@ public class SettingsAboutActivity extends CsjUIActivity {
             }
         });
     }
+
+    private void showLanguagedialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(myContext);
+        builder.setTitle(Static.CONTEXT.getString(R.string.language));
+        items = new String[]{getString(R.string.simple_cn), "English"};
+        mI = SharedUtil.getPreferInt(myContext, SharedKey.LANGUAGE, 0);
+        builder.setSingleChoiceItems(items, mI, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SharedUtil.setPreferInt(myContext, SharedKey.LANGUAGE, which);
+                settingLanguage(which);
+                refresh();
+                dialog.dismiss();
+            }
+        });
+
+        builder.show();
+    }
+
+    private void refresh() {
+        Intent intent = new Intent();
+        intent.setClass(SettingsAboutActivity.this, LauncherActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    private void settingLanguage(int which) {
+
+        Locale locale = context.getResources().getConfiguration().locale;
+        String language = locale.getLanguage();
+        Configuration config = context.getResources().getConfiguration();
+        switch (which) {
+            case 0:
+                config.locale = Locale.CHINA;
+                break;
+            case 1:
+                config.locale = Locale.UK;
+                break;
+        }
+        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+
+
+    }
+
 
     private void initUpdate() {
         PgyUpdateManager.register(this, new UpdateManagerListener() {
@@ -187,7 +245,6 @@ public class SettingsAboutActivity extends CsjUIActivity {
             if (!aboutBeanArrayList.contains(clearData)) {
                 aboutBeanArrayList.add(clearData);
                 aboutBeanArrayList.add(new AboutBean("硬件测试", "", HardwareTest.class));
-
                 adapter.notifyDataSetChanged();
             }
         }
@@ -213,7 +270,7 @@ public class SettingsAboutActivity extends CsjUIActivity {
 
 
     private void initAboutList() {
-        aboutBeanArrayList.add(new AboutBean(getResources().getString(R.string.snowbot_name_text), null == SharedUtil.getPreferStr(SharedKey.ROBOTNICKNAME) ? "小雪" : SharedUtil.getPreferStr(SharedKey.ROBOTNICKNAME), null));
+        aboutBeanArrayList.add(new AboutBean(getResources().getString(R.string.snowbot_name_text), null == SharedUtil.getPreferStr(SharedKey.ROBOTNICKNAME) ? getString(R.string.name_snow) : SharedUtil.getPreferStr(SharedKey.ROBOTNICKNAME), null));
         PackageManager pm = this.getPackageManager();
 
         try {
@@ -236,6 +293,7 @@ public class SettingsAboutActivity extends CsjUIActivity {
         aboutBeanArrayList.add(new AboutBean(getResources().getString(R.string.custom_file_copy), "", null));
         aboutBeanArrayList.add(new AboutBean(getResources().getString(R.string.check_for_updates), "", null));
         aboutBeanArrayList.add(new AboutBean(getResources().getString(R.string.modify_sn_params), "", UpdateSNParamsActivity.class));
+        aboutBeanArrayList.add(new AboutBean(getResources().getString(R.string.language), "", null));
         getLocalMac();
     }
 
@@ -348,7 +406,7 @@ public class SettingsAboutActivity extends CsjUIActivity {
     private void copyFile() {
         if (StrUtil.isNotBlank(SharedUtil.getPreferStr(SharedKey.USBPATH)) &&
                 FileUtil.copy(SharedUtil.getPreferStr(SharedKey.USBPATH) + "/csjbot/", Constant.CUSTOM_FILEPATH, Constant.CUSTOM_FILENAME) == 0) {
-            CSJToast.showToast(SettingsAboutActivity.this, Static.CONTEXT.getString(R.string.copy_success));
+            CSJToast.showToast(SettingsAboutActivity.this, Static.CONTEXT.getString(R.string.copy_custom_success));
             mHandler.postDelayed(() -> FileUtil.readText(Constant.CUSTOM_FILEPATH, Constant.CUSTOM_FILEPATH + Constant.CUSTOM_FILENAME), 1000);
         } else if (StrUtil.isBlank(SharedUtil.getPreferStr(SharedKey.USBPATH))) {
             CSJToast.showToast(SettingsAboutActivity.this, Static.CONTEXT.getString(R.string.insert_U));

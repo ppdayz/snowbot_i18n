@@ -3,6 +3,7 @@ package com.csjbot.snowbot.services;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
@@ -23,6 +24,7 @@ import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
 import com.csjbot.snowbot_rogue.platform.SnowBotManager;
+import com.csjbot.snowbot_rogue.servers.slams.events.ConnectedEvent;
 import com.csjbot.snowbot_rogue.utils.Constant;
 import com.iflytek.aiui.uartkit.UARTAgent;
 import com.iflytek.aiui.uartkit.constant.AIUIMessage;
@@ -64,13 +66,12 @@ public class EnglishSampleService extends CsjBaseService {
     private CsjSpeechSynthesizer2 mSpeechSynthesizer;
     // 语音听写对象
     private SpeechRecognizer mIat;
-    //    private Handler mHandler = new Handler();
     private boolean isWakeup = false;
     private SnowBotManager snowBotManager = SnowBotManager.getInstance();
     private UARTAgent mAgent;
     private String[] wakeupTalk;
     private boolean isSpeechRecognizerInit = false;
-
+    private Handler mHandler = new Handler();
 
     /**
      * Very important, Without this method, EventBus won't work
@@ -131,8 +132,21 @@ public class EnglishSampleService extends CsjBaseService {
 //                }
 //            }
 //        }, 2000);
-
         Csjlogger.debug("onCreate");
+    }
+
+    /**
+     * get map once ,otherwise the loaction may be error
+     */
+    private void initMap() {
+        snowBotManager.getMap(this, null);
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                snowBotManager.stopGetMap();
+            }
+        }, 10000);
     }
 
 
@@ -229,22 +243,16 @@ public class EnglishSampleService extends CsjBaseService {
     }
 
     /**
-     * 听写监听器。
+     * RecognizerListener
      */
     private RecognizerListener mRecognizerListener = new RecognizerListener() {
         @Override
         public void onBeginOfSpeech() {
-            // 此回调表示：sdk内部录音机已经准备好了，用户可以开始语音输入
-            Csjlogger.debug("开始说话");
+            Csjlogger.debug("Speech Begin");
         }
 
         @Override
         public void onError(SpeechError error) {
-            // Tips：
-            // 错误码：10118(您没有说话)，可能是录音机权限被禁，需要提示用户打开应用的录音权限。
-            // 如果使用本地功能（语记）需要提示用户开启语记的录音权限。
-            Csjlogger.debug(error.getPlainDescription(true));
-
             if (error.getErrorCode() == 20001) {
                 mSpeechSynthesizer.startSpeaking(error.getPlainDescription(true), null);
             }
@@ -254,7 +262,6 @@ public class EnglishSampleService extends CsjBaseService {
 
         @Override
         public void onEndOfSpeech() {
-            // 此回调表示：检测到了语音的尾端点，已经进入识别过程，不再接受语音输入
             if (isWakeup) {
                 if (mSpeechSynthesizer.isSpeaking()) {
                     Csjlogger.warn("is Speaking ...");
@@ -312,7 +319,6 @@ public class EnglishSampleService extends CsjBaseService {
             "take me to  "
     };
 
-    List<Home> homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
 
     private boolean parseSpeak(String content) {
         if (StringUtils.isEmpty(content)) {
@@ -352,6 +358,8 @@ public class EnglishSampleService extends CsjBaseService {
                 String roomUpCase = contentUpCase.replace(takeUpCase, "");
                 Csjlogger.debug("room name is {}", roomUpCase);
 
+                List<Home> homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
+
                 if (homeLists != null) {
                     // traversals all rooms
                     for (Home home : homeLists) {
@@ -363,6 +371,7 @@ public class EnglishSampleService extends CsjBaseService {
                             return true;
                         }
                     }
+                    Csjlogger.warn("home not existed");
                 } else {
                     Csjlogger.error("home not found");
                     // TODO: 2017/08/02 0002 speak out not found
@@ -414,32 +423,25 @@ public class EnglishSampleService extends CsjBaseService {
         }
     };
 
+    /**
+     * set iat params
+     */
     private void setIatParam() {
-        // 引擎类型
         String mEngineType = SpeechConstant.TYPE_CLOUD;
         mIat.setParameter(SpeechConstant.PARAMS, null);
-        // 设置听写引擎
         mIat.setParameter(SpeechConstant.ENGINE_TYPE, mEngineType);
-        // 设置返回结果格式
         mIat.setParameter(SpeechConstant.RESULT_TYPE, "json");
-
-        // 设置语言
         mIat.setParameter(SpeechConstant.LANGUAGE, "en_us");
-        // 设置语言区域
-
         /**
          *
          * must not set this if is English
          */
 //        mIat.setParameter(SpeechConstant.ACCENT, "en_us");
 
-        // 设置语音前端点:静音超时时间，即用户多长时间不说话则当做超时处理
         mIat.setParameter(SpeechConstant.VAD_BOS, "4000");
 
-        // 设置语音后端点:后端点静音检测时间，即用户停止说话多长时间内即认为不再输入， 自动停止录音
         mIat.setParameter(SpeechConstant.VAD_EOS, "1000");
 
-        // 设置标点符号，默认：1（有标点）
         mIat.setParameter(SpeechConstant.ASR_PTT, "0");
     }
 
@@ -544,14 +546,25 @@ public class EnglishSampleService extends CsjBaseService {
             @Override
             public void onSpeakBegin() {
                 SpeechStatus.getIstance().setSpeakFinished(false);
+                /**
+                 * change the  Expression to speaking
+                 */
                 postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_SPEAK));
             }
 
             @Override
             public void onCompleted(SpeechError speechError) {
                 SpeechStatus.getIstance().setSpeakFinished(true);
+                /**
+                 * chage the Expression to normal
+                 */
                 postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
             }
         });
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void connectSlamSuccess(ConnectedEvent event) {
+        initMap();
     }
 }

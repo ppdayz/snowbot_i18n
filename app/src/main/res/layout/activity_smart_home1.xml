@@ -48,7 +48,7 @@
                 app:is_need_title="false"
                 app:is_need_unit="false"
                 app:max_value="200"
-                app:string_title="当前速度"
+                app:string_title="@string/speed_now"
                 app:string_unit="km/h"
                 app:total_engle="360" />
 

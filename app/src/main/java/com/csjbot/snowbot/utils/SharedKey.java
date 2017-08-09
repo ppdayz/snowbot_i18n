@@ -23,6 +23,8 @@ public class SharedKey {
     public static final String DEVICEKEY = "DEVICEKEY";//deviceKey 阿里云注册返回值
 
     public static final String SKIP_REGISTRATION = "SKIP_REGISTRATION";//跳过注册
+    public static final String LANGUAGE ="LANGUAGE" ;
+
     /**
      * 与后台、阿里云的连接地址
      */

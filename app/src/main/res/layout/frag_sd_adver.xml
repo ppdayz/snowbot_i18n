@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_ad_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/get_no_data"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="10dp"
+                    android:background="#ea0000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="wav"
+                    android:textColor="@color/black" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#9f35ff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="mp4"
+                    android:textColor="@color/black" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#2894ff" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="3gp"
+                    android:textColor="@color/black" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#007979" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="mp3"
+                    android:textColor="@color/black" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#00db00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="avi"
+                    android:textColor="@color/black" />
+
+                <!-- 不充钱你会变得更强吗？-->
+                <!--<View-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="10dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:background="#5b5b00"/>-->
+
+                <!--<TextView-->
+                <!--android:text="ppt"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+                <!--<View-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="10dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:background="#ff5809"/>-->
+
+                <!--<TextView-->
+                <!--android:textColor="@color/black"-->
+                <!--android:text="pptx"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rl_memory_container"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_sel"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/ll_container"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:orientation="horizontal"></LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_space"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="0.1"
+                android:text="@string/sd_size"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

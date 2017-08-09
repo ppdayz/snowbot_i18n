@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context="com.csjbot.snowbot.activity.TourGuideActivity">
+
+    <Button
+        android:id="@+id/bt_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/dm_50dp"
+        android:background="@drawable/setting_icon"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="1"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.bigkoo.convenientbanner.ConvenientBanner
+                android:id="@+id/cb_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+            </com.bigkoo.convenientbanner.ConvenientBanner>
+
+            <VideoView
+                android:id="@+id/videoview"
+                android:layout_width="1280dp"
+                android:layout_height="720dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_default_logo"
+                android:visibility="gone"
+                android:scaleType="centerInside"
+                android:src="@drawable/csjbot"
+                android:adjustViewBounds="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bt_tourguide"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:layout_margin="@dimen/dm_10dp"
+                android:background="@drawable/selector_tourguide_bt"
+                android:text="@string/manual_tourguide"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dm_22sp" />
+
+            <Button
+                android:id="@+id/bt_tourguide_conf"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:layout_margin="@dimen/dm_10dp"
+                android:background="@drawable/selector_tourguide_bt"
+                android:text="@string/tourguide_config"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dm_22sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
