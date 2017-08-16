@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
-apply plugin: 'com.antfortune.freeline'
+apply plugin: 'com.google.protobuf'
+
+
+ext {
+    supportLibraryVersion = '25.4.0'
+    grpcVersion = '1.4.0'
+}
 
 android {
     useLibrary 'org.apache.http.legacy'
@@ -10,6 +16,17 @@ android {
             keyPassword 'root1234'
             storeFile file('../csjbotKeyStore.jks')
             storePassword 'root1234'
+        }
+    }
+
+    productFlavors {
+        dev {
+            // Minimum version with platform multi-dex support
+            minSdkVersion 21
+        }
+        prod {
+            // Minimum version that can run gRPC (TLS extension)
+            minSdkVersion 16
         }
     }
 
@@ -25,7 +42,7 @@ android {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
+        versionName rootProject.ext.android["showName"] + rootProject.ext.android["versionName"]
         multiDexEnabled true
 
         ndk {
@@ -80,12 +97,40 @@ android {
         }
     }
 
-    freeline {
-        hack true
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.2'
+        resolutionStrategy.force "com.android.support:support-annotations:$supportLibraryVersion"
     }
+
     repositories {
         flatDir {
             dirs 'libs'
+        }
+    }
+}
+
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.3.0'
+    }
+    plugins {
+        javalite {
+            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+        }
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {}
+                grpc {
+                    // Options added to --grpc_out
+                    option 'lite'
+                }
+            }
         }
     }
 }
@@ -147,7 +192,22 @@ dependencies {
     compile 'com.xw.repo:bubbleseekbar:3.5-lite'
     compile 'com.github.Jay-Goo:RangeSeekBar:v1.0.7'
     testCompile 'junit:junit:4.12'
-    testCompile 'com.antfortune.freeline:runtime-no-op:0.6.3'
-    debugCompile 'com.antfortune.freeline:runtime:0.6.3'
-    releaseCompile 'com.antfortune.freeline:runtime-no-op:0.6.3'
+
+    // Support libraries
+    compile "com.android.support:design:$supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+
+    // gRPC
+    compile "io.grpc:grpc-okhttp:$grpcVersion"
+    compile "io.grpc:grpc-protobuf-lite:$grpcVersion"
+    compile "io.grpc:grpc-stub:$grpcVersion"
+    compile 'javax.annotation:javax.annotation-api:1.2'
+    protobuf 'com.google.protobuf:protobuf-java:3.3.1'
+    compile 'io.grpc:grpc-core:1.4.0'
+
+    // OAuth2 for Google API
+    compile('com.google.auth:google-auth-library-oauth2-http:0.7.0') {
+        exclude module: 'httpclient'
+    }
 }

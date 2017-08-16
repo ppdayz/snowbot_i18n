@@ -6,7 +6,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.csjbot.snowbot.listener.MyLocationListener;
-import com.csjbot.snowbot.services.AIUIService;
 import com.csjbot.snowbot.services.FloatingWindowsService;
 import com.csjbot.snowbot.services.SearchUSBService;
 import com.csjbot.snowbot_rogue.services.BackgroundPlayService;
@@ -37,7 +36,7 @@ public class PgyApplication extends CsjApplication {
         new Thread(() -> {
             rogueBGServiceIntent = new Intent(this, RogueBGService.class);
             backgroundPlayService = new Intent(this, BackgroundPlayService.class);
-            aiuiService = new Intent(this, AIUIService.class);
+//            aiuiService = new Intent(this, AIUIService.class);
             searchUsbService = new Intent(this, SearchUSBService.class);
             floatingWindowsService = new Intent(this, FloatingWindowsService.class);
             startService(backgroundPlayService);

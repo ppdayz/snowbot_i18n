@@ -326,6 +326,7 @@
         <service android:name="com.iflytek.autoupdate.IFlytekDownloadService" />
         <service android:name=".services.AdvertisementService" />
         <service android:name=".services.EnglishSampleService" />
+        <service android:name=".services.google_speech.GoogleSpeechService" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

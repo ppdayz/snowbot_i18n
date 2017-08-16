@@ -30,8 +30,7 @@ import com.csjbot.snowbot.activity.face.FaceRecoBackground;
 import com.csjbot.snowbot.activity.face.ui.FaceRecoActivity;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.bean.Home;
-import com.csjbot.snowbot.services.CheckEthernetService;
-import com.csjbot.snowbot.services.ClientService;
+import com.csjbot.snowbot.services.google_speech.GoogleSpeechService;
 import com.csjbot.snowbot.utils.BackUpMapTool;
 import com.csjbot.snowbot.utils.PowerStatus;
 import com.csjbot.snowbot.utils.SharedKey;
@@ -166,7 +165,9 @@ public class LauncherActivity extends CsjUIActivity {
 
 
         // 开启以太网检查服务
-        startService(new Intent(this, CheckEthernetService.class));
+//        startService(new Intent(this, CheckEthernetService.class));
+        startService(new Intent(this, GoogleSpeechService.class));
+//        startService(new Intent(this, EnglishSampleService.class));
 
         UpdateApkManagerUtil mUpdateApkManagerUtil = new UpdateApkManagerUtil(LauncherActivity.this, false);
         mUpdateApkManagerUtil.checkUpdateInfo();
@@ -175,7 +176,7 @@ public class LauncherActivity extends CsjUIActivity {
             SpeechStatus.getIstance().setAiuiResponse(true);
         }
         SpeechStatus.getIstance().setAiuiResponse(true);
-        clientService = new Intent(this, ClientService.class);
+//        clientService = new Intent(this, ClientService.class);
 
         main_ivSettings = (ImageView) findViewById(R.id.main_ivSettings);
         mian_vidyo = (ImageView) findViewById(R.id.main_ivVidyo);
@@ -206,7 +207,7 @@ public class LauncherActivity extends CsjUIActivity {
         createLowPower30WarningDialog();
         createChargeFullDialog();
 
-        startService(clientService);
+//        startService(clientService);
         registerReceiver(powerTestReceiver, new IntentFilter("com.csjbot.snowbot.powertest"));
 
 
@@ -452,18 +453,17 @@ public class LauncherActivity extends CsjUIActivity {
         super.onDestroy();
     }
 
-    boolean isOpen = false;
-    boolean openRecoBackground = true;
-    boolean willOpen = false;
-
     @Override
     protected void onResume() {
         SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 1);
         super.onResume();
 
-        if (cameraStatusManager.checkHasCamera()) {
-            openBackgroundReco();
-        }
+        /*
+         *  this function shows how to open face reconition in backgroud
+         */
+//        if (cameraStatusManager.checkHasCamera()) {
+//            openBackgroundReco();
+//        }
     }
 
     @Override
@@ -472,31 +472,17 @@ public class LauncherActivity extends CsjUIActivity {
         snowBot.stopPartol();
         mLoadToast.success();
 
-        if (cameraStatusManager.checkHasCamera()) {
-            stopBackgroundReco();
-        }
-
+        /*
+         *  this function shows how to close face reconition in backgroud
+         */
+//        if (cameraStatusManager.checkHasCamera()) {
+//            stopBackgroundReco();
+//        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-//        if (isOpen) {
-//            faceRecoBackground.onPause();
-//            faceRecoBackground.stopPreview();
-//            faceRecoBackground.stopCamera();
-//            isOpen = false;
-//        } else if (willOpen) {
-//            // 将要打开，但是没来得及打开就要进入另一个界面了
-//            mHandler.postDelayed(() -> {
-//                faceRecoBackground.onPause();
-//                faceRecoBackground.stopPreview();
-//                faceRecoBackground.stopCamera();
-//                isOpen = false;
-//                willOpen = false;
-//            }, 1000);
-//        }
-//        stopBackgroundReco();
     }
 
     private void recoveryMapData() {

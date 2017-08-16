@@ -25,7 +25,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
 import com.android.core.entry.Static;
 import com.android.core.util.SharedUtil;
 import com.android.core.util.StrUtil;
@@ -38,8 +37,6 @@ import com.csjbot.snowbot.bean.DataContent;
 import com.csjbot.snowbot.bean.FromBean;
 import com.csjbot.snowbot.bean.Home;
 import com.csjbot.snowbot.bean.ToBean;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
-import com.csjbot.snowbot.client.NettyClientNew;
 import com.csjbot.snowbot.client.nettyHandler.ClientListener;
 import com.csjbot.snowbot.utils.BackUpMapTool;
 import com.csjbot.snowbot.utils.CommonTool;
@@ -49,6 +46,7 @@ import com.csjbot.snowbot.utils.TimeUtil;
 import com.csjbot.snowbot.views.BaseRecyViewAdpter;
 import com.csjbot.snowbot.views.CusViewHodler;
 import com.csjbot.snowbot.views.MyDecoration;
+import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.bean.MapDataBean;
 import com.csjbot.snowbot_rogue.platform.SnowBotManager;
 import com.csjbot.snowbot_rogue.servers.slams.MoveServerMapListener;
@@ -128,7 +126,6 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
     private List<Pose> poses = new ArrayList<>();
     private LoadToast mLoadToast = null;
     private MapActivityHandler mHandler = new MapActivityHandler(this);
-    private NettyClientNew client = NettyClientNew.getInstence();
     private PointF startP, endP;
     private SnowBotManager snowBot = SnowBotManager.getInstance();
     private TimeUtil timeUtil = TimeUtil.getInterface();
@@ -911,26 +908,6 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
      * 发送房间数据
      */
     private void sendHomeData() {
-        List<Home> homeData = new ArrayList<>();
-        if (client != null) {
-            homeData = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
-        }
-        fromBean.setType("robot");
-        fromBean.setId(SharedUtil.getPreferStr(SharedKey.DEVICEUUID));
-        toBean.setType(SharedUtil.getPreferStr(SharedKey.USERTYPE));
-        toBean.setId(SharedUtil.getPreferStr(SharedKey.USERID));
-        DataContent<List<Home>> dataContent = new DataContent<>();
-        dataContent.setFrom(fromBean);
-        dataContent.setTo(toBean);
-        dataContent.setPayload(homeData);
-        dataContent.setPayloadType("Home");
-        sendCommonData.setContent(dataContent);
-        sendCommonData.setServer("iot");
-        sendCommonData.setService("SendData");
-        sendCommonData.setTimestamp(CommonTool.getCurrentTime());
-        sendData.setData(sendCommonData);
-        String homeDataStr = JSON.toJSONString(sendData);
-        client.sendMessage(homeDataStr);
     }
 
     /**

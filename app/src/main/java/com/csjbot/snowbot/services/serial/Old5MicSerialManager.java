@@ -50,7 +50,7 @@ public class Old5MicSerialManager implements DataReceive {
     }
 
     public void reset() {
-        rk3288.sendData(new byte[]{0x52, 0x45, 0x53, 0x45, 0x54, 0x0D});
+        sendData(new byte[]{0x52, 0x45, 0x53, 0x45, 0x54, 0x0D});
     }
 
     private void sendData(byte[] data) {

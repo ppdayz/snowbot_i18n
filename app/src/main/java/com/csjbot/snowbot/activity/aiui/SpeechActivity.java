@@ -12,6 +12,7 @@ import com.csjbot.snowbot.views.aiui.ChatMsgEntity;
 import com.csjbot.snowbot.views.aiui.ChatMsgViewAdapter;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
+import com.csjbot.snowbot_rogue.utils.CSJToast;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -27,6 +28,7 @@ public class SpeechActivity extends CsjUIActivity {
     private ListView mListView;
     private ChatMsgViewAdapter mAdapter;// 消息视图的Adapter
     private List<ChatMsgEntity> mDataArrays = new ArrayList<ChatMsgEntity>();// 消息对象数组
+    public static final int AIUI_SPEAKTEXT_DATA_NOT_FINAL = 2103;
 
 
     @Override
@@ -82,12 +84,16 @@ public class SpeechActivity extends CsjUIActivity {
             case EventsConstants.AIUIEvents.AIUI_EVENT_FORCE_SLEEP:
                 this.finish();
                 break;
+            case AIUI_SPEAKTEXT_DATA_NOT_FINAL:
+                CSJToast.showToast(this, (String) event.data);
+                break;
             default:
                 isCaptured = false;
                 break;
         }
         return isCaptured;
     }
+
 
     public void backMethod(View view) {
         finish();
@@ -114,11 +120,23 @@ public class SpeechActivity extends CsjUIActivity {
         ChatMsgEntity entity = new ChatMsgEntity();
         entity.setName("机器人");
         entity.setMessage("小雪在这呢，请问有什么可以帮你的吗");
+        entity.setMessage("Snow is Here, What Can I do for you?");
         entity.setMsgType(false);
         mDataArrays.add(entity);
         mAdapter = new ChatMsgViewAdapter(this, mDataArrays);
         mListView.setAdapter(mAdapter);
     }
+
+    private void mastersSendNotFinal(String s) {
+        ChatMsgEntity entity =  mAdapter.getItem(mAdapter.getCount()-1);
+        entity.setName("主人");
+        entity.setMessage(s);
+        entity.setMsgType(true);
+
+        mAdapter.notifyDataSetChanged();// 通知ListView，数据已发生改变
+        mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
+    }
+
 
     private void mastersSend(String content) {
         ChatMsgEntity entity = new ChatMsgEntity();

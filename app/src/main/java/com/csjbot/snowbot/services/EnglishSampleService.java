@@ -18,6 +18,7 @@ import com.csjbot.snowbot.bean.Home;
 import com.csjbot.snowbot.bean.aiui.ContentBean;
 import com.csjbot.snowbot.bean.aiui.SimilarityUtil;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.serial.Old5MicSerialManager;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
@@ -26,13 +27,9 @@ import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
 import com.csjbot.snowbot_rogue.platform.SnowBotManager;
 import com.csjbot.snowbot_rogue.servers.slams.events.ConnectedEvent;
 import com.csjbot.snowbot_rogue.utils.Constant;
-import com.iflytek.aiui.uartkit.UARTAgent;
-import com.iflytek.aiui.uartkit.constant.AIUIMessage;
-import com.iflytek.aiui.uartkit.constant.UARTConstant;
 import com.iflytek.aiui.uartkit.entity.AIUIPacket;
 import com.iflytek.aiui.uartkit.entity.MsgPacket;
 import com.iflytek.aiui.uartkit.entity.WIFIConfPacket;
-import com.iflytek.aiui.uartkit.util.PacketBuilder;
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.RecognizerListener;
@@ -68,10 +65,11 @@ public class EnglishSampleService extends CsjBaseService {
     private SpeechRecognizer mIat;
     private boolean isWakeup = false;
     private SnowBotManager snowBotManager = SnowBotManager.getInstance();
-    private UARTAgent mAgent;
+//    private UARTAgent mAgent;
     private String[] wakeupTalk;
     private boolean isSpeechRecognizerInit = false;
     private Handler mHandler = new Handler();
+    private Old5MicSerialManager micSerialManager = Old5MicSerialManager.getInstance();
 
     /**
      * Very important, Without this method, EventBus won't work
@@ -86,33 +84,37 @@ public class EnglishSampleService extends CsjBaseService {
     @Override
     public void onCreate() {
         super.onCreate();
+        initTTSAndWakeup();
+    }
+
+    private void initTTSAndWakeup(){
         // init res
-        wakeupTalk = getResources().getStringArray(R.array.wakeup_array_en);
+        wakeupTalk = getResources().getStringArray(R.array.wakeup_array);
 
         // init SpeechRecognizer
         mIat = SpeechRecognizer.createRecognizer(EnglishSampleService.this.getApplicationContext(), mInitListener);
 
         // init wake up listener
-        mAgent = UARTAgent.createAgent(this, "/dev/ttyS4", 115200, event -> {
-            switch (event.eventType) {
-                case UARTConstant.EVENT_INIT_SUCCESS:
-                    Csjlogger.info("AIUI init success");
-                    mAgent.sendMessage(PacketBuilder.obtainWIFIStatusReqPacket());
-                    break;
-                case UARTConstant.EVENT_INIT_FAILED:
-                    Csjlogger.error("Init UART Failed");
-                    break;
-                case UARTConstant.EVENT_MSG:
-                    MsgPacket recvPacket = (MsgPacket) event.data;
-                    processPacket(recvPacket);
-                    break;
-                case UARTConstant.EVENT_SEND_FAILED:
-                    MsgPacket sendPacket = (MsgPacket) event.data;
-                    mAgent.sendMessage(sendPacket);
-                default:
-                    break;
-            }
-        });
+//        mAgent = UARTAgent.createAgent(this, "/dev/ttyS4", 115200, event -> {
+//            switch (event.eventType) {
+//                case UARTConstant.EVENT_INIT_SUCCESS:
+//                    Csjlogger.info("AIUI init success");
+//                    mAgent.sendMessage(PacketBuilder.obtainWIFIStatusReqPacket());
+//                    break;
+//                case UARTConstant.EVENT_INIT_FAILED:
+//                    Csjlogger.error("Init UART Failed");
+//                    break;
+//                case UARTConstant.EVENT_MSG:
+//                    MsgPacket recvPacket = (MsgPacket) event.data;
+//                    processPacket(recvPacket);
+//                    break;
+//                case UARTConstant.EVENT_SEND_FAILED:
+//                    MsgPacket sendPacket = (MsgPacket) event.data;
+//                    mAgent.sendMessage(sendPacket);
+//                default:
+//                    break;
+//            }
+//        });
 
         // init tts
         mSpeechSynthesizer = CsjSpeechSynthesizer2.createSynthesizer(this.getApplicationContext(), resault -> {
@@ -175,7 +177,7 @@ public class EnglishSampleService extends CsjBaseService {
                             Csjlogger.debug("wake up angle is {}", wakeAngle);
                             wakeupAndPlay(wakeupTalk[new Random().nextInt(wakeupTalk.length)]);
 
-                            mAgent.sendMessage(PacketBuilder.obtainAIUICtrPacket(AIUIMessage.CMD_RESET_WAKEUP, 0, 0, ""));
+//                            mAgent.sendMessage(PacketBuilder.obtainAIUICtrPacket(AIUIMessage.CMD_RESET_WAKEUP, 0, 0, ""));
 
                             if (isSpeechRecognizerInit) {
                                 wakeup();
@@ -431,12 +433,12 @@ public class EnglishSampleService extends CsjBaseService {
         mIat.setParameter(SpeechConstant.PARAMS, null);
         mIat.setParameter(SpeechConstant.ENGINE_TYPE, mEngineType);
         mIat.setParameter(SpeechConstant.RESULT_TYPE, "json");
-        mIat.setParameter(SpeechConstant.LANGUAGE, "en_us");
+        mIat.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
         /**
          *
          * must not set this if is English
          */
-//        mIat.setParameter(SpeechConstant.ACCENT, "en_us");
+        mIat.setParameter(SpeechConstant.ACCENT, "mandarin ");
 
         mIat.setParameter(SpeechConstant.VAD_BOS, "4000");
 

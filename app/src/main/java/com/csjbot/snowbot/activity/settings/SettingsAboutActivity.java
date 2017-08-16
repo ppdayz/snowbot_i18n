@@ -87,8 +87,6 @@ public class SettingsAboutActivity extends CsjUIActivity {
             } else if (trmpStr.equals(Static.CONTEXT.getString(R.string.language))) {
                 //选择语言
                 showLanguagedialog();
-
-
             } else if (trmpStr.equals(Static.CONTEXT.getString(R.string.custom_file_copy))) {
                 copyFile();
             } else if (trmpStr.equals(Static.CONTEXT.getString(R.string.software_version))) {
@@ -150,8 +148,6 @@ public class SettingsAboutActivity extends CsjUIActivity {
                 break;
         }
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-
-
     }
 
 
