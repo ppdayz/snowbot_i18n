@@ -814,8 +814,8 @@ public class GoogleSpeechService extends CsjBaseService {
         mVoiceRecorder.dismiss();
     }
 
-    private void sleepAndGoodBy(String goodByString){
-        mSpeechSynthesizer.startSpeaking("goodByString", forceSleepSynthesizerListener);
+    private void sleepAndGoodBy(String goodByString) {
+        mSpeechSynthesizer.startSpeaking(goodByString, forceSleepSynthesizerListener);
 
         micSerialManager.reset();
         stopVoiceRecorder();
