@@ -193,6 +193,9 @@ public class GoogleSpeechService extends CsjBaseService {
         @Override
         public void onError(Throwable t) {
             Csjlogger.error("Error calling the API.", t);
+            sleepAndGoodBy("Server Error please check");
+
+            postEvent(new AIUIEvent(SpeechActivity.AIUI_SPEAKTEXT_DATA_NOT_FINAL, "Error calling the API."));
         }
 
         @Override
@@ -811,6 +814,13 @@ public class GoogleSpeechService extends CsjBaseService {
         mVoiceRecorder.dismiss();
     }
 
+    private void sleepAndGoodBy(String goodByString){
+        mSpeechSynthesizer.startSpeaking("goodByString", forceSleepSynthesizerListener);
+
+        micSerialManager.reset();
+        stopVoiceRecorder();
+    }
+
     /**
      * wake up event
      *
@@ -837,6 +847,7 @@ public class GoogleSpeechService extends CsjBaseService {
         @Override
         public void onSpeakBegin() {
             postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_SPEAK));
+            mVoiceRecorder.dismiss();
         }
 
         @Override
@@ -862,7 +873,6 @@ public class GoogleSpeechService extends CsjBaseService {
         @Override
         public void onCompleted(SpeechError speechError) {
             postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
-            mVoiceRecorder.dismiss();
         }
 
         @Override
@@ -945,6 +955,20 @@ public class GoogleSpeechService extends CsjBaseService {
         mSpeechSynthesizer.startSpeaking(answer, speechSynthesizerListener);
     }
 
+    private CsjSynthesizerListener forceSleepSynthesizerListener = new CsjSynthesizerListener() {
+        @Override
+        public void onSpeakBegin() {
+            postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_SPEAK));
+        }
+
+        @Override
+        public void onCompleted(SpeechError speechError) {
+            // 1. change .EXPRESSION_SLEEP
+            postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_SLEEP));
+            // 2. send FORCE_SLEEP event
+            postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_EVENT_FORCE_SLEEP));
+        }
+    };
 
     /**
      * Strings let snow take you to some place
@@ -975,39 +999,22 @@ public class GoogleSpeechService extends CsjBaseService {
             return false;
         }
 
+        String contentUpper = content.toUpperCase();
+
         // if has good bye , snow will sleep
-        if (content.toUpperCase().equals("GOOD BYE") || content.toUpperCase().equals("BYE")
-                || content.toUpperCase().equals("BYE BYE")) {
-
-            mSpeechSynthesizer.startSpeaking("Master, I'm backing off", new CsjSynthesizerListener() {
-                @Override
-                public void onSpeakBegin() {
-                    postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_SPEAK));
-                }
-
-                @Override
-                public void onCompleted(SpeechError speechError) {
-                    // 1. change .EXPRESSION_SLEEP
-                    postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_SLEEP));
-                    // 2. send FORCE_SLEEP event
-                    postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_EVENT_FORCE_SLEEP));
-                }
-            });
-
-            // reset the mic
-            micSerialManager.reset();
-            stopVoiceRecorder();
+        if (contentUpper.equals("GOOD BYE") || contentUpper.equals("BYE") || contentUpper.equals("GOODBYE")
+                || contentUpper.equals("BYE BYE") || contentUpper.contains("SEE YOU")) {
+            sleepAndGoodBy("Master, I'm backing off");
             return true;
         }
 
         // traversals all take strings
         for (String take : takemeStrings) {
             String takeUpCase = take.toUpperCase();
-            String contentUpCase = content.toUpperCase();
-            if (contentUpCase.contains(takeUpCase)) {
+            if (contentUpper.contains(takeUpCase)) {
                 // replace action with ""
                 // eg: replace "I WANT TO GO TO THE LIVINGROOM" ===> "LIVINGROOM"
-                String roomUpCase = contentUpCase.replace(takeUpCase, "");
+                String roomUpCase = contentUpper.replace(takeUpCase, "");
                 Csjlogger.debug("room name is {}", roomUpCase);
 
                 List<Home> homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
@@ -1028,7 +1035,7 @@ public class GoogleSpeechService extends CsjBaseService {
 
                     Csjlogger.warn("home not existed");
 
-                    String answer = "Snow can't find   " + take;
+                    String answer = "Snow can't find the place";
                     speakAndSend2UI(answer);
                     return true;
                 } else {
@@ -1037,27 +1044,30 @@ public class GoogleSpeechService extends CsjBaseService {
             }
         }
 
-        if (content.contains("turn") || content.contains("Turn")) {
-            if (content.contains("right") || content.contains("Right")) {
+        if (contentUpper.contains("TURN")) {
+            if (contentUpper.contains("RIGHT")) {
                 snowBotManager.turnRound((short) -90);
             } else {
                 snowBotManager.turnRound((short) 90);
             }
 
+            speakAndSend2UI("Yes,Master " + content);
             Csjlogger.debug("action turn");
             return true;
         }
 
-        if (content.contains("back")) {
+        if (contentUpper.contains("BACK")) {
             snowBotManager.moveBy(MoveDirection.BACKWARD);
+            speakAndSend2UI("Yes,Master");
             Csjlogger.debug("action back");
             return true;
         }
 
-        if (content.contains("forward") || content.contains("ahead")
-                || content.contains("come") || content.contains("Come")) {
+        if (contentUpper.contains("FORWARD") || contentUpper.contains("AHEAD")
+                || contentUpper.contains("COME HERE")) {
             snowBotManager.moveBy(MoveDirection.FORWARD);
             Csjlogger.debug("action forward");
+            speakAndSend2UI("Yes,I\'m Coming");
             return true;
         }
 

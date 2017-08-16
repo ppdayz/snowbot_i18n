@@ -281,7 +281,7 @@ public class UpdateRobotParamsFrg extends BaseFrg {
                             || error.getReason() == OkHttpException.REASON_RESP_BLANK
                             || error.getReason() == OkHttpException.REASON_PARSER_JSON_ERROR
                             || error.getReason() == OkHttpException.REANSON_UNKNOW) {
-//                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
+//                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
                         CSJToast.showToast(getActivity(), getResources().getString(R.string.aliyun_exist));
                     }
                 }
@@ -293,7 +293,7 @@ public class UpdateRobotParamsFrg extends BaseFrg {
         getActivity().finish();
 //        SharedUtil.setPreferInt(SharedKey.ROBOTREGISTERSTATUS, RobotStatus.ALREADYOUTWARE);
 //        btnOK.setText(getString(R.string.alreadly_out_ware));
-//        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
+//        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
 //            @Override
 //            public void onSpeakBegin() {
 //                SpeechStatus.getIstance().setSpeakFinished(false);
@@ -421,13 +421,13 @@ public class UpdateRobotParamsFrg extends BaseFrg {
     @Override
     public void onPause() {
         super.onPause();
-//        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
+//        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
     }
 
     @Override
     public void onInvisible() {
         super.onInvisible();
-//        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
+//        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
     }
 
     /**

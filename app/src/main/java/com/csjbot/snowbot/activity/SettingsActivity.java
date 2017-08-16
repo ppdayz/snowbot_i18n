@@ -330,7 +330,7 @@ public class SettingsActivity extends CsjUIActivity implements View.OnClickListe
 //            public void onSuccess(Object responseObj) {
 //                BFeed feed = (BFeed) responseObj;
 //                if (feed.getData().isFlag()) {
-//                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
+//                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
 //                        @Override
 //                        public void onSpeakBegin() {
 //                            SpeechStatus.getIstance().setSpeakFinished(false);

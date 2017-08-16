@@ -127,17 +127,6 @@ public class SpeechActivity extends CsjUIActivity {
         mListView.setAdapter(mAdapter);
     }
 
-    private void mastersSendNotFinal(String s) {
-        ChatMsgEntity entity =  mAdapter.getItem(mAdapter.getCount()-1);
-        entity.setName("主人");
-        entity.setMessage(s);
-        entity.setMsgType(true);
-
-        mAdapter.notifyDataSetChanged();// 通知ListView，数据已发生改变
-        mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
-    }
-
-
     private void mastersSend(String content) {
         ChatMsgEntity entity = new ChatMsgEntity();
         entity.setName("主人");

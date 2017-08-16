@@ -117,7 +117,7 @@ public class RegisterImageCameraActivity extends BaseCameraActivity implements V
     @Override
     protected void onResume() {
         super.onResume();
-        if(mRegisterFace) {
+        if (mRegisterFace) {
             add_face.setVisibility(View.VISIBLE);
         }
     }
@@ -176,7 +176,7 @@ public class RegisterImageCameraActivity extends BaseCameraActivity implements V
         int limy = (int) (rect[1] + rect[3] / 2);
         boolean isTouchable = TrackUtil.isTouchable(limx, limy);
         if (isAdd && !isTouchable) {
-            Toast.makeText(RegisterImageCameraActivity.this, "面部移动速度过快，请慢点", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterImageCameraActivity.this, getString(R.string.face_move_fast), Toast.LENGTH_SHORT).show();
             isAdd = false;
         }
         switch (addCount) {

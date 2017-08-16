@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 import com.android.core.util.SharedUtil;
 import com.android.core.util.StrUtil;
+import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
 import com.csjbot.snowbot.pupwindow.PlayAdvertiseFloatWind;
@@ -43,13 +44,18 @@ public class AdvertisementService extends Service {
             public void clickPlay(boolean isplaying) {
                 if (isplaying) {
                     stopSpeak();
+                    Csjlogger.debug("stopSpeak");
                 } else {
                     startSpeak(surplusTimes, advertisement);
+                    Csjlogger.debug("startSpeak {}, {} ",surplusTimes, advertisement);
+
                 }
             }
 
             @Override
             public void clickStop() {
+                Csjlogger.debug("clickStop");
+
                 stopSpeak();
                 stopSelf();
             }

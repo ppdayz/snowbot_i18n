@@ -88,7 +88,7 @@
     <string name="manage_ending">Ending</string>
     <string name="manage_toast_none_select">Please choose items to delete！</string>
     <string name="manage_sure_delete">Are you sure to delete the selected data？</string>
-    <string name="manage_delete">Update</string>
+    <string name="manage_delete">Delete</string>
     <string name="queding">Yes</string>
     <string name="image_sure_next">Face enrollment complete, start face recognition now？</string>
     <string name="manage_selete_all">Selete All</string>

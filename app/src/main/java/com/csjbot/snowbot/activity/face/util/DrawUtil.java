@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.hardware.Camera;
-import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 
@@ -116,7 +115,7 @@ public class DrawUtil {
 
     public static void drawAnim(List<YMFace> faces, View outputView, float scale_bit,
                                 int cameraId, String fps, boolean showPoint) {
-        float ty = 0;
+
         Paint paint = new Paint();
         Canvas canvas = ((SurfaceView) outputView).getHolder().lockCanvas();
         if (canvas != null) {
@@ -142,10 +141,9 @@ public class DrawUtil {
 
                     // FIXME puyz 修改，这里因为改了dou.helper.CameraHelper.setOptimalPreviewSize() 里面的方法，
                     // 强行全屏了，所以需要把绘制 人脸框的 Y 的坐标向上提50px，下面的Y2 也是一样
-                      float y1 = (float) (rect[1] * (scale_bit-0.8));
-//                    float y1 = (float) (rect[1] * (scale_bit - 0.8) - 360 * (rect[1] * 2 / 1440));
-                    ty = y1;
-//                    Log.e("FaceReo", "y1: " + y1);
+                    //  float y1 = rect[1] * scale_bit;
+                    float y1 = (float) (rect[1] * (scale_bit-0.8) - 360 * ( rect[1] * 2 / 1440));
+
                     float rect_width = rect[2] * scale_bit;
                     //draw rect
                     RectF rectf = new RectF(x1, y1, x1 + rect_width, y1 + rect_width);
@@ -156,10 +154,10 @@ public class DrawUtil {
                     int per_line = (int) (rect_width / (line + 1));
                     int smailSize = DisplayUtil.dip2px(Static.CONTEXT, 1.5f);
                     paint.setStrokeWidth(smailSize);
-//                    for (int j = 1; j < line + 1; j++) {
-//                        canvas.drawLine(x1 + per_line * j, y1, x1 + per_line * j, y1 + rect_width, paint);
-//                        canvas.drawLine(x1, y1 + per_line * j, x1 + rect_width, y1 + per_line * j, paint);
-//                    }
+                    for (int j = 1; j < line + 1; j++) {
+                        canvas.drawLine(x1 + per_line * j, y1, x1 + per_line * j, y1 + rect_width, paint);
+                        canvas.drawLine(x1, y1 + per_line * j, x1 + rect_width, y1 + per_line * j, paint);
+                    }
 
                     paint.setStrokeWidth(size);
                     paint.setColor(Color.RED);
@@ -168,10 +166,10 @@ public class DrawUtil {
                     if (cameraId == (BaseApplication.yu ? Camera.CameraInfo.CAMERA_FACING_FRONT : Camera.CameraInfo.CAMERA_FACING_BACK))
                         x2 = rect[0] * scale_bit;
 
-                    float y2 = (float) (rect[1] * (scale_bit-0.8));
+//                    float y2 = rect[1] * scale_bit;
                     // FIXME: 2017/5/5 puyz
 //                    float y2 = rect[1] * scale_bit - 360 * (1 - rect[1] * 2 / 1440);
-//                    float y2 = (float) (rect[1] * (scale_bit - 0.8) - 360 * (rect[1] * 2 / 1440));
+                    float y2 = (float) (rect[1] * (scale_bit-0.8) - 360 * (rect[1] * 2 / 1440));
 
                     float length = rect[3] * scale_bit / 5;
                     float width = rect[3] * scale_bit;
@@ -254,20 +252,6 @@ public class DrawUtil {
 
                     canvas.drawText(fps, 20, viewH * 3 / 17, paint);
                 }
-
-                /**
-                 * 测试代码
-                 */
-//                paint.setColor(Color.RED);
-//                paint.setStrokeWidth(0);
-//                paint.setAntiAlias(true);
-//                paint.setStyle(Paint.Style.FILL);
-
-//                int sizet = DisplayUtil.sp2px(BaseApplication.getAppContext(), BaseApplication.yu ? 28 : 17);
-//                paint.setTextSize(sizet);
-//
-//                canvas.drawText("y1 = "+ty, 1000, viewH * 3 / 17, paint);
-
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {

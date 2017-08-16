@@ -5,17 +5,17 @@
         <item>10</item>
         <item>60</item>
         <item>100</item>
-        <item>无限</item>
+        <item>Infinity</item>
     </string-array>
 
     <string-array name="type_select">
-        <item>文字</item>
-        <item>音频</item>
+        <item>Text</item>
+        <item>Audio</item>
     </string-array>
 
     <string-array name="type_guide_play_select">
-        <item>图片</item>
-        <item>视频</item>
+        <item>Picture</item>
+        <item>Video</item>
     </string-array>
 
     <string-array name="wakeup_array_en">

@@ -70,7 +70,7 @@ public class AdvertisementAct extends CsjUIActivity {
         setupBack();
         usbPath = SharedUtil.getPreferStr(SharedKey.USBPATH);
 //        if (StrUtil.isBlank(usbPath) && checkSD()) {
-//            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("请重新插拔优盘", null);
+//            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("请重新插拔优盘", null);
 //        }
         if (StrUtil.isNotBlank(usbPath)) {
             mloadTost = new LoadToast(AdvertisementAct.this);

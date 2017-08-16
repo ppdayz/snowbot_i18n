@@ -139,13 +139,13 @@ public class CustomVoiceActivity extends CsjUIActivity {
         if (checkData(question, answer)) {
             customData.put(question, answer);
             if (!isModifyCustomVoice) {
-                CSJToast.showToast(this, "增加成功");
+                CSJToast.showToast(this, getString(R.string.customvoice_add_ok));
             } else {
                 String questionTempData = questionEt.getText().toString().trim();
                 if (!questionTempData.equals(questionData.get(currentPostion))) {
                     customData.remove(questionData.get(currentPostion));
                 }
-                CSJToast.showToast(this, "修改成功");
+                CSJToast.showToast(this, getString(R.string.customvoice_modify_ok));
             }
             updateData();
             clearText();

@@ -14,10 +14,10 @@ import com.android.core.util.StrUtil;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.utils.TimeUtil;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
+import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.platform.SnowBotNetwokListen;
 import com.csjbot.snowbot_rogue.utils.CSJToast;
 import com.csjbot.snowbot_rogue.utils.CSJWifiUtils;
@@ -69,7 +69,8 @@ public class SetWifiActivityNew extends CsjUIActivity {
         mResult = getIntent().getParcelableExtra("scan_result");
         scanResult.ssid = mResult.SSID;
         scanResult.bssid = mResult.BSSID;
-        showText.setText(getResources().getString(R.string.please_enter) + mResult.SSID + getResources().getString(R.string.enter_password));
+//        showText.setText(getResources().getString(R.string.please_enter) + mResult.SSID + getResources().getString(R.string.enter_password));
+        showText.setText(getString(R.string.wifi_enter_passwd, mResult.SSID));
 
         String capabilities = mResult.capabilities;
         if (capabilities.contains("WPA") || capabilities.contains("wpa")) {

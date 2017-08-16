@@ -66,7 +66,6 @@ public class VideoPlay extends Activity implements JCMediaManager.JCMediaPlayerL
     private void init() {
         jcVideoPlayerStandard = (JCVideoPlayerStandard) findViewById(R.id.videoView);
         Bundle bundle;
-//        JCMediaManager.instance().myListener = this;
         if (null != getIntent().getBundleExtra("VIDEODATA")) {
             bundle = getIntent().getBundleExtra("VIDEODATA");
             url = bundle.getString("url");
@@ -98,7 +97,6 @@ public class VideoPlay extends Activity implements JCMediaManager.JCMediaPlayerL
             }
         }
         if (videoType == RECODE_VIDEO) {
-//            jcVideoPlayerStandard.setScaleXY(1.4f, 1.4f);
         }
     }
 

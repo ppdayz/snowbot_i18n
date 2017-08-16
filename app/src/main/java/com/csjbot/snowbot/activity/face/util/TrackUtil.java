@@ -180,9 +180,8 @@ public class TrackUtil {
                     x1 = rect[0] * scale_bit;
 //                    float y1 =(rect[1] * scale_bit - 360 * (1 - rect[1] * 2 / 1440));
                 // TODO: 2017/5/24 0024 wql修改
-//                float y1 = (float) (rect[1] * (scale_bit-0.8) - 360 * ( rect[1] * 2 / 1440));
+                float y1 = (float) (rect[1] * (scale_bit-0.8) - 360 * ( rect[1] * 2 / 1440));
 //                float y1 = rect[1] * scale_bit;
-                float y1 = (float) (rect[1] * (scale_bit-0.8));
                 Log.e(TAG, "y2: ------------"+y1);
 //                Csjlogger.info("rect[1] {} ,  {}", rect[1], 360 * (1 - rect[1] * 2 / 1440));
 
@@ -198,10 +197,10 @@ public class TrackUtil {
                 int per_line = (int) (rect_width / (line + 1));
                 int smailSize = DisplayUtil.dip2px(Static.CONTEXT, 1.5f);
                 paint.setStrokeWidth(smailSize);
-//                for (int j = 1; j < line + 1; j++) {
-//                    canvas.drawLine(x1 + per_line * j, y1, x1 + per_line * j, y1 + rect_width, paint);
-//                    canvas.drawLine(x1, y1 + per_line * j, x1 + rect_width, y1 + per_line * j, paint);
-//                }
+                for (int j = 1; j < line + 1; j++) {
+                    canvas.drawLine(x1 + per_line * j, y1, x1 + per_line * j, y1 + rect_width, paint);
+                    canvas.drawLine(x1, y1 + per_line * j, x1 + rect_width, y1 + per_line * j, paint);
+                }
 
 
                 paint.setColor(colorffList[ymFace.getTrackId() % colorffList.length]);

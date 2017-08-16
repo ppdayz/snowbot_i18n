@@ -73,6 +73,8 @@ public class AIUIWifiActivity extends CsjUIActivity implements WifiUtil.IWifiOpe
     public void afterViewCreated(Bundle savedInstanceState) {
         wm = (WifiManager) this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         setupBack();
+
+        wifiState = getString(R.string.wifi_state_disconnected);
         mListView = (ListView) findViewById(R.id.asb_listView);
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -154,9 +156,9 @@ public class AIUIWifiActivity extends CsjUIActivity implements WifiUtil.IWifiOpe
             boolean wifiContent = wifiType.getJSONObject("content").getBoolean("connected");
             if (wifiContent) {
                 String ssid = wifiType.getJSONObject("content").getString("ssid");
-                wifiState = ssid + "已连接";
+                wifiState = ssid + getString(R.string.wifi_state_connected);
             } else {
-                wifiState = "未连接";
+                wifiState = getString(R.string.wifi_state_disconnected);
             }
 
         } catch (JSONException e) {

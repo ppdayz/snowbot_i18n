@@ -37,7 +37,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="right|center_horizontal"
-            android:text="@string/TP_LINK_YF"
+            android:text="@string/wifi_state_disconnected"
             android:textSize="20sp" />
     </LinearLayout>
 

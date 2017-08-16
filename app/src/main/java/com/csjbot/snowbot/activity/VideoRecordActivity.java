@@ -22,13 +22,12 @@ import com.android.core.util.SharedUtil;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
-import com.csjbot.snowbot.services.ClientService;
 import com.csjbot.snowbot.utils.CommonTool;
 import com.csjbot.snowbot.utils.FileUtil;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot.utils.SpeechStatus;
+import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.camera.CameraInterface;
 import com.csjbot.snowbot_rogue.utils.CSJToast;
 import com.csjbot.snowbot_rogue.utils.Constant;
@@ -185,15 +184,15 @@ public class VideoRecordActivity extends CsjUIActivity implements OnClickListene
                 });
                 loadToast.success();
 
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isInAutoTakePhoto = false;
-                        ClientService.setIsAutoTakePhoto(Boolean.FALSE);
-                        SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 1);
-                        onBackPressed();
-                    }
-                }, 1000);
+//                mHandler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        isInAutoTakePhoto = false;
+//                        ClientService.setIsAutoTakePhoto(Boolean.FALSE);
+//                        SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 1);
+//                        onBackPressed();
+//                    }
+//                }, 1000);
             } else if (mCamera != null) {
                 mHandler.postDelayed(this, 1000);
             } else {
@@ -205,7 +204,7 @@ public class VideoRecordActivity extends CsjUIActivity implements OnClickListene
 
     private void autoTakePhoto() {
         if (mCamera != null) {
-            ClientService.setIsAutoTakePhoto(true);
+//            ClientService.setIsAutoTakePhoto(true);
             SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 0);
             isInAutoTakePhoto = true;
 //            EventBus.getDefault().post(new RobotStatusUpdateEvent(15, false, 70));
@@ -331,7 +330,7 @@ public class VideoRecordActivity extends CsjUIActivity implements OnClickListene
         switch (id) {
             case R.id.start:
                 if (CommonTool.isFastDoubleClick(1500)) {
-                    CSJToast.showToast(this, "请您不要操作过快!", 2000);
+                    CSJToast.showToast(this, getString(R.string.pls_not_op_fast), 2000);
                     return;
                 }
                 if (!mIsRecording) {

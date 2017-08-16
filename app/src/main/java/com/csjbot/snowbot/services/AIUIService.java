@@ -449,8 +449,6 @@ public class AIUIService extends CsjBaseService {
             } else {
                 homeName = content.replace("我想去", "");
             }
-
-            // deal with result(stt)
             List<Home> homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
             if (homeLists != null) {
                 for (Home home : homeLists) {
@@ -546,8 +544,8 @@ public class AIUIService extends CsjBaseService {
                         wakeupReceiver(this);
                         JSONObject wakeInfo = new JSONObject(contentBean.getInfo());
                         int wakeAngle = wakeInfo.getInt(KEY_ANGLE);
-                        postEvent(new EventWakeup(0, wakeAngle));
-//                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("旋转 " + String.valueOf(wakeAngle) + " 度", null);
+
+//                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("旋转 " + String.valueOf(wakeAngle) + " 度", null);
                         Csjlogger.info("wakeup Angle {}", wakeAngle);
                         mIsHandleError = false;
                         mIsWakeUp = true;

@@ -76,4 +76,6 @@
     <string name="Chinese_string">成语接龙</string>
     <string name="tip_acquire_failure">获取上位机失败,请检查！</string>
     <string name="SN_failtoget">SN获取失败,请联系管理员</string>
+
+
 </resources>

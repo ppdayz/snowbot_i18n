@@ -37,7 +37,7 @@ public class ChatMsgViewAdapter extends BaseAdapter {
         return coll.size();
     }
 
-    public ChatMsgEntity getItem(int position) {
+    public Object getItem(int position) {
         return coll.get(position);
     }
 

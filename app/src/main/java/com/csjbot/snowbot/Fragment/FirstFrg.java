@@ -66,7 +66,7 @@ public class FirstFrg extends BaseFrg {
     @Override
     protected void onInvisible() {
         super.onInvisible();
-//        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
+//        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
     }
 
     @OnTouch(R.id.skip_registration)

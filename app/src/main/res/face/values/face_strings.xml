@@ -1,5 +1,5 @@
 <resources>
- 
+
     <string name="find_who">来，让我看看你是谁!</string>
     <string name="find_who1">我不认识你哦，让我认识你吧!\n 给我个正脸看一下呗</string>
     <string name="find_who2">然后让我看下你的侧脸</string>
@@ -115,18 +115,13 @@
     <string name="more_points_str">该功能权限尚未开放，如需体验请联系阅面市场人员</string>
     <string name="more_points_ok">知道了</string>
     <string name="image_indert_msg">请按以下示意依次添加照片</string>
-     <string name="_settings">设置及说明</string>
+    <string name="_settings">设置及说明</string>
     <string name="points_switch">切换</string>
     <string name="wait_toconnect">请等待底盘连接</string>
     <string name="name_snow">小雪</string>
     <!--    app下的添加在下面  2017-07-19                             -->
 
-
-
-
-
-
-
+    <!--2017年8月15日-->
 
 
 </resources>

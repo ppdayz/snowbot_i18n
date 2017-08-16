@@ -126,6 +126,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
     private List<Pose> poses = new ArrayList<>();
     private LoadToast mLoadToast = null;
     private MapActivityHandler mHandler = new MapActivityHandler(this);
+//    private NettyClientNew client = NettyClientNew.getInstence();
     private PointF startP, endP;
     private SnowBotManager snowBot = SnowBotManager.getInstance();
     private TimeUtil timeUtil = TimeUtil.getInterface();
@@ -363,18 +364,18 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
         if (null != snowBot) {
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setCancelable(false)
-                    .setTitle("清除地图")
-                    .setMessage("如果清除地图，地图上的所有数据将被清除！")
-                    .setNegativeButton("否", (dialog1, which) -> {
+                    .setTitle(R.string.clear_map)
+                    .setMessage(R.string.clear_all)
+                    .setNegativeButton(R.string.no, (dialog1, which) -> {
                         wakeupMapUpdate(true);
                         dialog1.dismiss();
                     })
-                    .setPositiveButton("清除", (dialog12, which) -> {
+                    .setPositiveButton(R.string.cle, (dialog12, which) -> {
                         snowBot.clearMap();
                         SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 0);
 
                         clearHomeData();
-                        mLoadToast.setText("正在清除地图");
+                        mLoadToast.setText(getString(R.string.clearing));
                         mLoadToast.show();
                         SnowBotMoveServer.getInstance().setIsInRecoveryMapData(true);
                         isRecoveryMapData = true;
@@ -803,7 +804,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
         snowBot.stopPartol();
         mHandler.postDelayed(() -> snowBot.goHome(), 2000);
         CsjSpeechSynthesizer.getSynthesizer().startSpeaking("小雪回去充电辣~", null);
-        CSJToast.showToast(this, "回去充电");
+        CSJToast.showToast(this, getString(R.string.go_home));
     }
 
     /**
@@ -908,6 +909,26 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
      * 发送房间数据
      */
     private void sendHomeData() {
+//        List<Home> homeData = new ArrayList<>();
+//        if (client != null) {
+//            homeData = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
+//        }
+//        fromBean.setType("robot");
+//        fromBean.setId(SharedUtil.getPreferStr(SharedKey.DEVICEUUID));
+//        toBean.setType(SharedUtil.getPreferStr(SharedKey.USERTYPE));
+//        toBean.setId(SharedUtil.getPreferStr(SharedKey.USERID));
+//        DataContent<List<Home>> dataContent = new DataContent<>();
+//        dataContent.setFrom(fromBean);
+//        dataContent.setTo(toBean);
+//        dataContent.setPayload(homeData);
+//        dataContent.setPayloadType("Home");
+//        sendCommonData.setContent(dataContent);
+//        sendCommonData.setServer("iot");
+//        sendCommonData.setService("SendData");
+//        sendCommonData.setTimestamp(CommonTool.getCurrentTime());
+//        sendData.setData(sendCommonData);
+//        String homeDataStr = JSON.toJSONString(sendData);
+//        client.sendMessage(homeDataStr);
     }
 
     /**
@@ -978,7 +999,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
                     isRecoveryMapData = false;
                     dialog.dismiss();
                 });
-                builder.setPositiveButton("还原", (dialog, which) -> {
+                builder.setPositiveButton(R.string.huanyuan, (dialog, which) -> {
                     if (null != map) {
                         timeUtil.getTime(5, i -> {
                             mLoadToast.success();
@@ -989,7 +1010,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
                         SnowBotMoveServer.getInstance().recoveryMapData(map, wallsList);
 
 
-                        mLoadToast.setText("正在恢复地图");
+                        mLoadToast.setText(getString(R.string.restorea));
                         mLoadToast.show();
                         wakeupMapUpdate(true);
 //                            CSJToast.showToast(MapActivity.this, getResources().getString(R.string.restore_map_succeed));
@@ -1010,7 +1031,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
 //    public void robotStatusUpdated(RobotStatusUpdateEvent event) {
 //        int powerPercent = event.getBatteryPercentage();
 //        if (powerPercent < Constants.LOW_POWER_GO_HOME && isPartol) {
-//            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getString(R.string.low_power_waring), null);
+//            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getString(R.string.low_power_waring), null);
 //            snowBot.cancelAction();
 //        }
 //    }

@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.TextView;
 
 import com.android.core.util.SharedUtil;
@@ -22,6 +23,7 @@ import com.hanks.library.AnimateCheckBox;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class SettingsSetTouchAction extends CsjUIActivity {
@@ -48,7 +50,13 @@ public class SettingsSetTouchAction extends CsjUIActivity {
         secondCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> SharedUtil.setPreferBool(SharedKey.WEATHERSWITCH, isChecked));
 
         tv_pick_area = (TextView) findViewById(R.id.tv_pick_area);
-        tv_pick_area.setText(LocationUtil.getCustomLocationComplete()+"（目前仅支持中国境内）");
+
+        Locale locale = getResources().getConfiguration().locale;
+        if (locale.getLanguage().equals(Locale.ENGLISH.toString())) {
+            tv_pick_area.setVisibility(View.GONE);
+        }
+
+        tv_pick_area.setText(LocationUtil.getCustomLocationComplete() + getString(R.string.within_china));
         tv_pick_area.setOnClickListener(v -> {
             if (!hasData) {
                 dialog = LoadingDialog.getInstance();
@@ -155,13 +163,13 @@ public class SettingsSetTouchAction extends CsjUIActivity {
                 String tx = options1Items.get(options1).getPickerViewText() +
                         options2Items.get(options1).get(options2) +
                         options3Items.get(options1).get(options2).get(options3);
-                tv_pick_area.setText(tx+"（目前仅支持中国境内）");
+                tv_pick_area.setText(tx + getString(R.string.within_china));
                 LocationUtil.setCustomLocationComplete(tx);
                 LocationUtil.setCustomLocationCity(options3Items.get(options1).get(options2).get(options3));
 
             })
 
-                    .setTitleText("城市选择")
+                    .setTitleText(getString(R.string.city_choose))
                     .setDividerColor(Color.BLACK)
                     .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
                     .setContentTextSize(35)
