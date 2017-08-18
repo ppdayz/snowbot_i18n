@@ -25,7 +25,7 @@ import android.support.annotation.NonNull;
 /**
  * Continuously records audio and notifies the {@link VoiceRecorder.Callback} when voice (or any
  * sound) is heard.
- *
+ * <p>
  * <p>The recorded audio format is always {@link AudioFormat#ENCODING_PCM_16BIT} and
  * {@link AudioFormat#CHANNEL_IN_MONO}. This class will automatically pick the right sample rate
  * for the device. Use {@link #getSampleRate()} to get the selected value.</p>
@@ -40,6 +40,10 @@ public class VoiceRecorder {
     private static final int AMPLITUDE_THRESHOLD = 1500;
     private static final int SPEECH_TIMEOUT_MILLIS = 2000;
     private static final int MAX_SPEECH_LENGTH_MILLIS = 30 * 1000;
+
+
+    private AudioSaverImpl audioSaver = new AudioSaverImpl();
+    private boolean saveAudio = false;
 
     public static abstract class Callback {
 
@@ -75,10 +79,14 @@ public class VoiceRecorder {
 
     private final Object mLock = new Object();
 
-    /** The timestamp of the last time that voice is heard. */
+    /**
+     * The timestamp of the last time that voice is heard.
+     */
     private long mLastVoiceHeardMillis = Long.MAX_VALUE;
 
-    /** The timestamp when the current voice is started. */
+    /**
+     * The timestamp when the current voice is started.
+     */
     private long mVoiceStartedMillis;
 
     public VoiceRecorder(@NonNull Callback callback) {
@@ -87,7 +95,7 @@ public class VoiceRecorder {
 
     /**
      * Starts recording audio.
-     *
+     * <p>
      * <p>The caller is responsible for calling {@link #stop()} later.</p>
      */
     public void start() {
@@ -189,7 +197,18 @@ public class VoiceRecorder {
                         if (mLastVoiceHeardMillis == Long.MAX_VALUE) {
                             mVoiceStartedMillis = now;
                             mCallback.onVoiceStart();
+                            //record file
+                            if(saveAudio) {
+                                audioSaver.startSaveFile(String.valueOf(System.currentTimeMillis()));
+                            }
+                            //record file
                         }
+                        //record file
+                        if(saveAudio) {
+                            audioSaver.writeData(mBuffer, size);
+                        }
+                        //record file
+
                         mCallback.onVoice(mBuffer, size);
                         mLastVoiceHeardMillis = now;
                         if (now - mVoiceStartedMillis > MAX_SPEECH_LENGTH_MILLIS) {
@@ -197,6 +216,11 @@ public class VoiceRecorder {
                         }
                     } else if (mLastVoiceHeardMillis != Long.MAX_VALUE) {
                         mCallback.onVoice(mBuffer, size);
+                        //record file
+                        if(saveAudio) {
+                            audioSaver.writeData(mBuffer, size);
+                        }
+                        //record file
                         if (now - mLastVoiceHeardMillis > SPEECH_TIMEOUT_MILLIS) {
                             end();
                         }
@@ -208,6 +232,11 @@ public class VoiceRecorder {
         private void end() {
             mLastVoiceHeardMillis = Long.MAX_VALUE;
             mCallback.onVoiceEnd();
+            //record file
+            if(saveAudio) {
+                audioSaver.closeFile();
+            }
+            //record file
         }
 
         private boolean isHearingVoice(byte[] buffer, int size) {

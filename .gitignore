@@ -45,3 +45,4 @@ freeline_project_description.json
 app/version.properties
 /app/version.properties
 /uartagent/build/
+/app/src/main/java/com/csjbot/snowbot/services/google_speech/HowToUseGoogleSpeech.md
