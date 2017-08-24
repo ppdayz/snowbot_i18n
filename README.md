@@ -21,7 +21,9 @@ v1.3     2017-08-13     浦耀宗     修正BUG，完善内容
     1.  语音识别 (Recognize) 
     2.  语义理解 (Understand)
     3.  语音合成 (Text To Speech)
+    
     4.  [英文语音识别 google-speech-api](https://github.com/ppdayz/snowbot_i18n/tree/master/app/src/main/java/com/csjbot/snowbot/services/google_speech)
+    
 2. 传感器
     1.  触摸传感器
 3. 面部表情控制
