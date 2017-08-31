@@ -43,7 +43,9 @@ startService(new Intent(this, GoogleSpeechService.class));
 4. 初始化自定义语义资源
 
 
-- **利用了EventBus来传递唤醒信号,所以要初始化**
+- **利用了EventBus来传递唤醒信号**
+
+初始化EventBus，具体实现见基类`com.csjbot.csjbase.base.CsjBaseService`
 
 ```java
     @Override
@@ -88,14 +90,17 @@ startVoiceRecorder();
 	- 如果不在最前台（栈顶），就启动这个Activity
 ```java
 	if (!Kits.Package.isTopActivity(this, "com.csjbot.snowbot.activity.aiui.SpeechActivity")) {
-			Intent it = new Intent(this, SpeechActivity.class);
-			it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(it);
+		Intent it = new Intent(this, SpeechActivity.class);
+		it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(it);
 	}
 ```
-5. 
+5. 停止并且重置正在进行的话语
+```java
+mVoiceRecorder.dismiss();
+```
 
-
-
+- **识别处理流程**
+![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/Recognize.jpg)
 
 
