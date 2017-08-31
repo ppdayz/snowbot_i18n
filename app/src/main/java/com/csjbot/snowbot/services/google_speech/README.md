@@ -12,7 +12,7 @@
 - 表情变换
 
 **VoiceRecorder.java**
-持续不断的录音，但检测到有语音（或者有任何声音），就通过回调通知上层
+持续不断的录音，当检测到有语音（或者有任何声音），就通过回调通知上层
 
 - 拾音
 - 静音检测
@@ -43,7 +43,9 @@ startService(new Intent(this, GoogleSpeechService.class));
 4. 初始化自定义语义资源
 
 
-- **利用了EventBus来传递唤醒信号,所以要初始化**
+- **利用了EventBus来传递唤醒信号**
+
+初始化EventBus，具体实现见基类`com.csjbot.csjbase.base.CsjBaseService`
 
 ```java
     @Override
@@ -52,7 +54,7 @@ startService(new Intent(this, GoogleSpeechService.class));
     }
 ```
 
-并且订阅了唤醒事件，其中`wakeup.getAngle()`为唤醒角度，
+订阅了唤醒事件，其中`wakeup.getAngle()`为唤醒角度，
 ```java
     @Subscribe
     @SuppressWarnings("unused")
@@ -69,7 +71,7 @@ startService(new Intent(this, GoogleSpeechService.class));
 ibus.post(new EventWakeup(0, angle));
 ```
 
-当唤醒了之后，就行唤醒处理：
+当唤醒了之后，进行唤醒处理：
 1. 判断 `SpeechGrpc.SpeechStub mApi` 是否为空
 
 	- 如果为空就返回并且报错
