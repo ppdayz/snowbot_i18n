@@ -104,6 +104,84 @@ mVoiceRecorder.dismiss();
 - **Speech recognition flow**
 ![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/Recognize.jpg)
 
+- **Handles incoming audio**
+
+The audio identified will be converted to text on the `Google server` and will be obtained via `StreamObserver`
+We don't have to care about how to process audio, just processing the data returned by Google
+```java
+private final StreamObserver<StreamingRecognizeResponse> mResponseObserver
+            = new StreamObserver<StreamingRecognizeResponse>() {
+
+        @Override
+        public void onNext(StreamingRecognizeResponse value) {
+            // Receives a value from the stream.
+        }
+
+        @Override
+        public void onError(Throwable t) {
+            //  Receives a terminating error from the stream.
+        }
+
+        @Override
+        public void onCompleted() {
+            // Receives a notification of successful stream completion.
+        }
+    };
+```
+We process the results in the `onNext` method:
+1. processing `StreamingRecognizeResponse`, extracting the identified text and whether it is the final result
+2. if it is the end result, show the final result in `SpeechActivity` and process the result at the same time
+Parse action, if it matches and executes, returns true, and the following is not executed
+If there is no matching result, parse the custom semantics; if matches are said; play the default statement if no match is found
+3. if not, display Toast in `SpeechActivity`
+**if you want to join your AI, do it here**
+
+```java
+		@Override
+        public void onNext(StreamingRecognizeResponse response) {
+            String text = null;
+            boolean isFinal = false;
+			// Parse Text
+            if (response.getResultsCount() > 0) {
+                final StreamingRecognitionResult result = response.getResults(0);
+                isFinal = result.getIsFinal();
+                if (result.getAlternativesCount() > 0) {
+                    final SpeechRecognitionAlternative alternative = result.getAlternatives(0);
+                    text = alternative.getTranscript();
+                }
+            }
+
+            if (text != null) {
+                Csjlogger.warn(text);
+                lastRecognizingTime = System.currentTimeMillis();
+                if (isFinal) {
+					
+					// Show Text in SpeechActivity 
+                    postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_SPEAKTEXT_DATA, text));
+                    postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_SPEAKTEXT_RC, 5));
+
+					// 1. parse action, such as move,turn round 
+                    if (!parseAction(text)) {
+						// 2. parse Custom semantics
+                        if (!parseSpeak(text)) {
+                            postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, "I can't understand,but I'm learning"));
+                            mSpeechSynthesizer.startSpeaking("I can't understand,but I'm learning", speechSynthesizerListener);
+                        }
+                    }
+                    lastRecognizingTime = Long.MAX_VALUE;
+                } else {
+					// if not final, Show toast in SpeechActivity
+                    postEvent(new AIUIEvent(SpeechActivity.AIUI_SPEAKTEXT_DATA_NOT_FINAL, text));
+                }
+            }
+        }
+```
+- ###In our Sample services, when the robot began to speak, will continue to force the reset pickup and began to identify, if you have more good procedures, welcome `issue` and `pull request`
+
+
+
+
+
 
 
 

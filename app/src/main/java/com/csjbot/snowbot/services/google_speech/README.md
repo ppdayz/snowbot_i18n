@@ -104,3 +104,81 @@ mVoiceRecorder.dismiss();
 ![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/Recognize.jpg)
 
 
+- **处理识别到的音频**
+
+识别到的音频会在Google服务器上被转换成文字，并且通过StreamObserver来进行获取
+我们不需要关心如何处理音频，只需要处理Google返回的数据
+
+```java
+private final StreamObserver<StreamingRecognizeResponse> mResponseObserver
+            = new StreamObserver<StreamingRecognizeResponse>() {
+
+        @Override
+        public void onNext(StreamingRecognizeResponse value) {
+            // Receives a value from the stream.
+        }
+
+        @Override
+        public void onError(Throwable t) {
+            //  Receives a terminating error from the stream.
+        }
+
+        @Override
+        public void onCompleted() {
+            // Receives a notification of successful stream completion.
+        }
+    };
+```
+我们在 `onNext`中处理结果：
+1. 处理 `StreamingRecognizeResponse`, 提取出识别的文字和是否是最终结果
+2. 如果是最终结果，就在`SpeechActivity`中显示最终的结果，同时对结果做处理
+	- 解析动作，如果匹配并执行就返回true，下面的就不执行
+	- 如果没有匹配结果，就解析自定义语义，如果匹配就说出来；如果没有匹配就播放默认的语句
+3. 如果不是，就在`SpeechActivity`中显示Toast
+	**如果要加入自己的AI，在这里进行**
+
+```java
+		@Override
+        public void onNext(StreamingRecognizeResponse response) {
+            String text = null;
+            boolean isFinal = false;
+			// Parse Text
+            if (response.getResultsCount() > 0) {
+                final StreamingRecognitionResult result = response.getResults(0);
+                isFinal = result.getIsFinal();
+                if (result.getAlternativesCount() > 0) {
+                    final SpeechRecognitionAlternative alternative = result.getAlternatives(0);
+                    text = alternative.getTranscript();
+                }
+            }
+
+            if (text != null) {
+                Csjlogger.warn(text);
+                lastRecognizingTime = System.currentTimeMillis();
+                if (isFinal) {
+					
+					// Show Text in SpeechActivity 
+                    postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_SPEAKTEXT_DATA, text));
+                    postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_SPEAKTEXT_RC, 5));
+
+					// 1. parse action, such as move,turn round 
+                    if (!parseAction(text)) {
+						// 2. parse Custom semantics
+                        if (!parseSpeak(text)) {
+                            postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, "I can't understand,but I'm learning"));
+                            mSpeechSynthesizer.startSpeaking("I can't understand,but I'm learning", speechSynthesizerListener);
+                        }
+                    }
+                    lastRecognizingTime = Long.MAX_VALUE;
+                } else {
+					// if not final, Show toast in SpeechActivity
+                    postEvent(new AIUIEvent(SpeechActivity.AIUI_SPEAKTEXT_DATA_NOT_FINAL, text));
+                }
+            }
+        }
+```
+
+当onCompleted()被调用的时候，就说明一次识别已经完成
+
+- ###在我们的提供的服务中，当机器人开始说话的时候，就会继续强制重置拾音并且开始识别，如果您有更加好的流程，欢迎提`issue`和`pull request`
+

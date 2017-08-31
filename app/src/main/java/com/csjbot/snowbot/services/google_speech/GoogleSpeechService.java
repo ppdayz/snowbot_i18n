@@ -158,6 +158,7 @@ public class GoogleSpeechService extends CsjBaseService {
         public void onNext(StreamingRecognizeResponse response) {
             String text = null;
             boolean isFinal = false;
+            // Parse Text
             if (response.getResultsCount() > 0) {
                 final StreamingRecognitionResult result = response.getResults(0);
                 isFinal = result.getIsFinal();
@@ -166,15 +167,19 @@ public class GoogleSpeechService extends CsjBaseService {
                     text = alternative.getTranscript();
                 }
             }
+
             if (text != null) {
                 Csjlogger.warn(text);
                 lastRecognizingTime = System.currentTimeMillis();
                 if (isFinal) {
 
+                    // Show Text in SpeechActivity
                     postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_SPEAKTEXT_DATA, text));
                     postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_SPEAKTEXT_RC, 5));
 
+                    // 1. parse action, such as move,turn round
                     if (!parseAction(text)) {
+                        // 2. parse Custom semantics
                         if (!parseSpeak(text)) {
                             postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, "I can't understand,but I'm learning"));
                             mSpeechSynthesizer.startSpeaking("I can't understand,but I'm learning", speechSynthesizerListener);
@@ -182,11 +187,9 @@ public class GoogleSpeechService extends CsjBaseService {
                     }
                     lastRecognizingTime = Long.MAX_VALUE;
                 } else {
+                    // if not final, Show toast in SpeechActivity
                     postEvent(new AIUIEvent(SpeechActivity.AIUI_SPEAKTEXT_DATA_NOT_FINAL, text));
                 }
-//                for (Listener listener : mListeners) {
-//                    listener.onSpeechRecognized(text, isFinal);
-//                }
             }
         }
 
