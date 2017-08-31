@@ -33,10 +33,11 @@ ext {
             targetSdkVersion : 25,
             applicationId    : "com.csjbot.snowbot",
             versionCode      : 18,
-            versionName      : 'EN_V1.0.2.0001',
-            showName         : 'TE_SnowBot_',
-            VSupportSdk      : '23.3.0'
-    ]
+            versionName      : 'EN_V1.0.2',
+            buildVersion     : '.0002',
+            showName         : 'SnowBot_',
+            VSupportSdk      : '23.3.0',
+     ]
 
     dependencies = [
             //APP module依赖

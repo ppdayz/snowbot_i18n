@@ -500,20 +500,27 @@ public class GoogleSpeechService extends CsjBaseService {
 
         @Override
         protected void onPostExecute(AccessToken accessToken) {
-            mAccessTokenTask = null;
-            final ManagedChannel channel = new OkHttpChannelProvider()
-                    .builderForAddress(HOSTNAME, PORT)
-                    .nameResolverFactory(new DnsNameResolverProvider())
-                    .intercept(new GoogleCredentialsInterceptor(new GoogleCredentials(accessToken)
-                            .createScoped(SCOPE)))
-                    .build();
-            mApi = SpeechGrpc.newStub(channel);
-            // Schedule access token refresh before it expires
-            if (mHandler != null) {
-                mHandler.postDelayed(mFetchAccessTokenRunnable,
-                        Math.max(accessToken.getExpirationTime().getTime()
-                                - System.currentTimeMillis()
-                                - ACCESS_TOKEN_FETCH_MARGIN, ACCESS_TOKEN_EXPIRATION_TOLERANCE));
+            if (accessToken != null) {
+                mAccessTokenTask = null;
+                final ManagedChannel channel = new OkHttpChannelProvider()
+                        .builderForAddress(HOSTNAME, PORT)
+                        .nameResolverFactory(new DnsNameResolverProvider())
+                        .intercept(new GoogleCredentialsInterceptor(new GoogleCredentials(accessToken)
+                                .createScoped(SCOPE)))
+                        .build();
+                mApi = SpeechGrpc.newStub(channel);
+                // Schedule access token refresh before it expires
+                if (mHandler != null) {
+                    mHandler.postDelayed(mFetchAccessTokenRunnable,
+                            Math.max(accessToken.getExpirationTime().getTime()
+                                    - System.currentTimeMillis()
+                                    - ACCESS_TOKEN_FETCH_MARGIN, ACCESS_TOKEN_EXPIRATION_TOLERANCE));
+                }
+            } else {
+                if (mSpeechSynthesizer != null) {
+                    mSpeechSynthesizer.startSpeaking("Access Token is null, please check the credential file or network", speechSynthesizerListener);
+                }
+                Csjlogger.error("Access Token is null, please check the credential file or network");
             }
         }
     }
@@ -793,6 +800,12 @@ public class GoogleSpeechService extends CsjBaseService {
      * @param angle turn degree
      */
     private void wakeup(int angle) {
+        if (mApi == null) {
+            mSpeechSynthesizer.startSpeaking("Access Token is null, please check the credential file or network", speechSynthesizerListener);
+            Csjlogger.error("Access Token is null, please check the credential file or network");
+            return;
+        }
+
         // 1. turn snow
         snowBotManager.turnRound((short) angle);
 

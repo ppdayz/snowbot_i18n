@@ -42,7 +42,19 @@ android {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["showName"] + rootProject.ext.android["versionName"]
+
+//        如果是给测试的版本，就类似 TE_ + showName + versionName + buildVersion
+//                               【TE_】+【SnowBot_】+【V1.0.1SP3】+【.0001】
+        if (RELEASE_VERSION.toBoolean()) {
+            versionName rootProject.ext.android["versionName"]
+        } else {
+            if (DEV_VERSION.toBoolean()) {
+                versionName "DEV_" + rootProject.ext.android["showName"] + rootProject.ext.android["versionName"] + rootProject.ext.android["buildVersion"]
+            } else {
+                versionName "TE_" + rootProject.ext.android["showName"] + rootProject.ext.android["versionName"] + rootProject.ext.android["buildVersion"]
+            }
+        }
+
         multiDexEnabled true
 
         ndk {
@@ -56,12 +68,21 @@ android {
             jniLibs.srcDir "src/main/libs"
         }
     }
+
     android.applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 //这里修改apk文件名
-                def fileName = "${rootProject.ext.android["showName"]}${rootProject.ext.android["versionName"]}.apk"
+                def fileName = "${rootProject.ext.android["showName"]}" +
+                        "${rootProject.ext.android["versionName"]}${rootProject.ext.android["buildVersion"]}.apk";
+                if (!RELEASE_VERSION.toBoolean()) {
+                    if (DEV_VERSION.toBoolean()) {
+                        fileName = "DEV_" + fileName;
+                    } else {
+                        fileName = "TE_" + fileName;
+                    }
+                }
                 output.outputFile = new File(outputFile.parent, fileName)
             }
         }
