@@ -90,14 +90,17 @@ startVoiceRecorder();
 	- 如果不在最前台（栈顶），就启动这个Activity
 ```java
 	if (!Kits.Package.isTopActivity(this, "com.csjbot.snowbot.activity.aiui.SpeechActivity")) {
-			Intent it = new Intent(this, SpeechActivity.class);
-			it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(it);
+		Intent it = new Intent(this, SpeechActivity.class);
+		it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(it);
 	}
 ```
-5. 
+5. 停止并且重置正在进行的话语
+```java
+mVoiceRecorder.dismiss();
+```
 
-
-
+- **识别处理流程**
+![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/Recognize.jpg)
 
 

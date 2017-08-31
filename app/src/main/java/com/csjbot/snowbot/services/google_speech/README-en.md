@@ -23,7 +23,7 @@ The realization of Saving recording
 
 
 **IVoiceSaver.java**  *（unimportant）*
-The interface of Saving recording 
+The interface of Saving recording
 
 
 ----------
@@ -76,7 +76,7 @@ When you wake up the Robot, wake up:
 1. Check whether the `SpeechGrpc.SpeechStub mApi` is NULL
 
 	- If it is NULL ， return and report an error
-	
+
 2. The Robot Turns around
 ```java
 snowBotManager.turnRound((short) angle);
@@ -96,7 +96,15 @@ startVoiceRecorder();
 			startActivity(it);
 	}
 ```
-5. 
+5. Stop and reset the ongoing utterance
+```java
+mVoiceRecorder.dismiss();
+```
+
+- **Speech recognition flow**
+![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/Recognize.jpg)
+
+
 
 
 
