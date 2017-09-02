@@ -14,10 +14,10 @@ import com.android.core.util.StrUtil;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.TimeUtil;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.platform.SnowBotNetwokListen;
 import com.csjbot.snowbot_rogue.utils.CSJToast;
 import com.csjbot.snowbot_rogue.utils.CSJWifiUtils;
@@ -111,7 +111,7 @@ public class SetWifiActivityNew extends CsjUIActivity {
                     reference.setWifiButton.setEnabled(true);
 
                     CSJToast.showToast(reference, Static.CONTEXT.getResources().getString(R.string.check_chassis_connect));
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.check_chassis_connect), null);
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.check_chassis_connect), null);
                     break;
                 default:
                     break;
@@ -136,7 +136,7 @@ public class SetWifiActivityNew extends CsjUIActivity {
                     public void run() {
                         // TODO 说出连接成功
                         CSJToast.showToast(SetWifiActivityNew.this, "连接 " + scanResult.ssid + "成功");
-                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("连接WiFi成功", null);
+                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("连接WiFi成功", null);
                         timeUtil.stop();
                         loadToast.success();
                         SharedUtil.setPreferStr(scanResult.ssid, scanResult.passwd);
@@ -182,7 +182,7 @@ public class SetWifiActivityNew extends CsjUIActivity {
                     if (i == 0) {
                         loadToast.error();
                         setWifiButton.setEnabled(true);
-                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("连接超时,请检查网络", null);
+                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("连接超时,请检查网络", null);
                         CSJToast.showToast(SetWifiActivityNew.this, getResources().getString(R.string.connect_out_time));
                     }
                 });
@@ -240,7 +240,7 @@ public class SetWifiActivityNew extends CsjUIActivity {
 
     private void wifiConnectSuccess() {
         CSJToast.showToast(SetWifiActivityNew.this, "连接 " + scanResult.ssid + "成功");
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("连接WiFi成功", null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("连接WiFi成功", null);
         timeUtil.stop();
         loadToast.success();
         SharedUtil.setPreferStr(scanResult.ssid, scanResult.passwd);

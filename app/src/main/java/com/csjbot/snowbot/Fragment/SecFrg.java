@@ -23,8 +23,8 @@ import com.android.core.util.StrUtil;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.bean.WifiDataBean;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.OkHttp.LoadingDialog;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot.utils.SpeechStatus;
@@ -82,7 +82,7 @@ public class SecFrg extends BaseFrg {
             switch (msg.what) {
                 case SecFrg.CONNECT_FAILD:
                     CSJToast.showToast(reference.getActivity(), Static.CONTEXT.getResources().getString(R.string.check_chassis_connect));
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.check_chassis_connect), null);
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.check_chassis_connect), null);
                     if (LoadingDialog.getInstance().getStatus()) {
                         LoadingDialog.getInstance().dismiss();
                     }
@@ -217,8 +217,8 @@ public class SecFrg extends BaseFrg {
     protected void onVisible() {
         super.onVisible();
         handler.post(mCallBack);
-        if (null != CsjSpeechSynthesizer.getSynthesizer()) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_restart), null);
+        if (null != CsjSpeechSynthesizer2.getSynthesizer()) {
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_restart), null);
         }
     }
 
@@ -226,7 +226,7 @@ public class SecFrg extends BaseFrg {
     protected void onInvisible() {
         super.onInvisible();
         handler.removeCallbacks(mCallBack);
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
     }
 
 
@@ -243,7 +243,7 @@ public class SecFrg extends BaseFrg {
                     public void run() {
                         timeUtil.stop();
                         CSJToast.showToast(getActivity(), "连接 " + mScanResult.ssid + "成功");
-                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("连接WiFi成功", new CsjSynthesizerListener() {
+                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("连接WiFi成功", new CsjSynthesizerListener() {
                             @Override
                             public void onSpeakBegin() {
                                 SpeechStatus.getIstance().setSpeakFinished(false);
@@ -277,7 +277,7 @@ public class SecFrg extends BaseFrg {
                     public void getTime(int i) {
                         if (i == 0 && LoadingDialog.getInstance().getStatus()) {
                             LoadingDialog.getInstance().dismissLoad();
-                            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("连接超时,请检查网络", null);
+                            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("连接超时,请检查网络", null);
                             CSJToast.showToast(Static.CONTEXT, Static.CONTEXT.getResources().getString(R.string.connect_out_time));
                         }
                     }

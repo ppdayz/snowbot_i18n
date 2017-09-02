@@ -38,6 +38,7 @@ import com.csjbot.snowbot.bean.FromBean;
 import com.csjbot.snowbot.bean.Home;
 import com.csjbot.snowbot.bean.ToBean;
 import com.csjbot.snowbot.client.nettyHandler.ClientListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.BackUpMapTool;
 import com.csjbot.snowbot.utils.CommonTool;
 import com.csjbot.snowbot.utils.DialogUtil;
@@ -46,7 +47,6 @@ import com.csjbot.snowbot.utils.TimeUtil;
 import com.csjbot.snowbot.views.BaseRecyViewAdpter;
 import com.csjbot.snowbot.views.CusViewHodler;
 import com.csjbot.snowbot.views.MyDecoration;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.bean.MapDataBean;
 import com.csjbot.snowbot_rogue.platform.SnowBotManager;
 import com.csjbot.snowbot_rogue.servers.slams.MoveServerMapListener;
@@ -803,7 +803,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
         isGoHome = true;
         snowBot.stopPartol();
         mHandler.postDelayed(() -> snowBot.goHome(), 2000);
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("小雪回去充电辣~", null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("小雪回去充电辣~", null);
         CSJToast.showToast(this, getString(R.string.go_home));
     }
 
@@ -817,7 +817,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
         }
 
         if (snowBot.isLowPowerDetected()) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getString(R.string.low_power_warning), null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getString(R.string.low_power_warning), null);
             return;
         }
 
@@ -826,7 +826,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
             List<Home> homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
 
             if (null == homeLists) {
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getResources().getString(R.string.set_patrol_point), null);
+                CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getResources().getString(R.string.set_patrol_point), null);
                 CSJToast.showToast(this, getResources().getString(R.string.set_patrol_point), 1000);
                 return;
             }
@@ -848,7 +848,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
         }
 
         if (!snowBot.isPartol()) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getResources().getString(R.string.start_patrol_speech), null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getResources().getString(R.string.start_patrol_speech), null);
             CSJToast.showToast(this, getResources().getString(R.string.start_patrol_speech), 1000);
             snowBot.partol(poses);
             snowBot.setAutoUpdateMap(false);
@@ -1022,7 +1022,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
         } catch (NullPointerException e) {
             wakeupMapUpdate(true);
 
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getResources().getString(R.string.map_not_exist), null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getResources().getString(R.string.map_not_exist), null);
         }
     }
 
@@ -1031,7 +1031,7 @@ public class MapActivity extends CsjUIActivity implements View.OnTouchListener, 
 //    public void robotStatusUpdated(RobotStatusUpdateEvent event) {
 //        int powerPercent = event.getBatteryPercentage();
 //        if (powerPercent < Constants.LOW_POWER_GO_HOME && isPartol) {
-//            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getString(R.string.low_power_waring), null);
+//            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getString(R.string.low_power_waring), null);
 //            snowBot.cancelAction();
 //        }
 //    }

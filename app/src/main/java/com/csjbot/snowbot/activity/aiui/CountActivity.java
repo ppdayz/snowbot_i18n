@@ -10,8 +10,8 @@ import android.widget.EditText;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
 import com.csjbot.snowbot.bean.aiui.Compute;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
@@ -745,7 +745,7 @@ public class CountActivity extends AIUIActivity {
 
     private void voice(String text) {
         postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, text));
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 SpeechStatus.getIstance().setSpeakFinished(false);

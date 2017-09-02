@@ -9,7 +9,7 @@ import android.widget.VideoView;
 
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
 
@@ -189,10 +189,10 @@ public class VideoPlayActivity extends CsjUIActivity implements MediaPlayer.OnEr
                 finish();
                 break;
             case EventsConstants.AIUIEvents.AIUI_EVENT_SUB_NLP:
-                CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+                CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
                 finish();
             case EventsConstants.AIUIEvents.AIUI_EVENT_FORCE_SLEEP:
-                CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+                CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
                 onPause();
                 finish();
                 break;

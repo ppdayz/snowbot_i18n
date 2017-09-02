@@ -383,6 +383,11 @@
 
         <activity android:name=".activity.settings.WifiConfigAutomaticActivity" />
         <activity android:name=".activity.MaterialLockActivity" />
+
+        <service
+            android:name=".services.google_speech.GoogleSpeechBaseService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

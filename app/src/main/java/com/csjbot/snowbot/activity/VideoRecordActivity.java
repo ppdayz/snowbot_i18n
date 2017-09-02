@@ -23,11 +23,11 @@ import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.CommonTool;
 import com.csjbot.snowbot.utils.FileUtil;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot.utils.SpeechStatus;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.camera.CameraInterface;
 import com.csjbot.snowbot_rogue.utils.CSJToast;
 import com.csjbot.snowbot_rogue.utils.Constant;
@@ -209,7 +209,7 @@ public class VideoRecordActivity extends CsjUIActivity implements OnClickListene
             isInAutoTakePhoto = true;
 //            EventBus.getDefault().post(new RobotStatusUpdateEvent(15, false, 70));
 
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("请摆个美美的pose，开始拍照", new CsjSynthesizerListener() {
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("请摆个美美的pose，开始拍照", new CsjSynthesizerListener() {
                 @Override
                 public void onSpeakBegin() {
                     loadToast.setText(String.valueOf(autoTakePhotoCD));

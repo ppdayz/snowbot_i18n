@@ -20,7 +20,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.media.SmoothStreamingTestMediaDrmCallback;
 import com.csjbot.snowbot.media.WidevineTestMediaDrmCallback;
 import com.csjbot.snowbot.media.exoplayer.DashRendererBuilder;
@@ -28,6 +27,7 @@ import com.csjbot.snowbot.media.exoplayer.ExoPlayerBean;
 import com.csjbot.snowbot.media.exoplayer.ExtractorRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.HlsRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.SmoothStreamingRendererBuilder;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot_rogue.utils.Constant;
 import com.google.android.exoplayer.ExoPlaybackException;
 import com.google.android.exoplayer.ExoPlayer;
@@ -163,7 +163,7 @@ public class NewsActivityBack extends Activity implements ExoPlayerBean.Listener
      * 说完话后播放新闻
      */
     private void speakAndPreparePlay(final String text) {
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new SynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new SynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 speakFinished = false;
@@ -205,7 +205,7 @@ public class NewsActivityBack extends Activity implements ExoPlayerBean.Listener
     @Override
     public void onBackPressed() {
         changeExpression(Constant.Expression.EXPRESSION_NORMAL);
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         if (player != null) {
             try {
                 if (player.getPlayWhenReady()) {

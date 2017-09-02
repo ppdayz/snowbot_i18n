@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.android.core.entry.Static;
 import com.csjbot.snowbot.R;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,13 +60,13 @@ public class FirstFrg extends BaseFrg {
     @Override
     protected void onVisible() {
         super.onVisible();
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_home), null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_home), null);
     }
 
     @Override
     protected void onInvisible() {
         super.onInvisible();
-//        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+//        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
     }
 
     @OnTouch(R.id.skip_registration)

@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import com.android.core.util.SharedUtil;
 import com.android.core.util.StrUtil;
 import com.csjbot.csjbase.log.Csjlogger;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
 import com.csjbot.snowbot.pupwindow.PlayAdvertiseFloatWind;
 import com.csjbot.snowbot.utils.SharedKey;
@@ -26,7 +25,7 @@ public class AdvertisementService extends Service {
     private Handler handler = new Handler();
     private String advertisement = "";
     private int repeatTime = 0;
-    private CsjSpeechSynthesizer csjSpeechSynthesizer = CsjSpeechSynthesizer.getSynthesizer();
+    private CsjSpeechSynthesizer2 csjSpeechSynthesizer = CsjSpeechSynthesizer2.getSynthesizer();
     private PlayAdvertiseFloatWind playAdvertiseFloatWind;
     private int surplusTimes = 0;
     private Runnable runnable = new Runnable() {

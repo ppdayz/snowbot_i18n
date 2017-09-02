@@ -29,7 +29,7 @@ import com.csjbot.snowbot.bean.FaceIdentifyErrorMsg;
 import com.csjbot.snowbot.bean.FaceRecognitionData;
 import com.csjbot.snowbot.bean.IdentifyItem;
 import com.csjbot.snowbot.bean.RegisterFaceBean;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.DialogUtil;
 import com.csjbot.snowbot.utils.OkHttp.DisposeDataListener;
 import com.csjbot.snowbot.utils.OkHttp.HttpUtil;
@@ -347,8 +347,8 @@ public class FaceRecognitionAct extends CsjUIActivity implements CsjFaceDetector
         sexTv.setText(Static.CONTEXT.getString(R.string.sex) + sexTemp);
         appearanceTv.setText(Static.CONTEXT.getString(R.string.appearance) + appearance);
         smileTv.setText(Static.CONTEXT.getString(R.string.smile) + smile);
-        if (null != CsjSpeechSynthesizer.getSynthesizer()) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("你好" + name, null);
+        if (null != CsjSpeechSynthesizer2.getSynthesizer()) {
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("你好" + name, null);
         }
     }
 

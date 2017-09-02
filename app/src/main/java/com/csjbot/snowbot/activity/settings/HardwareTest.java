@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.android.core.util.SharedUtil;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
 import com.csjbot.snowbot_rogue.Events.HWTestEvent;
@@ -86,7 +86,7 @@ public class HardwareTest extends CsjUIActivity {
     }
 
     private void speech(String text) {
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_SPEAK));

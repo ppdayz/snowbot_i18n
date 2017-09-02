@@ -28,9 +28,9 @@ import com.csjbot.snowbot.activity.face.base.BaseApplication;
 import com.csjbot.snowbot.activity.face.model.User;
 import com.csjbot.snowbot.activity.face.util.BackGroundDrawUtils;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.utils.Constant;
 import com.iflytek.cloud.SpeechError;
 
@@ -554,7 +554,7 @@ public class FaceRecoBackground implements CameraHelper.PreviewFrameListener, Ba
 
             if (isSpeeakingOver) {
                 Log.e("FaceRecoBackground", "识别成功~~~~~" + user.getName());
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking("你好 " + user.getName(), new CsjSynthesizerListener() {
+                CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("你好 " + user.getName(), new CsjSynthesizerListener() {
                     @Override
                     public void onSpeakBegin() {
                         isSpeeakingOver = false;

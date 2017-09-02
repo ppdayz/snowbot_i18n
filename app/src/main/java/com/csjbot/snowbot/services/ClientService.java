@@ -113,7 +113,7 @@ public class ClientService extends CsjBaseService implements ClientListener, Mes
     Runnable powerLower = new Runnable() {
         @Override
         public void run() {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getResources().getString(R.string.power_too_low), null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getResources().getString(R.string.power_too_low), null);
             CSJToast.showToast(ClientService.this, getResources().getString(R.string.power_too_low));
             powerHandler.postDelayed(powerLower, powerLowDialogTime);
         }
@@ -277,7 +277,7 @@ public class ClientService extends CsjBaseService implements ClientListener, Mes
             break;
             case "Voice":
                 if (StrUtil.isNotBlank(data)) {
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(data, null);
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(data, null);
                 }
                 break;
             case "Aircontrol": //无
@@ -669,7 +669,7 @@ public class ClientService extends CsjBaseService implements ClientListener, Mes
             List<Home> homeLists = new ArrayList<>();
             homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
             if (null != homeLists && homeLists.size() == 0) {
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking("巡逻点未设置，请设置巡逻点", null);
+                CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("巡逻点未设置，请设置巡逻点", null);
                 powerHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -700,7 +700,7 @@ public class ClientService extends CsjBaseService implements ClientListener, Mes
         }
 
         if (!isPartol) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("小雪开始巡逻辣", null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("小雪开始巡逻辣", null);
             powerHandler.post(new Runnable() {
                 @Override
                 public void run() {

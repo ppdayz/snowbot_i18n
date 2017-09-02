@@ -13,10 +13,10 @@ import com.csjbot.snowbot.adapter.GralleryAdapter;
 import com.csjbot.snowbot.adapter.GralleryAdapterDelClickInterface;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.bean.GralleryItem;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.TimestampUtil;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.utils.CSJToast;
 import com.csjbot.snowbot_rogue.utils.Constant;
 
@@ -202,12 +202,12 @@ public class GalleryActivity extends CsjUIActivity implements GralleryAdapterDel
                 if (question.equals("已打开相册")) {
 //                    CSJToast.showToast(context, "您已经在相册了");
                 }
-                CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+                CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
                     finish();
                     break;
 
             case EventsConstants.AIUIEvents.AIUI_EVENT_FORCE_SLEEP:
-                CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+                CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
                 finish();
                 break;
         }

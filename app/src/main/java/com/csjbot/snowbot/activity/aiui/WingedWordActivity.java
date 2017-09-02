@@ -8,11 +8,11 @@ import com.csjbot.csjbase.event.BusFactory;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.views.aiui.ChatMsgEntity;
 import com.csjbot.snowbot.views.aiui.ChatMsgViewAdapter;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -117,7 +117,7 @@ public class WingedWordActivity extends CsjUIActivity {
         mDataArrays.add(entity);
         mAdapter = new ChatMsgViewAdapter(this, mDataArrays);
         mListView.setAdapter(mAdapter);
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(entity.getMessage(), null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(entity.getMessage(), null);
     }
 
     private void mastersSend(String content) {
@@ -177,7 +177,7 @@ public class WingedWordActivity extends CsjUIActivity {
                     //                    String itpk = str.substring(1);//请求下来的第一位有符号需要切割掉
                     Csjlogger.error("itpk========" + itpk);
                     Csjlogger.error("ITPK============" + mITPK_cy);
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(itpk, null);
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(itpk, null);
                     postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, itpk));
                 } catch (IOException e) {
                     e.printStackTrace();

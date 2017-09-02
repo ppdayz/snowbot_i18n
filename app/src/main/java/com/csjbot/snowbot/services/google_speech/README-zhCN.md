@@ -184,5 +184,5 @@ private final StreamObserver<StreamingRecognizeResponse> mResponseObserver
 
 当onCompleted()被调用的时候，就说明一次识别已经完成
 
-- ###在我们的提供的服务中，当机器人开始说话的时候，就会继续强制重置拾音并且开始识别，如果您有更加好的流程，欢迎提`issue`和`pull request`
+- ### 在我们的提供的服务中，当机器人开始说话的时候，就会继续强制重置拾音并且开始识别，如果您有更加好的流程，欢迎提`issue`和`pull request`
 

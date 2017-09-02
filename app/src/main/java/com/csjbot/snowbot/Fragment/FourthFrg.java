@@ -11,7 +11,7 @@ import com.android.core.entry.Static;
 import com.android.core.util.SharedUtil;
 import com.android.core.util.StrUtil;
 import com.csjbot.snowbot.R;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot_rogue.utils.CSJToast;
 
@@ -68,12 +68,12 @@ public class FourthFrg extends BaseFrg {
     @Override
     protected void onVisible() {
         super.onVisible();
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_name), null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_name), null);
     }
 
     @Override
     protected void onInvisible() {
         super.onInvisible();
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
     }
 }

@@ -12,10 +12,10 @@ import android.webkit.WebViewClient;
 
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.UUIDGenerator;
 import com.csjbot.snowbot.utils.UrlUtil;
 import com.csjbot.snowbot.views.dialog.MyWaitingDialog;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.platform.SnowBotManager;
 import com.csjbot.snowbot_rogue.platform.SnowBotNetwokListen;
 import com.csjbot.snowbot_rogue.servers.slams.events.ConfigPageEntey;
@@ -120,7 +120,7 @@ public class WifiConfigAutomaticActivity extends CsjUIActivity {
                     public void configWifiState(boolean wifiCMDSendSuccess) {
                         if (wifiCMDSendSuccess) {
                             webview.post(() -> CSJToast.showToast(context, "底盘配置成功，请重新启动机器人！"));
-                            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("底盘配置成功，请重新启动机器人", null);
+                            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("底盘配置成功，请重新启动机器人", null);
                             dismissDialog();
                         } else {
                             webview.post(() -> {

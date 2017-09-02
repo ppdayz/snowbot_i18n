@@ -11,8 +11,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.csjbot.csjbase.log.Csjlogger;
+import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
 import com.csjbot.snowbot.media.SmoothStreamingTestMediaDrmCallback;
 import com.csjbot.snowbot.media.WidevineTestMediaDrmCallback;
@@ -21,11 +21,11 @@ import com.csjbot.snowbot.media.exoplayer.ExoPlayerBean;
 import com.csjbot.snowbot.media.exoplayer.ExtractorRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.HlsRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.SmoothStreamingRendererBuilder;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
-import com.csjbot.snowbot.R;
 import com.csjbot.snowbot_rogue.utils.Constant;
 import com.google.android.exoplayer.ExoPlaybackException;
 import com.google.android.exoplayer.ExoPlayer;
@@ -71,7 +71,7 @@ public class NewsActivity extends AIUIActivity implements ExoPlayerBean.Listener
     }
 
     private void restartActivity() {
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
         releasePlayer();
         finish();
@@ -116,7 +116,7 @@ public class NewsActivity extends AIUIActivity implements ExoPlayerBean.Listener
      */
     private void speakAndPreparePlay(final String text) {
         postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, text));
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 speakFinished = false;
@@ -134,7 +134,7 @@ public class NewsActivity extends AIUIActivity implements ExoPlayerBean.Listener
 
     @Override
     public void onBackPressed() {
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
         releasePlayer();
         finish();

@@ -18,7 +18,7 @@ import com.android.core.util.SharedUtil;
 import com.android.core.util.StrUtil;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.bean.BFeed;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.OkHttp.DisposeDataListener;
 import com.csjbot.snowbot.utils.OkHttp.HttpUtil;
 import com.csjbot.snowbot.utils.SharedKey;
@@ -204,13 +204,13 @@ public class ThrFrg extends BaseFrg {
     @Override
     protected void onVisible() {
         super.onVisible();
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_registration), null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_registration), null);
     }
 
     @Override
     protected void onInvisible() {
         super.onInvisible();
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         if (null != verifyNumBtn) {
             verifyNumBtn.setText(Static.CONTEXT.getResources().getString(R.string.get_berify_num));
             verifyNumBtn.setEnabled(true);

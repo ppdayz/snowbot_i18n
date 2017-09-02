@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
@@ -128,7 +128,7 @@ public class PoetryActivity extends AIUIActivity {
 
     private void poetrySpeak(String text) {
         postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, text));
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new SynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new SynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 SpeechStatus.getIstance().setSpeakFinished(false);
@@ -171,7 +171,7 @@ public class PoetryActivity extends AIUIActivity {
 
     @Override
     public void onBackPressed() {
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
         finish();
     }

@@ -545,7 +545,7 @@ public class AIUIService extends CsjBaseService {
                         JSONObject wakeInfo = new JSONObject(contentBean.getInfo());
                         int wakeAngle = wakeInfo.getInt(KEY_ANGLE);
 
-//                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("旋转 " + String.valueOf(wakeAngle) + " 度", null);
+//                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("旋转 " + String.valueOf(wakeAngle) + " 度", null);
                         Csjlogger.info("wakeup Angle {}", wakeAngle);
                         mIsHandleError = false;
                         mIsWakeUp = true;
@@ -894,7 +894,7 @@ public class AIUIService extends CsjBaseService {
             answer = "小雪正在学习，还不会回答！";
         }
 
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(answer, null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(answer, null);
         postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, answer));
     };
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.android.core.entry.Static;
 import com.csjbot.snowbot.R;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 
 import butterknife.OnClick;
 
@@ -48,12 +48,12 @@ public class FifthFrg extends BaseFrg {
     @Override
     protected void onVisible() {
         super.onVisible();
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_appDownload), null);
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_appDownload), null);
     }
 
     @Override
     protected void onInvisible() {
         super.onInvisible();
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
     }
 }

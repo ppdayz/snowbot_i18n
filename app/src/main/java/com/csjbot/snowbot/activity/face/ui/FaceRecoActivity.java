@@ -20,8 +20,8 @@ import com.csjbot.snowbot.activity.face.model.User;
 import com.csjbot.snowbot.activity.face.ui.icount.ManageFaceActivity;
 import com.csjbot.snowbot.activity.face.ui.icount.RegisterImageCameraActivity;
 import com.csjbot.snowbot.activity.face.util.DrawUtil;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
 import com.csjbot.snowbot_rogue.utils.Constant;
@@ -306,7 +306,7 @@ public class FaceRecoActivity extends BaseCameraActivity implements DrawUtil.Fin
             userFindTime.put(user.getPersonId(), System.currentTimeMillis());
 
             if (isSpeeakingOver) {
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking("你好 " + user.getName(), new CsjSynthesizerListener() {
+                CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("你好 " + user.getName(), new CsjSynthesizerListener() {
                     @Override
                     public void onSpeakBegin() {
                         isSpeeakingOver = false;

@@ -9,8 +9,8 @@ import com.android.core.util.SharedUtil;
 import com.android.core.util.StrUtil;
 import com.csjbot.csjbase.event.IBus;
 import com.csjbot.csjbase.log.Csjlogger;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
@@ -48,7 +48,7 @@ public class AiuiBroadcast extends BroadcastReceiver {
                 String ttsContent = bundle.getString(SharedKey.TTSCONTENT);
                 if (StrUtil.isNotBlank(ttsContent)) {
                     postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, ttsContent));
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(ttsContent, new CsjSynthesizerListener() {
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(ttsContent, new CsjSynthesizerListener() {
                         @Override
                         public void onSpeakBegin() {
                             SpeechStatus.getIstance().setSpeakFinished(false);

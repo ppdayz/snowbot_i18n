@@ -29,6 +29,7 @@ import com.csjbot.snowbot.activity.face.ui.FaceRecoActivity;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.bean.Home;
 import com.csjbot.snowbot.services.CheckEthernetService;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.services.google_speech.GoogleSpeechService;
 import com.csjbot.snowbot.utils.BackUpMapTool;
 import com.csjbot.snowbot.utils.PowerStatus;
@@ -36,7 +37,6 @@ import com.csjbot.snowbot.utils.SharedKey;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot.utils.UpdateApkManagerUtil;
 import com.csjbot.snowbot_rogue.Events.TestDataEvent;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.bean.MapDataBean;
 import com.csjbot.snowbot_rogue.platform.SnowBotManager;
 import com.csjbot.snowbot_rogue.servers.slams.SnowBotMoveServer;
@@ -100,7 +100,7 @@ public class LauncherActivity extends CsjUIActivity {
             List<Home> homeLists;
             homeLists = SharedUtil.getListObj(SharedKey.HOMEDATAS, Home.class);
             if (null == homeLists) {
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getResources().getString(R.string.set_patrol_point), null);
+                CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getResources().getString(R.string.set_patrol_point), null);
                 CSJToast.showToast(this, getResources().getString(R.string.set_patrol_point), 1000);
                 return;
             }
@@ -111,7 +111,7 @@ public class LauncherActivity extends CsjUIActivity {
             }
 
             if (snowBot.isSlamConnected() && snowBot.isLowPowerDetected()) {
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking(
+                CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(
                         String.format(Locale.getDefault(),
                                 getResources().getString(R.string.snowbot_low_power_cant_partol),
                                 "小雪"), null);
@@ -129,7 +129,7 @@ public class LauncherActivity extends CsjUIActivity {
         }
 
         if (!snowBot.isPartol()) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(getResources().getString(R.string.start_patrol_speech), null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getResources().getString(R.string.start_patrol_speech), null);
             CSJToast.showToast(this, getResources().getString(R.string.start_patrol_speech), 1000);
             snowBot.partol(poses);
             mLoadToast.setText(getString(R.string.patroling));
@@ -582,7 +582,7 @@ public class LauncherActivity extends CsjUIActivity {
                         !lowpower30Dialog.isShowing()) {
                     lowpower30Dialog.show();
                     SpeechStatus.getIstance().setAiuiResponse(false);
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(tts, null);
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(tts, null);
                 }
 
                 return;
@@ -605,7 +605,7 @@ public class LauncherActivity extends CsjUIActivity {
                     lowpowerDialog.show();
                     SpeechStatus.getIstance().setAiuiResponse(false);
                     Csjlogger.info("lowpowerDialog show , System.currentTimeMillis() is {}", System.currentTimeMillis());
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(tts, null);
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(tts, null);
                 }
             }
         }

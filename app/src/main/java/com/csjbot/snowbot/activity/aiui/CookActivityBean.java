@@ -20,7 +20,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
 import com.csjbot.snowbot.bean.aiui.CookBean;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot_rogue.utils.Constant;
 
 import java.util.List;
@@ -82,7 +82,7 @@ public class CookActivityBean extends AIUIActivity {
 
     @Override
     public void onBackPressed() {
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         super.onBackPressed();
         this.finish();
     }

@@ -14,8 +14,8 @@ import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.bean.BFeed;
 import com.csjbot.snowbot.bean.RegisterALiYunBean;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.CommonTool;
 import com.csjbot.snowbot.utils.OkHttp.DisposeDataListener;
 import com.csjbot.snowbot.utils.OkHttp.HttpUtil;
@@ -88,7 +88,7 @@ public class OutWareFrg extends BaseFrg {
                 if (feed.getData().isFlag()) {
                     SharedUtil.setPreferInt(SharedKey.ROBOTREGISTERSTATUS, RobotStatus.ALREADYOUTWARE);
                     ourWareBtn.setText(getString(R.string.alreadly_out_ware));
-                    CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
+                    CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
                         @Override
                         public void onSpeakBegin() {
                             SpeechStatus.getIstance().setSpeakFinished(false);
@@ -133,7 +133,7 @@ public class OutWareFrg extends BaseFrg {
     protected void onVisible() {
         super.onVisible();
         buttonAvailable(false);
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_outware), new CsjSynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_outware), new CsjSynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 SpeechStatus.getIstance().setSpeakFinished(false);
@@ -150,7 +150,7 @@ public class OutWareFrg extends BaseFrg {
     @Override
     protected void onInvisible() {
         super.onInvisible();
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
     }
 
     /**
@@ -189,7 +189,7 @@ public class OutWareFrg extends BaseFrg {
                             || error.getReason() == OkHttpException.REASON_RESP_BLANK
                             || error.getReason() == OkHttpException.REASON_PARSER_JSON_ERROR
                             || error.getReason() == OkHttpException.REANSON_UNKNOW) {
-//                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
+//                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
                         CSJToast.showToast(getActivity(), getResources().getString(R.string.aliyun_exist));
                     }
                 }

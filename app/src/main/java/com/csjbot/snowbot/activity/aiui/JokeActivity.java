@@ -21,12 +21,12 @@ import com.csjbot.snowbot.media.exoplayer.ExoPlayerBean;
 import com.csjbot.snowbot.media.exoplayer.ExtractorRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.HlsRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.SmoothStreamingRendererBuilder;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot.views.aiui.playerview.MusicPlayerView;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.utils.Constant;
 import com.google.android.exoplayer.ExoPlaybackException;
 import com.google.android.exoplayer.ExoPlayer;
@@ -149,7 +149,7 @@ public class JokeActivity extends AIUIActivity implements ExoPlayerBean.Listener
      */
     private void speakAndPreparePlay(final String text) {
         postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, text));
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 speakFinished = false;
@@ -167,7 +167,7 @@ public class JokeActivity extends AIUIActivity implements ExoPlayerBean.Listener
 
     @Override
     public void onBackPressed() {
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
         releasePlayer();
         finish();

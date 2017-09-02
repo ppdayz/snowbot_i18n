@@ -13,8 +13,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
 import com.csjbot.snowbot.bean.aiui.CookBean;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
@@ -122,7 +122,7 @@ public class CookActivity extends AIUIActivity {
 
     private void cookBookRead(String cookBookText) {
         postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, cookBookText));
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(cookBookText, new CsjSynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(cookBookText, new CsjSynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 SpeechStatus.getIstance().setSpeakFinished(false);

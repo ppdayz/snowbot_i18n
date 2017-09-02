@@ -5,11 +5,11 @@ import android.support.annotation.Nullable;
 
 import com.csjbot.csjbase.base.CsjBaseActivity;
 import com.csjbot.csjbase.log.Csjlogger;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.utils.Constant;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -108,7 +108,7 @@ public abstract class AIUIActivity extends CsjBaseActivity {
         if (service != null && !currentService.equalsIgnoreCase(service)) {
 
             Csjlogger.debug("service is" + service);
-            CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+            CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
             finish();
             return true;
         }

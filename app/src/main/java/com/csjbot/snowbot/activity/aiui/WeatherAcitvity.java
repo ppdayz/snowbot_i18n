@@ -12,9 +12,9 @@ import com.alibaba.fastjson.JSON;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.WeatherBean;
 import com.csjbot.snowbot.bean.aiui.entity.WeatherDate;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
@@ -80,7 +80,7 @@ public class WeatherAcitvity extends AIUIActivity {
         try {
             weatherDataSet(data, intent.getStringExtra("semantic"));
         } catch (Exception e) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("没有查找到天气，请换点别的吧", null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("没有查找到天气，请换点别的吧", null);
             Csjlogger.error(e);
             this.finish();
         }
@@ -102,7 +102,7 @@ public class WeatherAcitvity extends AIUIActivity {
         try {
             weatherDataSet(data, getIntent().getStringExtra("semantic"));
         } catch (Exception e) {
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking("没有查找到天气，请换点别的吧", null);
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("没有查找到天气，请换点别的吧", null);
             Csjlogger.error(e);
             this.finish();
         }
@@ -206,7 +206,7 @@ public class WeatherAcitvity extends AIUIActivity {
     }
 
     public void closeSpeech(View view) {
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
         finish();
     }

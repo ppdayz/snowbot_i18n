@@ -20,8 +20,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.NewsBean;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
 import com.csjbot.snowbot_rogue.Events.ExpressionEvent;
@@ -159,7 +159,7 @@ public class NewsActivityBean extends AIUIActivity {
                 }
             }, 5000);
         }catch (IndexOutOfBoundsException e){
-                CsjSpeechSynthesizer.getSynthesizer().startSpeaking("没有获取到新闻，请换点别的吧", null);
+                CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("没有获取到新闻，请换点别的吧", null);
                 this.finish();
         }
 
@@ -177,7 +177,7 @@ public class NewsActivityBean extends AIUIActivity {
 
     @Override
     public void onBackPressed() {
-        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
         postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
         finish();
     }

@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import com.csjbot.csjbase.event.IBus;
 import com.csjbot.csjbase.log.Csjlogger;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -137,7 +137,7 @@ public abstract class SemanticResult {
                             readDigit = 2;
                         }
 
-                        CsjSpeechSynthesizer tts = CsjSpeechSynthesizer.getSynthesizer();
+                        CsjSpeechSynthesizer2 tts = CsjSpeechSynthesizer2.getSynthesizer();
                         if (null != tts) {
                             tts.setParameter("rdn", readDigit + "");
                         }

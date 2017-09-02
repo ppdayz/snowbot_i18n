@@ -12,7 +12,6 @@ import com.alibaba.fastjson.JSON;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.aiui.base.AIUIActivity;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.StoryBean;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
 import com.csjbot.snowbot.media.SmoothStreamingTestMediaDrmCallback;
@@ -22,6 +21,7 @@ import com.csjbot.snowbot.media.exoplayer.ExoPlayerBean;
 import com.csjbot.snowbot.media.exoplayer.ExtractorRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.HlsRendererBuilder;
 import com.csjbot.snowbot.media.exoplayer.SmoothStreamingRendererBuilder;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot_rogue.Events.AIUIEvent;
 import com.csjbot.snowbot_rogue.Events.EventsConstants;
@@ -64,7 +64,7 @@ public class StoryActivityDemo extends AIUIActivity implements ExoPlayerBean.Lis
         }
         switch (event.getTag()) {
             case EventsConstants.AIUIEvents.MUSICX_NEWSBEAN_RESTART:
-                CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+                CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
                 postEvent(new ExpressionEvent(Constant.Expression.EXPRESSION_NORMAL));
                 releasePlayer();
                 finish();
@@ -121,7 +121,7 @@ public class StoryActivityDemo extends AIUIActivity implements ExoPlayerBean.Lis
      */
     private void speakAndPreparePlay(final String text) {
         postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, text));
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new CsjSynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 SpeechStatus.getIstance().setSpeakFinished(false);

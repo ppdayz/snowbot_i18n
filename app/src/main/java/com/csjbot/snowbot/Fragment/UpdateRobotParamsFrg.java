@@ -23,6 +23,7 @@ import com.csjbot.snowbot.activity.settings.ShowSNQRCodeActivity;
 import com.csjbot.snowbot.bean.RegisterALiYunBean;
 import com.csjbot.snowbot.bean.RobotParams;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.OkHttp.DisposeDataListener;
 import com.csjbot.snowbot.utils.OkHttp.HttpUtil;
 import com.csjbot.snowbot.utils.OkHttp.OkHttpException;
@@ -32,7 +33,6 @@ import com.csjbot.snowbot.utils.SharedPreferencesSDUtil;
 import com.csjbot.snowbot.utils.SpeechStatus;
 import com.csjbot.snowbot.utils.UUIDGenerator;
 import com.csjbot.snowbot.utils.UrlUtil;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot_rogue.platform.SnowBotManager;
 import com.csjbot.snowbot_rogue.utils.CSJToast;
 import com.iflytek.cloud.SpeechError;
@@ -281,7 +281,7 @@ public class UpdateRobotParamsFrg extends BaseFrg {
                             || error.getReason() == OkHttpException.REASON_RESP_BLANK
                             || error.getReason() == OkHttpException.REASON_PARSER_JSON_ERROR
                             || error.getReason() == OkHttpException.REANSON_UNKNOW) {
-//                        CsjSpeechSynthesizer.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
+//                        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("注册阿里云失败,已经存在,请联系研发人员", null);
                         CSJToast.showToast(getActivity(), getResources().getString(R.string.aliyun_exist));
                     }
                 }
@@ -293,7 +293,7 @@ public class UpdateRobotParamsFrg extends BaseFrg {
         getActivity().finish();
 //        SharedUtil.setPreferInt(SharedKey.ROBOTREGISTERSTATUS, RobotStatus.ALREADYOUTWARE);
 //        btnOK.setText(getString(R.string.alreadly_out_ware));
-//        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
+//        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_already_outware), new CsjSynthesizerListener() {
 //            @Override
 //            public void onSpeakBegin() {
 //                SpeechStatus.getIstance().setSpeakFinished(false);
@@ -377,7 +377,7 @@ public class UpdateRobotParamsFrg extends BaseFrg {
     public void onVisible() {
         super.onVisible();
         if (isAdd) {//新增语音提示准备出货
-            CsjSpeechSynthesizer.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_outware), new CsjSynthesizerListener() {
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(Static.CONTEXT.getResources().getString(R.string.snowbot_outware), new CsjSynthesizerListener() {
                 @Override
                 public void onSpeakBegin() {
                     SpeechStatus.getIstance().setSpeakFinished(false);
@@ -421,13 +421,13 @@ public class UpdateRobotParamsFrg extends BaseFrg {
     @Override
     public void onPause() {
         super.onPause();
-//        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+//        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
     }
 
     @Override
     public void onInvisible() {
         super.onInvisible();
-//        CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+//        CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
     }
 
     /**

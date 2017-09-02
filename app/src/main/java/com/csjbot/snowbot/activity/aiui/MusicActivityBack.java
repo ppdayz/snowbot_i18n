@@ -16,8 +16,8 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
-import com.csjbot.snowbot_rogue.app.CsjSpeechSynthesizer;
 import com.csjbot.snowbot.bean.aiui.MusicBean;
+import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.views.aiui.playerview.MusicPlayerView;
 import com.csjbot.snowbot_rogue.utils.Constant;
 import com.iflytek.cloud.SpeechError;
@@ -443,7 +443,7 @@ public class MusicActivityBack extends Activity {
      * 说完话后播放音乐
      */
     private void speakAndPreparePlay(String text) {
-        CsjSpeechSynthesizer.getSynthesizer().startSpeaking(text, new SynthesizerListener() {
+        CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(text, new SynthesizerListener() {
             @Override
             public void onSpeakBegin() {
                 changeExpression(Constant.Expression.EXPRESSION_SPEAK);
@@ -619,7 +619,7 @@ public class MusicActivityBack extends Activity {
             Toast.makeText(this, "再按一次后退键退出应用程序", Toast.LENGTH_SHORT).show();
         } else if (preparedPlay) {
             changeExpression(Constant.Expression.EXPRESSION_NORMAL);
-            CsjSpeechSynthesizer.getSynthesizer().stopSpeaking();
+            CsjSpeechSynthesizer2.getSynthesizer().stopSpeaking();
             if (mediaPlayer != null) {
                 try {
                     if (mediaPlayer.isPlaying()) {
