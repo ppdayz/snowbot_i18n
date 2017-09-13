@@ -16,19 +16,30 @@ import com.csjbot.snowbot.services.serial.Old5MicSerialManager;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.AccessToken;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.speech.v1.RecognitionAudio;
+import com.google.cloud.speech.v1.RecognitionConfig;
+import com.google.cloud.speech.v1.RecognizeRequest;
+import com.google.cloud.speech.v1.RecognizeResponse;
 import com.google.cloud.speech.v1.SpeechGrpc;
+import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
+import com.google.cloud.speech.v1.SpeechRecognitionResult;
+import com.google.cloud.speech.v1.StreamingRecognitionConfig;
+import com.google.cloud.speech.v1.StreamingRecognizeRequest;
+import com.google.cloud.speech.v1.StreamingRecognizeResponse;
+import com.google.protobuf.ByteString;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import io.grpc.CallOptions;
 import io.grpc.Channel;
@@ -42,8 +53,9 @@ import io.grpc.Status;
 import io.grpc.StatusException;
 import io.grpc.internal.DnsNameResolverProvider;
 import io.grpc.okhttp.OkHttpChannelProvider;
+import io.grpc.stub.StreamObserver;
 
-public abstract class GoogleSpeechBaseService extends CsjBaseService {
+public abstract class GoogleSpeechBaseService extends CsjBaseService implements StreamObserver<StreamingRecognizeResponse> {
     private static final String TAG = "GoogleSpeechService";
     private static final String PREFS = "GoogleSpeechService";
     private static final String PREF_ACCESS_TOKEN_VALUE = "access_token_value";
@@ -64,20 +76,205 @@ public abstract class GoogleSpeechBaseService extends CsjBaseService {
     private static final String HOSTNAME = "speech.googleapis.com";
 
     private static final int PORT = 443;
-    private final ArrayList<GoogleSpeechService.Listener> mListeners = new ArrayList<>();
     private volatile AccessTokenTask mAccessTokenTask;
-    private SpeechGrpc.SpeechStub mApi;
-    private Old5MicSerialManager micSerialManager = Old5MicSerialManager.getInstance();
-    private long lastRecognizingTime = Long.MAX_VALUE;
-    private Handler mHandler = new Handler();
 
+    private Handler mHandler = new Handler();
+    private StreamObserver<StreamingRecognizeRequest> mRequestObserver;
+
+    protected SpeechGrpc.SpeechStub mApi;
+    protected Old5MicSerialManager micSerialManager = Old5MicSerialManager.getInstance();
+    protected VoiceRecorder mVoiceRecorder;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        fetchAccessToken();
         mHandler = new Handler();
     }
 
+    /*
+     * *********************************************************************************************
+     * **********************************  begin of recognize   ************************************
+     * **********************************  begin of recognize   ************************************
+     * **********************************  begin of recognize   ************************************
+     * *********************************************************************************************
+     */
+    private final StreamObserver<RecognizeResponse> mFileResponseObserver
+            = new StreamObserver<RecognizeResponse>() {
+        @Override
+        public void onNext(RecognizeResponse response) {
+            String text = null;
+            if (response.getResultsCount() > 0) {
+                final SpeechRecognitionResult result = response.getResults(0);
+                if (result.getAlternativesCount() > 0) {
+                    final SpeechRecognitionAlternative alternative = result.getAlternatives(0);
+                    text = alternative.getTranscript();
+                }
+            }
+            if (text != null) {
+            }
+        }
+
+        @Override
+        public void onError(Throwable t) {
+            Log.e(TAG, "Error calling the API.", t);
+        }
+
+        @Override
+        public void onCompleted() {
+            Log.i(TAG, "API completed.");
+        }
+
+    };
+
+
+    private String getDefaultLanguageCode() {
+        final Locale locale = Locale.getDefault();
+        final StringBuilder language = new StringBuilder(locale.getLanguage());
+        final String country = locale.getCountry();
+        if (!TextUtils.isEmpty(country)) {
+            language.append("-");
+            language.append(country);
+        }
+        return language.toString();
+    }
+
+
+    /**
+     * Starts recognizing speech audio.
+     *
+     * @param sampleRate The sample rate of the audio.
+     */
+    public void startRecognizing(int sampleRate) {
+        if (mApi == null) {
+            Log.w(TAG, "API not ready. Ignoring the request.");
+            return;
+        }
+        // Configure the API
+        mRequestObserver = mApi.streamingRecognize(this);
+        mRequestObserver.onNext(StreamingRecognizeRequest.newBuilder()
+                .setStreamingConfig(StreamingRecognitionConfig.newBuilder()
+                        .setConfig(RecognitionConfig.newBuilder()
+                                .setLanguageCode(getDefaultLanguageCode())
+//                                .setLanguageCode("en-US")
+                                .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
+                                .setSampleRateHertz(sampleRate)
+                                .build())
+                        .setInterimResults(true)
+                        .setSingleUtterance(true)
+                        .build())
+                .build());
+    }
+
+
+    /**
+     * Recognizes the speech audio. This method should be called every time a chunk of byte buffer
+     * is ready.
+     *
+     * @param data The audio data.
+     * @param size The number of elements that are actually relevant in the {@code data}.
+     */
+    public void recognize(byte[] data, int size) {
+        if (mRequestObserver == null) {
+            return;
+        }
+
+        // Call the streaming recognition API
+        try {
+            mRequestObserver.onNext(StreamingRecognizeRequest.newBuilder()
+                    .setAudioContent(ByteString.copyFrom(data, 0, size))
+                    .build());
+        } catch (IllegalStateException e) {
+            Csjlogger.error(e);
+        }
+    }
+
+
+    /**
+     * Finishes recognizing speech audio.
+     */
+    public void finishRecognizing() {
+        if (mRequestObserver == null) {
+            return;
+        }
+        mRequestObserver.onCompleted();
+        mRequestObserver = null;
+    }
+
+    /**
+     * Recognize all data from the specified {@link InputStream}.
+     *
+     * @param stream The audio data.
+     */
+    @SuppressWarnings("unused")
+    public void recognizeInputStream(InputStream stream) {
+        try {
+            mApi.recognize(
+                    RecognizeRequest.newBuilder()
+                            .setConfig(RecognitionConfig.newBuilder()
+                                    .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
+                                    .setLanguageCode("en-US")
+                                    .setSampleRateHertz(16000)
+                                    .build())
+                            .setAudio(RecognitionAudio.newBuilder()
+                                    .setContent(ByteString.readFrom(stream))
+                                    .build())
+                            .build(),
+                    mFileResponseObserver);
+        } catch (IOException e) {
+            Log.e(TAG, "Error loading the input", e);
+        }
+    }
+    /*
+     * *********************************************************************************************
+     * **********************************  end of recognize   **************************************
+     * **********************************  end of recognize   **************************************
+     * **********************************  end of recognize   **************************************
+     * *********************************************************************************************
+     */
+
+
+    private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback() {
+
+        @Override
+        public void onVoiceStart() {
+            startRecognizing(mVoiceRecorder.getSampleRate());
+        }
+
+        @Override
+        public void onVoice(byte[] data, int size) {
+            recognize(data, size);
+        }
+
+        @Override
+        public void onVoiceEnd() {
+            finishRecognizing();
+        }
+    };
+
+    protected void startVoiceRecorder() {
+        Log.w(TAG, "startVoiceRecorder");
+        if (mVoiceRecorder != null) {
+            mVoiceRecorder.stop();
+        }
+        mVoiceRecorder = new VoiceRecorder(mVoiceCallback);
+        mVoiceRecorder.start();
+    }
+
+    protected void stopVoiceRecorder() {
+        if (mVoiceRecorder != null) {
+            mVoiceRecorder.stop();
+            mVoiceRecorder = null;
+        }
+    }
+
+    /**
+     * *********************************************************************************************
+     * **********************************  begin of   AccessToken   ********************************
+     * **********************************  begin of   AccessToken   ********************************
+     * **********************************  begin of   AccessToken   ********************************
+     * *********************************************************************************************
+     */
     private final Runnable mFetchAccessTokenRunnable = this::fetchAccessToken;
 
     private class AccessTokenTask extends AsyncTask<Void, Void, AccessToken> {
@@ -277,7 +474,7 @@ public abstract class GoogleSpeechBaseService extends CsjBaseService {
 
     }
 
-    private void fetchAccessToken() {
+    protected void fetchAccessToken() {
         if (mAccessTokenTask != null) {
             return;
         }
@@ -285,21 +482,36 @@ public abstract class GoogleSpeechBaseService extends CsjBaseService {
         mAccessTokenTask.execute();
     }
 
-    private String getDefaultLanguageCode() {
-        final Locale locale = Locale.getDefault();
-        final StringBuilder language = new StringBuilder(locale.getLanguage());
-        final String country = locale.getCountry();
-        if (!TextUtils.isEmpty(country)) {
-            language.append("-");
-            language.append(country);
-        }
-        return language.toString();
-    }
+    /**
+     * *********************************************************************************************
+     * ************************************  end of   AccessToken   ********************************
+     * ************************************  end of   AccessToken   ********************************
+     * ************************************  end of   AccessToken   ********************************
+     * *********************************************************************************************
+     */
 
 
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        mHandler.removeCallbacks(mFetchAccessTokenRunnable);
+        mHandler = null;
+        // Release the gRPC channel.
+        if (mApi != null) {
+            final ManagedChannel channel = (ManagedChannel) mApi.getChannel();
+            if (channel != null && !channel.isShutdown()) {
+                try {
+                    channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+                } catch (InterruptedException e) {
+                    Log.e(TAG, "Error shutting down the gRPC channel.", e);
+                }
+            }
+            mApi = null;
+        }
     }
 }

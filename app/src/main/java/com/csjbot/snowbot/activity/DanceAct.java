@@ -24,6 +24,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,6 +54,8 @@ public class DanceAct extends CsjUIActivity {
     private Runnable mRunnable;
     private boolean turn = false;//false 右转
 
+    private boolean autoDance = false;
+
     @Override
     public boolean useEventBus() {
         return true;
@@ -63,6 +66,19 @@ public class DanceAct extends CsjUIActivity {
         setupBack();
         initDance();
         init();
+
+        autoDance = getIntent().getBooleanExtra("autoDance", false);
+        if (autoDance) {
+            int cnt = new Random().nextInt(3);
+
+            if (cnt == 0) {
+                play1Iv.callOnClick();
+            } else if (cnt == 1) {
+                play2Iv.callOnClick();
+            } else {
+                play3Iv.callOnClick();
+            }
+        }
     }
 
     private void init() {

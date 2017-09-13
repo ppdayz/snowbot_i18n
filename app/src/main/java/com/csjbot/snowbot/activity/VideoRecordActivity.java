@@ -23,6 +23,7 @@ import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.bean.aiui.entity.CsjSynthesizerListener;
+import com.csjbot.snowbot.services.ClientService;
 import com.csjbot.snowbot.services.CsjSpeechSynthesizer2;
 import com.csjbot.snowbot.utils.CommonTool;
 import com.csjbot.snowbot.utils.FileUtil;
@@ -184,15 +185,15 @@ public class VideoRecordActivity extends CsjUIActivity implements OnClickListene
                 });
                 loadToast.success();
 
-//                mHandler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        isInAutoTakePhoto = false;
-//                        ClientService.setIsAutoTakePhoto(Boolean.FALSE);
-//                        SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 1);
-//                        onBackPressed();
-//                    }
-//                }, 1000);
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isInAutoTakePhoto = false;
+                        ClientService.setIsAutoTakePhoto(Boolean.FALSE);
+                        SharedUtil.setPreferInt(SharedKey.AIUISERVICESWITCH, 1);
+                        onBackPressed();
+                    }
+                }, 1000);
             } else if (mCamera != null) {
                 mHandler.postDelayed(this, 1000);
             } else {
@@ -209,7 +210,7 @@ public class VideoRecordActivity extends CsjUIActivity implements OnClickListene
             isInAutoTakePhoto = true;
 //            EventBus.getDefault().post(new RobotStatusUpdateEvent(15, false, 70));
 
-            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking("请摆个美美的pose，开始拍照", new CsjSynthesizerListener() {
+            CsjSpeechSynthesizer2.getSynthesizer().startSpeaking(getString(R.string.take_photo_pose), new CsjSynthesizerListener() {
                 @Override
                 public void onSpeakBegin() {
                     loadToast.setText(String.valueOf(autoTakePhotoCD));
@@ -356,7 +357,7 @@ public class VideoRecordActivity extends CsjUIActivity implements OnClickListene
         if (mediaRecorder != null) {
             if (mIsRecording) {
 
-                if(recordTime <= 1){
+                if (recordTime <= 1) {
                     return;
                 }
 

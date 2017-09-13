@@ -22,7 +22,7 @@ import com.android.core.entry.Static;
 import com.csjbot.csjbase.log.Csjlogger;
 import com.csjbot.snowbot.R;
 import com.csjbot.snowbot.activity.settings.SettingsAboutActivity;
-import com.csjbot.snowbot.activity.settings.WifiConfigActivity;
+import com.csjbot.snowbot.activity.settings.WifiConfigRelayActivity;
 import com.csjbot.snowbot.app.CsjUIActivity;
 import com.csjbot.snowbot.utils.CommonTool;
 import com.csjbot.snowbot.utils.QRCodeUtil;
@@ -205,7 +205,8 @@ public class SettingsActivity extends CsjUIActivity implements View.OnClickListe
 //        intent.putExtra("connected_wifi", connected_wifi);
 //        startActivity(intent);
 
-        Intent intent = new Intent(this, WifiConfigActivity.class);
+//        Intent intent = new Intent(this, WifiConfigActivity.class);
+        Intent intent = new Intent(this, WifiConfigRelayActivity.class);
         startActivity(intent);
     }
 

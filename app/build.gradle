@@ -191,18 +191,15 @@ dependencies {
     compile rootProject.ext.dependencies["MagicIndicator"]
     compile rootProject.ext.dependencies["PickerView"]
     compile rootProject.ext.dependencies["eventbus"]
-
     // 获取汉字的拼音
     compile files('libs/pinyin4j-2.5.0.jar')
     // 核心播放器，不能改
     compile rootProject.ext.dependencies["exoplayer"]
     // 取色器
     compile rootProject.ext.dependencies["HoloColorPicker"]
-
     compile(name: 'snowbot-sdk-1.1.3', ext: 'aar')
     compile(name: 'jcvideoplayer-lib-release', ext: 'aar')
     compile(name: 'duersdklib-release', ext: 'aar')
-
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'io.reactivex:rxjava:1.1.6'
@@ -213,12 +210,10 @@ dependencies {
     compile 'com.xw.repo:bubbleseekbar:3.5-lite'
     compile 'com.github.Jay-Goo:RangeSeekBar:v1.0.7'
     testCompile 'junit:junit:4.12'
-
     // Support libraries
     compile "com.android.support:design:$supportLibraryVersion"
     compile "com.android.support:cardview-v7:$supportLibraryVersion"
     compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
-
     // gRPC
     compile "io.grpc:grpc-okhttp:$grpcVersion"
     compile "io.grpc:grpc-protobuf-lite:$grpcVersion"
@@ -226,9 +221,9 @@ dependencies {
     compile 'javax.annotation:javax.annotation-api:1.2'
     protobuf 'com.google.protobuf:protobuf-java:3.3.1'
     compile 'io.grpc:grpc-core:1.4.0'
-
     // OAuth2 for Google API
     compile('com.google.auth:google-auth-library-oauth2-http:0.7.0') {
         exclude module: 'httpclient'
     }
+    compile files('libs/aliai.jar')
 }

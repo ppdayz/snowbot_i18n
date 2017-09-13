@@ -266,7 +266,6 @@
     <string name="storage_permission_denied">权限访问存储被拒绝</string>
 
 
-
     <!--About-->
     <string name="snowbot_name_text">小雪人名字</string>
     <string name="name_text">小红</string>
@@ -377,10 +376,6 @@
     <string name="simple_cn">简体中文</string>
 
 
-
-
-
-
     <!-- dialog提示信息 -->
     <string name="result">运行结果是:0.000000</string>
     <string name="sn_top">上身板SN获取</string>
@@ -410,4 +405,5 @@
 
     <string name="within_china">（仅限中国）</string>
 
+    <string name="take_photo_pose">请摆个美美的pose，开始拍照</string>
 </resources>

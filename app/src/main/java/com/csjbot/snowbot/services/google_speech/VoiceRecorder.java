@@ -41,10 +41,6 @@ public class VoiceRecorder {
     private static final int SPEECH_TIMEOUT_MILLIS = 2000;
     private static final int MAX_SPEECH_LENGTH_MILLIS = 30 * 1000;
 
-
-    private AudioSaverImpl audioSaver = new AudioSaverImpl();
-    private boolean saveAudio = false;
-
     public static abstract class Callback {
 
         /**
@@ -197,17 +193,7 @@ public class VoiceRecorder {
                         if (mLastVoiceHeardMillis == Long.MAX_VALUE) {
                             mVoiceStartedMillis = now;
                             mCallback.onVoiceStart();
-                            //record file
-                            if(saveAudio) {
-                                audioSaver.startSaveFile(String.valueOf(System.currentTimeMillis()));
-                            }
-                            //record file
                         }
-                        //record file
-                        if(saveAudio) {
-                            audioSaver.writeData(mBuffer, size);
-                        }
-                        //record file
 
                         mCallback.onVoice(mBuffer, size);
                         mLastVoiceHeardMillis = now;
@@ -216,11 +202,6 @@ public class VoiceRecorder {
                         }
                     } else if (mLastVoiceHeardMillis != Long.MAX_VALUE) {
                         mCallback.onVoice(mBuffer, size);
-                        //record file
-                        if(saveAudio) {
-                            audioSaver.writeData(mBuffer, size);
-                        }
-                        //record file
                         if (now - mLastVoiceHeardMillis > SPEECH_TIMEOUT_MILLIS) {
                             end();
                         }
@@ -232,11 +213,6 @@ public class VoiceRecorder {
         private void end() {
             mLastVoiceHeardMillis = Long.MAX_VALUE;
             mCallback.onVoiceEnd();
-            //record file
-            if(saveAudio) {
-                audioSaver.closeFile();
-            }
-            //record file
         }
 
         private boolean isHearingVoice(byte[] buffer, int size) {

@@ -687,4 +687,6 @@
     <string name="wait_toconnect">Please wait for connect to chassis</string>
     <!--    app下的添加在下面  2017-07-19                             -->
 
+    <string name="take_photo_pose">Please set up a nice pose and start taking pictures</string>
+
 </resources>
