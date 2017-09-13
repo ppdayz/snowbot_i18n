@@ -2,12 +2,18 @@
 
 ## The role of each class
 
+**GoogleSpeechBaseService.java**
+
+Base service class :
+- Google services licensing
+- Speech Recognition
+
+
 **GoogleSpeechService.java**
 
 The main service, features are:
 
 - wake up
-- Speech Recognition
 - Postprocessing - Simple Voice Talk
 - Simple motion control
 - Expression transformation
@@ -168,8 +174,7 @@ If there is no matching result, parse the custom semantics; if matches are said;
                     if (!parseAction(text)) {
 						// 2. parse Custom semantics
                         if (!parseSpeak(text)) {
-                            postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, "I can't understand,but I'm learning"));
-                            mSpeechSynthesizer.startSpeaking("I can't understand,but I'm learning", speechSynthesizerListener);
+                            mAliAI.sendMessage(text);
                         }
                     }
                     lastRecognizingTime = Long.MAX_VALUE;
@@ -180,7 +185,28 @@ If there is no matching result, parse the custom semantics; if matches are said;
             }
         }
 ```
-- ###In our Sample services, when the robot began to speak, will continue to force the reset pickup and began to identify, if you have more good procedures, welcome `issue` and `pull request`
+
+- join your own AI processing
+The basic process is this
+Audio acquisition → Google speech recognition → [internal motion analysis →  local semantic parsing → AI parsing]
+Which can make the treatment []
+I define an abstract interface and a callback interface here
+
+```java
+com.csjbot.snowbot.services.google_speech.ai_solutions.AiSolutionCallBack
+com.csjbot.snowbot.services.google_speech.ai_solutions.IAiSolution
+```
+```
+com.csjbot.snowbot.services.google_speech.ai_solutions.AliAiSolutionImpl
+```
+
+Is a simple example of accessing your own AI
+
+
+- ### In our Sample services, when the robot began to speak, will continue to force the reset pickup and began to identify.
+
+
+- if you have more good procedures, welcome `issue` and `pull request`
 
 
 

@@ -2,12 +2,19 @@
 
 ## 各个类的作用
 
+**GoogleSpeechBaseService.java**
+
+基类服务，功能有：
+
+- Google 服务授权
+- 语音识别
+
+
 **GoogleSpeechService.java**
 
-主要的服务，功能有：
+具体的业务，功能有：
 
 - 唤醒
-- 语音识别
 - 后处理--简单语音对话
 - 简单运动控制
 - 表情变换
@@ -142,8 +149,8 @@ private final StreamObserver<StreamingRecognizeResponse> mResponseObserver
 	**如果要加入自己的AI，在这里进行**
 
 ```java
-		@Override
-        public void onNext(StreamingRecognizeResponse response) {
+	@Override
+	public void onNext(StreamingRecognizeResponse response) {
             String text = null;
             boolean isFinal = false;
 			// Parse Text
@@ -169,8 +176,7 @@ private final StreamObserver<StreamingRecognizeResponse> mResponseObserver
                     if (!parseAction(text)) {
 						// 2. parse Custom semantics
                         if (!parseSpeak(text)) {
-                            postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, "I can't understand,but I'm learning"));
-                            mSpeechSynthesizer.startSpeaking("I can't understand,but I'm learning", speechSynthesizerListener);
+                            mAliAI.sendMessage(text);
                         }
                     }
                     lastRecognizingTime = Long.MAX_VALUE;
@@ -184,5 +190,27 @@ private final StreamObserver<StreamingRecognizeResponse> mResponseObserver
 
 当onCompleted()被调用的时候，就说明一次识别已经完成
 
-- ### 在我们的提供的服务中，当机器人开始说话的时候，就会继续强制重置拾音并且开始识别，如果您有更加好的流程，欢迎提`issue`和`pull request`
+- 加入自己的AI处理
+
+基本流程是这样的
+音频采集 → Google 语音识别 → [内置动作解析 → 本地语义解析 → AI解析]
+其中[]内的可以自行做处理
+
+我这里定义了一个抽象接口和一个回调接口
+```java
+com.csjbot.snowbot.services.google_speech.ai_solutions.AiSolutionCallBack
+com.csjbot.snowbot.services.google_speech.ai_solutions.IAiSolution
+```
+```
+com.csjbot.snowbot.services.google_speech.ai_solutions.AliAiSolutionImpl
+```
+
+是个简单的示例，可以入自己的AI
+
+
+
+- ### 在我们的提供的服务中，当机器人开始说话的时候，就会继续强制重置拾音并且开始识别
+
+
+- 如果您有更加好的流程，欢迎提`issue`和`pull request`
 
