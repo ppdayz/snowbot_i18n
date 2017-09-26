@@ -18,7 +18,6 @@ package com.csjbot.snowbot.services.google_speech;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.android.core.util.SharedUtil;
 import com.csjbot.csjbase.kit.Kits;
@@ -149,7 +148,6 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
     @Override
     public void onCreate() {
         super.onCreate();
-        mHandler = new Handler();
         initTTSAndWakeup();
         checkRecognizingState();
         initCustomTalk();
@@ -198,7 +196,7 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
                         // 2. parse Custom semantics
                         if (!parseSpeak(cachedString)) {
                             postEvent(new AIUIEvent(EventsConstants.AIUIEvents.AIUI_ANSWERTEXT_DATA, "I can't understand,but I'm learning"));
-                            mSpeechSynthesizer.startSpeaking("I can't understand,but I'm learning", speechSynthesizerListener);
+//                            mSpeechSynthesizer.startSpeaking("I can't understand,but I'm learning", speechSynthesizerListener);
                         }
                     }
 
@@ -224,7 +222,6 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
     private SnowBotManager snowBotManager = SnowBotManager.getInstance();
     //    private UARTAgent mAgent;
     private String[] wakeupTalk;
-    private Handler mHandler = new Handler();
 
     private void initTTSAndWakeup() {
         // init res
@@ -278,7 +275,6 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
 
     private void sleepAndGoodBy(String goodByString) {
         mSpeechSynthesizer.startSpeaking(goodByString, forceSleepSynthesizerListener);
-
         micSerialManager.reset();
         stopVoiceRecorder();
     }
@@ -347,6 +343,15 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
 
     //==============================================================================//
     private void initCustomTalk() {
+        customData = SharedUtil.getMap("CUSTOMVOICE");
+
+        if (customData == null) {
+            readDefaultCustomData();
+        }
+    }
+
+    private void readDefaultCustomData() {
+        customData = new HashMap<>();
         customData.put("How are you", "I’m pretty good.");
         customData.put("How are you today", "Not bad, and you?");
         customData.put("How do you do", "How do you do");
@@ -379,7 +384,12 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
         customData.put("Your English is very good.", "Oh, thank you");
         customData.put("Are you a native English speaker?", "No, my native language is Chinese. I speak English with strong robot accent, hope you like it.");
         customData.put("Are you a native speaker of English", "No, my native language is Chinese. I speak English with strong robot accent, hope you like it.");
+
     }
+
+    private static final double MAX_THREASHOLD = 1f;
+    private static final double MIN_THREASHOLD = 0.8f;
+    private static final double EACH_STAGE = 0.04f;
 
     /**
      * This method handles custom semantics
@@ -393,13 +403,23 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
             return false;
         }
 
-        for (String key : customData.keySet()) {
-            double similarity = SimilarityUtil.sim(key.toUpperCase().replace(" ", ""), content.toUpperCase().replace(" ", ""));
-            if (similarity > 0.8) {
-                String answer = customData.get(key);
-                speakAndSend2UI(answer);
-                return true;
+        double threashold = MAX_THREASHOLD;
+        String mProblemText = content.toUpperCase().replace(" ", "");
+
+        // 匹配度从高到低依次匹配，直到＜0.8
+        while (threashold > MIN_THREASHOLD) {
+            for (String key : customData.keySet()) {
+                double similarity = SimilarityUtil.sim(key.toUpperCase().replace(" ", ""), mProblemText);
+
+                if (similarity >= threashold) {
+                    Csjlogger.info("Bingo !!  similarity is {}, threashold is{} ", similarity, threashold);
+                    String answer = customData.get(key);
+                    speakAndSend2UI(answer);
+                    return true;
+                }
             }
+
+            threashold -= EACH_STAGE;
         }
 
         return false;
@@ -441,8 +461,12 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
             "I want to go to the ",
             "I want to go to ",
             "I want to go ",
+            "please go to the ",
+            "please go to ",
             "go to the ",
             "go to ",
+            "please take me to the ",
+            "please take me to  ",
             "take me to the ",
             "take me to  "
     };
@@ -521,16 +545,20 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
             }
         }
 
-        if (contentUpper.contains("TURN")) {
-            if (contentUpper.contains("RIGHT")) {
-                snowBotManager.turnRound((short) -90);
-            } else {
-                snowBotManager.turnRound((short) 90);
-            }
+        if (contentUpper.startsWith("PLEASE")) {
+            if (contentUpper.contains("TURN")) {
+                if (contentUpper.contains("RIGHT")) {
+                    snowBotManager.turnRound((short) -90);
+                    speakAndSend2UI("Yes Master, turn right");
+                    return true;
+                } else if (contentUpper.contains("LEFT")) {
+                    snowBotManager.turnRound((short) 90);
+                    speakAndSend2UI("Yes Master, turn left");
+                    return true;
+                }
 
-            speakAndSend2UI("Yes,Master " + content);
-            Csjlogger.debug("action turn");
-            return true;
+                return true;
+            }
         }
 
         if (contentUpper.contains("BACK")) {
@@ -547,7 +575,6 @@ public class GoogleSpeechService extends GoogleSpeechBaseService {
             speakAndSend2UI("Yes,I\'m Coming");
             return true;
         }
-
         // // TODO: 2017/08/16 0016 DIY
 
         return false;

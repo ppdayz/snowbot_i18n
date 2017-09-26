@@ -397,14 +397,17 @@ public class SettingsAboutActivity extends CsjUIActivity {
         dialog.show();
     }
 
+    //文件路径，存放客户自定义语音
+    public static final String CUSTOM_FILEPATH = Environment.getExternalStorageDirectory().getPath() + "/csjbot/custom/";
+
     private void copyFile() {
         if (StrUtil.isNotBlank(SharedUtil.getPreferStr(SharedKey.USBPATH)) &&
-                FileUtil.copy(SharedUtil.getPreferStr(SharedKey.USBPATH) + "/csjbot/", Constant.CUSTOM_FILEPATH, Constant.CUSTOM_FILENAME) == 0) {
+                FileUtil.copy(SharedUtil.getPreferStr(SharedKey.USBPATH) + "/csjbot/", CUSTOM_FILEPATH, Constant.CUSTOM_FILENAME) == 0) {
             CSJToast.showToast(SettingsAboutActivity.this, Static.CONTEXT.getString(R.string.copy_success));
-            mHandler.postDelayed(() -> FileUtil.readText(Constant.CUSTOM_FILEPATH, Constant.CUSTOM_FILEPATH + Constant.CUSTOM_FILENAME), 1000);
+            mHandler.postDelayed(() -> FileUtil. readText(Constant.CUSTOM_FILEPATH, CUSTOM_FILEPATH + Constant.CUSTOM_FILENAME), 1000);
         } else if (StrUtil.isBlank(SharedUtil.getPreferStr(SharedKey.USBPATH))) {
             CSJToast.showToast(SettingsAboutActivity.this, Static.CONTEXT.getString(R.string.insert_U));
-        } else if (FileUtil.copy(SharedUtil.getPreferStr(SharedKey.USBPATH) + "/csjbot/", Constant.CUSTOM_FILEPATH, Constant.CUSTOM_FILENAME) == -1) {
+        } else if (FileUtil.copy(SharedUtil.getPreferStr(SharedKey.USBPATH) + "/csjbot/", CUSTOM_FILEPATH, Constant.CUSTOM_FILENAME) == -1) {
             CSJToast.showToast(SettingsAboutActivity.this, Static.CONTEXT.getString(R.string.check_file_correct));
         } else {
             CSJToast.showToast(SettingsAboutActivity.this, Static.CONTEXT.getString(R.string.copy_failed));
