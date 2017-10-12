@@ -61,8 +61,10 @@ dependencies {
 
 
 -	## 开放环境配置
+
 由于机器人的调试接口在屏幕内部，所以只能通过adb wifi的形式来进行，具体方法参照文档
-[机器人打开adb-wifi设置]()
+
+[HowToSetUpAdbWifi]()
 
 
 
