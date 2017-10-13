@@ -6,7 +6,7 @@
 
 1. ###	显示状态栏
 长按“设置”按钮，进入系统设置
-![](https://github.com/ppdayz/snowbot_i18n/tree/master/doc/images/showbar.jpg)
+![showbar](https://github.com/ppdayz/snowbot_i18n/tree/master/doc/images/showbar.jpg)
 
 点击“显示”
 ![](https://github.com/ppdayz/snowbot_i18n/tree/master/doc/images/showbar1.jpg)
