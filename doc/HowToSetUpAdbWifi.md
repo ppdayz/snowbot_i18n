@@ -2,20 +2,21 @@
 
 - ## 设置主屏幕
 到手的机器人应该类似，需要把“状态栏”显示出来，并且使用”默认桌面”
-![](https://github.com/ppdayz/snowbot_i18n/tree/master/doc/images/setupscreen.jpg)
+	![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/setupscreen.jpg)
 
-1. ###	显示状态栏
+1. ###    显示状态栏
+
 长按“设置”按钮，进入系统设置
-![](https://github.com/ppdayz/snowbot_i18n/tree/master/doc/images/showbar.jpg)
+	![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/showbar.jpg)
 
 点击“显示”
-![](https://github.com/ppdayz/snowbot_i18n/tree/master/doc/images/showbar1.jpg)
+	![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/showbar1.jpg)
 
 反选中“永久隐藏工具栏”条目
-![](https://github.com/ppdayz/snowbot_i18n/tree/master/doc/images/showbar2.jpg)
+	![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/showbar2.jpg)
 
 1. ###	使用“默认桌面”
-
+	![](https://github.com/ppdayz/snowbot_i18n/blob/master/doc/images/showbar2.jpg)
 
 - ##	开启 “开发者模式”	
 
