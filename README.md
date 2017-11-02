@@ -9,11 +9,11 @@
 
 
 Catalog
--	[What Can SDK DO](#What-Can-SDK-Do)
--	[Environmental Requirements](#Environmental-Requirements)
--	[Development Environment Configuration](#Development-Environment-Configuration)
--	[How To Add SDK to the project](#How-To-Add-SDK-to-the-project)
--	[Speech & Dialogue](#Speech-&-Dialogue)
+-	[What Can SDK DO](#what-can-sdk-do)
+-	[Environmental Requirements](#environmental-requirements)
+-	[Development Environment Configuration](#development-environment-configuration)
+-	[How To Add SDK to the project](#how-to-add-sdk-to-the-project)
+-	[Speech & Dialogue](#speech-&-dialogue)
 -	Map and walk
 -	Sensors
 -	Control arm
