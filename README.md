@@ -13,7 +13,7 @@ Catalog
 -	[Environmental Requirements](#environmental-requirements)
 -	[Development Environment Configuration](#development-environment-configuration)
 -	[How To Add SDK to the project](#how-to-add-sdk-to-the-project)
--	[Speech & Dialogue](#speech-&-dialogue)
+-	[Speech and Dialogue](#speech-and-dialogue)
 -	Map and walk
 -	Sensors
 -	Control arm
@@ -120,7 +120,7 @@ dependencies {
 }
 ```
 
--	## Speech & Dialogue
+-	## Speech and Dialogue
 	-	Speech recognition
  		See document [English speech recognition](https://github.com/ppdayz/snowbot_i18n/tree/master/app/src/main/java/com/csjbot/snowbot/services/google_speech)
 	-	Text to speech
