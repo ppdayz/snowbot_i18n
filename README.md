@@ -9,17 +9,20 @@
 
 
 Catalog
--	[What Can SDK DO](# What Can SDK Do)
--	[Environmental Requirements](# Environmental Requirements)
--	[Development Environment Configuration](# Development Environment Configuration)
--	[How To Add SDK to the project](# How To Add SDK to the project)
--	[Speech & Dialogue](# Speech & Dialogue)
+
+-	[What Can SDK DO](#What Can SDK Do)
+-	[Environmental Requirements](#Environmental Requirements)
+-	[Development Environment Configuration](#Development Environment Configuration)
+-	[How To Add SDK to the project](#How To Add SDK to the project)
+-	[Speech & Dialogue](#Speech & Dialogue)
 -	Map and walk
 -	Sensors
 -	Control arm
 -	Face recognition
 -	How To Use VIDEO
 -	Notice
+
+
 
 -	## What Can SDK Do
 Our SDK is based on AAR (Android Archive [reference link](https://developer.android.com/studio/projects/android-library.html#aar-contents)) form of integration into the software, provides the basis for the speech dialogue, expression control, sensor, map and walking arm, control interface.
