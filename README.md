@@ -15,10 +15,10 @@ Catalog
 -	[How To Add SDK to the project](#how-to-add-sdk-to-the-project)
 -	[Speech and Dialogue](#speech-and-dialogue)
 -	[Map and walk](#map-and-walk)
--	Sensors
--	Control arm
--	Face recognition
--	How To Use VIDEO
+-	[Sensors](#sensors)
+-	[Control Arm](#control-arm)
+-	[Face recognition](#face-recognition)
+-	[How To Use VIDEO](#how-to-use-video)
 -	Notice
 
 -	## What Can We Do
@@ -82,27 +82,27 @@ Since the debugging interface of the robot is inside the screen, it can only be 
 For Example:
 ```java
 android {
-		    compileSdkVersion xx
-		    buildToolsVersion xx
-		    defaultConfig {
-		        applicationId "xxx.xxx.xxx"
-		        minSdkVersion xx
-		        targetSdkVersion xx
-		        versionCode xx
-		        versionName xx
+	compileSdkVersion xx
+	buildToolsVersion xx
+	defaultConfig {
+		applicationId "xxx.xxx.xxx"
+		minSdkVersion xx
+		targetSdkVersion xx
+		versionCode xx
+		versionName xx
 		
-		        multiDexEnabled true
-		    }
+		multiDexEnabled true
+	}
 		
-		    buildTypes {
-				... ...
-		    }
+	buildTypes {
+		... ...
+	}
 		
-		    repositories {
-		        flatDir {
-		            dirs 'libs'
-		        }
-		    }
+	repositories {
+		flatDir {
+			dirs 'libs'
+		}
+	}
 }
 ```  
 1.	 Add dependency
@@ -336,4 +336,193 @@ SnowBotManager.getInstance().stopPartol();
 6. Go back charging
 ```java
 SnowBotManager.getInstance().goHome();
+```
+-	## Sensors
+we can get touch head event from Sensors.
+Listen AIUIEvent and get case *EventsConstants.AIUIEvents.AIUI_EVENT_TOUCH_GET*
+Sample：
+1. Register the Eventbus
+```java
+EventBus ibus = EventBus.getDefault();
+ibus.register(this);
+```
+2. Subscribe AIUIEvent
+```java
+@Subscribe(threadMode = ThreadMode.MAIN)
+public boolean onAIUIEvent(AIUIEvent event) {
+
+    switch (event.getTag()) {
+        case EventsConstants.AIUIEvents.AIUI_EVENT_TOUCH_GET:
+            touchGet();
+            break;
+        default:
+            break;
+    }
+}
+```
+3. if you leave,  unregister the Eventbus
+```java
+if (ibus != null) {
+    ibus.unregister(this);
+}
+``` 
+-	## Control Arm
+We use `SnowBotManager` to Control SnowBaby's Arm
+Sample:
+-	Waving hands three times
+```java
+SnowBotManager.getInstance().swingDoubleArm((byte)3);
+```
+-	Waving left hands three times 
+```java
+SnowBotManager.getInstance().swingLeftArm((byte)3);
+``` 
+-	Waving right hands three times 
+```java
+SnowBotManager.getInstance().swingRightArm((byte)3);
+```
+-	## Face recognition
+**Coming soon**
+-	## How To Use VIDEO
+	Because we use a custom Android system, so we encapsulated the camera application, the user can directly call the ability inside the SDK to call the camera
+you can call it follow steps:
+1.	We have defined a SurfaceView to preview the Camera
+```xml
+  <com.csjbot.snowbot_rogue.camera.preview.CameraSurfaceView
+        android:id="@+id/surfaceview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+```
+2.	Start Camera and Preview
+```java
+   	@BindView(R.id.surfaceview)
+	SurfaceView mSurfaceView;
+
+	private Camera mCamera;
+	private SurfaceHolder mSurfaceHolder;
+	private MediaRecorder mediaRecorder;
+	private boolean mIsRecording = false;
+
+	private void startCamera() {
+		mSurfaceHolder = mSurfaceView.getHolder();
+	
+		mSurfaceHolder.addCallback(new SurfaceHolder.Callback() {
+			@Override
+			public void surfaceDestroyed(SurfaceHolder holder) {
+		 	}
+		
+			@Override
+			public void surfaceCreated(SurfaceHolder holder) {
+				initpreview();
+			}
+		
+			@Override
+			public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+		
+			}
+			});
+	}
+
+	private void initpreview() {
+		mCamera = CameraInterface.getInstance().getCameraDevice();
+		if (mCamera != null) {
+			//Start the video directly here
+			mHandler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					startmediaRecorder();
+				}
+			}, 5000);
+		} else {
+			// todo Handling errors
+		}
+	}
+```
+3.	Start Media Recorder
+```java
+	private void startmediaRecorder() {
+		mCamera.unlock();
+
+		if (mediaRecorder == null) {
+			Csjlogger.debug("initVideoRecord");
+			mIsRecording = true;
+
+			CamcorderProfile mProfile = CamcorderProfile.get(CameraInterface.getInstance().getCameraId()
+, CamcorderProfile.QUALITY_480P);
+
+			//1st. Initial state
+			mediaRecorder = new MediaRecorder();
+			mediaRecorder.setCamera(mCamera);
+
+			//2st. Initialized state
+
+			mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+			mediaRecorder.setVideoSource(MediaRecorder.VideoSource.DEFAULT);
+
+			//3st. config
+			mediaRecorder.setOutputFormat(mProfile.fileFormat);
+			mediaRecorder.setAudioEncoder(mProfile.audioCodec);
+			mediaRecorder.setVideoEncoder(mProfile.videoCodec);
+			mediaRecorder.setOutputFile(getName());
+			mediaRecorder.setVideoSize(640, 480);
+			mediaRecorder.setVideoFrameRate(mProfile.videoFrameRate);
+			mediaRecorder.setVideoEncodingBitRate(mProfile.videoBitRate);
+			mediaRecorder.setAudioEncodingBitRate(mProfile.audioBitRate);
+			mediaRecorder.setAudioChannels(mProfile.audioChannels);
+			mediaRecorder.setAudioSamplingRate(mProfile.audioSampleRate);
+			
+			mediaRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
+		}
+
+		try {
+			mediaRecorder.prepare();
+			mediaRecorder.start();
+		} catch (Exception e) {
+			// Handling error	
+			e.printStackTrace();
+			mCamera.lock();
+		}
+		
+		if (mIsRecording) {
+			// Handling UI
+		}
+	}
+
+```
+4.	Stop Media Recorder
+```java
+private void stopmediaRecorder() {
+	if (mediaRecorder != null) {
+		if (mIsRecording) {
+			try {
+				//The following three parameters must be added, 
+				//otherwise they will burst，when mediarecorder.stop();
+				//Error is ：RuntimeException:stop failed
+				mediaRecorder.setOnErrorListener(null);
+				mediaRecorder.setOnInfoListener(null);
+				mediaRecorder.setPreviewDisplay(null);
+				mediaRecorder.stop();
+			} catch (IllegalStateException e) {
+			} catch (RuntimeException e) {
+			}
+		
+			//mCamera.lock();
+			mediaRecorder.reset();
+			mediaRecorder.release();
+			mediaRecorder = null;
+			mIsRecording = false;
+	
+			if (mCamera != null) {
+				try {
+					mCamera.reconnect();
+				} catch (IOException e) {
+					Toast.makeText(this, "reconect fail", Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				}
+			}
+		// Handling UI
+		}
+	}
+}
 ```
