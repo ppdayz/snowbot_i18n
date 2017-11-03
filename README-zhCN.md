@@ -236,11 +236,11 @@ public enum MoveDirection {
 }
 ```
 调用以下函数来控制小雪人的转特定的角度：
-````
+```java
 SnowBotManager.turnRound 
 ```
 例子：
-```
+```java
 SnowBotManager.getInstance().turnRound((short) 90); 
 ```
 **我们定义：以机器人朝向为基准，正数逆时针转，负数顺时针转（正数向左转，负数向右转）**
@@ -248,8 +248,8 @@ SnowBotManager.getInstance().turnRound((short) 90);
 2. 获取地图
 地图是以一个Bitmap的形式从```SnowBotManager```异步回调到应用之中，调用的时候需要**注意线程**
 图片包括：原始的地图的点线图、虚拟墙、以及虚拟轨道
-	-	注册回调
-```
+-	注册回调
+```java
 SnowBotManager.getInstance().setMoveServerMapListener(new MoveServerMapListener() {
         	@Override
         	public void getMap(Bitmap map) {
@@ -262,17 +262,17 @@ SnowBotManager.getInstance().setMoveServerMapListener(new MoveServerMapListener(
         	}
     });
 ```
-	-	开始获取地图
-```
+-	开始获取地图
+```java
 SnowBotManager.getInstance().getMap(this, this);
 ```
 参数参照原型
-```
+```java
 com.csjbot.snowbot_rogue.platform.SnowBotManager#getMap(android.content.Context, 
 								com.csjbot.snowbot_rogue.servers.slams.MoveServerMapListener)
 ```
-	-	在UI中绘制
-```
+-	在UI中绘制
+```java
 		private static class MapActivityHandler extends WeakReferenceHandler<MapActivity> {
     	private Bitmap bm;
 		// UI处理
@@ -293,25 +293,25 @@ com.csjbot.snowbot_rogue.platform.SnowBotManager#getMap(android.content.Context,
     		}
 		}
 ```
-	-	停止获取地图
-```
+-	停止获取地图
+```java
 SnowBotManager.getInstance().stopGetMap();
 ```
 3. 获取机器人当前姿态
 通过方法
-```
+```java
 com.csjbot.snowbot_rogue.platform.SnowBotManager#getCurrentPose
 ```
 返回的是```com.slamtec.slamware.robot.Pose```
 Pose包含两个信息，一个是机器人的位置(Location)，一个是机器人的朝向(Rotation)
-```
+```java
 public class Pose {
 		private Location location;
     	private Rotation rotation;
 		... ...
 }
 ```
-```
+```java
     public Pose(float x, float y, float z, float yaw, float roll, float pitch) {
         this.location = new Location(x, y, z);
         this.rotation = new Rotation(yaw, roll, pitch);
@@ -320,12 +320,12 @@ public class Pose {
 其中对我们有用的就只有**x, y, yaw**，yaw 就是机器人在地图中的位置，以机器人的初始位置为0，单位是弧度
 4. 到达特定的点
 通过以下方法来到达特定的点：
-```
+```java
 com.csjbot.snowbot_rogue.servers.slams.SnowBotMoveServer#moveTo(com.slamtec.slamware.robot.Location)
 ```
 5. 巡逻
-	-	开始巡逻
-```
+-	开始巡逻
+```java
 	private void startPartol() {
 	    	Pose[] poses = new Pose[]{
 	            	new Pose(1f, 1f, 0f, 0f, 0f, 0f),
@@ -337,11 +337,11 @@ com.csjbot.snowbot_rogue.servers.slams.SnowBotMoveServer#moveTo(com.slamtec.slam
     		SnowBotManager.getInstance().partol(Arrays.asList(poses));
 	}
 ```
-	-	结束巡逻
-```
+-	结束巡逻
+```java
 SnowBotManager.getInstance().stopPartol();
 ```
 6. 回去充电
-```
+```java
 SnowBotManager.getInstance().goHome();
 ```
