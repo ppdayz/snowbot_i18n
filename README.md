@@ -222,7 +222,7 @@ public enum MoveDirection {
 }
 ```
 Call the following methods to control SnowBaby turn specific angle:
-````
+```
 SnowBotManager.turnRound 
 ```
 Example：
@@ -292,6 +292,7 @@ com.csjbot.snowbot_rogue.platform.SnowBotManager#getCurrentPose
 ```
 returns ```com.slamtec.slamware.robot.Pose```
 Pose contains two information, one is the robot's position (Location), and the other is the robot's orientation (Rotation)
+
 ```
 public class Pose {
 		private Location location;
@@ -299,6 +300,7 @@ public class Pose {
 		... ...
 }
 ```
+
 ```
     public Pose(float x, float y, float z, float yaw, float roll, float pitch) {
         this.location = new Location(x, y, z);
@@ -306,6 +308,7 @@ public class Pose {
     }
 ```
 Among them, only **x, y, yaw** are uesful, yaw is the orientation of the robot in the map(from axis), the initial position of the robot is 0, and the unit is radian
+
 4. Reach specific points
 Going to a specific point uses the following method
 ```
@@ -313,7 +316,7 @@ com.csjbot.snowbot_rogue.servers.slams.SnowBotMoveServer#
 								moveTo(com.slamtec.slamware.robot.Location)
 ```
 5. patrol
-	-	Start patrolling
+-	Start patrolling
 ```
 	private void startPartol() {
 	    	Pose[] poses = new Pose[]{
@@ -326,7 +329,7 @@ com.csjbot.snowbot_rogue.servers.slams.SnowBotMoveServer#
     		SnowBotManager.getInstance().partol(Arrays.asList(poses));
 	}
 ```
-	-	Stop patrolling
+-	Stop patrolling
 ```
 SnowBotManager.getInstance().stopPartol();
 ```
