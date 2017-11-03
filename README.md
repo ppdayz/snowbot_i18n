@@ -9,19 +9,19 @@
 
 
 Catalog
--	[What Can SDK DO](#what-can-sdk-do)
+-	[What Can We DO](#what-can-we-do)
 -	[Environmental Requirements](#environmental-requirements)
 -	[Development Environment Configuration](#development-environment-configuration)
 -	[How To Add SDK to the project](#how-to-add-sdk-to-the-project)
 -	[Speech and Dialogue](#speech-and-dialogue)
--	Map and walk
+-	[Map and walk](#map-and-walk)
 -	Sensors
 -	Control arm
 -	Face recognition
 -	How To Use VIDEO
 -	Notice
 
--	## What Can SDK Do
+-	## What Can We Do
 Our SDK is based on AAR (Android Archive [reference link](https://developer.android.com/studio/projects/android-library.html#aar-contents)) form of integration into the software, provides the basis for the speech dialogue, expression control, sensor, map and walking arm, control interface.
 
 -	## Environmental Requirements
@@ -192,3 +192,145 @@ dependencies {
 			        }
 			    };
 		```
+-	## Map and walk
+### We can control the SnowBaby to [go forward, backward, left turn, right turn](#go-forward-backward-left-turn-and-right-turn), [get map](get-map), get the robot's current posture, arrive at a specific point, patrol, go back charging by SDK
+```SnowBotManager ```is a singleton，we can use ```SnowBotManager.getInstance()``` create or get
+```java
+private SnowBotManager snowBotManager = SnowBotManager.getInstance();
+```
+OR
+```
+SnowBotManager.getInstance().getTracks();
+```
+
+
+1. go forward, backward, left turn and right turn
+Use ```SnowBotManager.moveBy``` to control the SnowBaby to go forward, backward, left turn, right turn.
+Example：
+```java
+SnowBotManager.getInstance().moveBy(MoveDirection.FORWARD); 
+```
+We define:
+```java
+public enum MoveDirection {
+    FORWARD,
+    BACKWARD,
+    TURN_RIGHT,
+    TURN_LEFT;
+
+	private MoveDirection() {
+}
+```
+Call the following methods to control SnowBaby turn specific angle:
+````
+SnowBotManager.turnRound 
+```
+Example：
+```
+SnowBotManager.getInstance().turnRound((short) 90); 
+```
+**We define the robot's face as the base, the positive counter clockwise, 
+the negative clockwise rotation (positive to left, negative to right)**
+In other words```SnowBotManager.getInstance().turnRound((short) 90); ``` is "Left turn 90 degrees"
+2. get map
+The map is in the form of an Bitmap from the ```SnowBotManager``` to the application of asynchronous callback，we should pay attention to ***the thread*** when calling
+The bitmap include: the original map (point-line graph), the virtual wall, and the virtual track.
+Follow steps:
+	-	Registering Callbacks
+```
+SnowBotManager.getInstance().setMoveServerMapListener(new MoveServerMapListener() {
+        	@Override
+        	public void getMap(Bitmap map) {
+            	Message msg = mHandler.obtainMessage();
+            	Bundle bundle = new Bundle();
+            	bundle.putParcelable("bitmap", map);
+           		msg.setData(bundle);
+            	msg.what = MAP_UPDATE;
+            	mHandler.sendMessage(msg);
+        	}
+    });
+```
+	-	Start getting maps
+```
+SnowBotManager.getInstance().getMap(this, this);
+```
+reference prototype
+```
+com.csjbot.snowbot_rogue.platform.SnowBotManager#getMap(android.content.Context, 
+								com.csjbot.snowbot_rogue.servers.slams.MoveServerMapListener)
+```
+	-	Drawing in UI
+```
+		private static class MapActivityHandler extends WeakReferenceHandler<MapActivity> {
+    	private Bitmap bm;
+		// UI处理
+		MapActivityHandler(MapActivity reference) {
+			super(reference);
+		}
+
+    	@Override
+		protected void handleMessage(MapActivity reference, Message msg) {
+        	switch (msg.what) {
+	            case MAP_UPDATE:
+	                reference.bm = msg.getData().getParcelable("bitmap");
+	                // show in UI
+	                break;
+	            default:
+                break;
+        		}
+    		}
+		}
+```
+	-	Stop getting maps
+```
+SnowBotManager.getInstance().stopGetMap();
+```
+3. Get the current robot pose
+We use this method:
+```
+com.csjbot.snowbot_rogue.platform.SnowBotManager#getCurrentPose
+```
+returns ```com.slamtec.slamware.robot.Pose```
+Pose contains two information, one is the robot's position (Location), and the other is the robot's orientation (Rotation)
+```
+public class Pose {
+		private Location location;
+    	private Rotation rotation;
+		... ...
+}
+```
+```
+    public Pose(float x, float y, float z, float yaw, float roll, float pitch) {
+        this.location = new Location(x, y, z);
+        this.rotation = new Rotation(yaw, roll, pitch);
+    }
+```
+Among them, only **x, y, yaw** are uesful, yaw is the orientation of the robot in the map(from axis), the initial position of the robot is 0, and the unit is radian
+4. Reach specific points
+Going to a specific point uses the following method
+```
+com.csjbot.snowbot_rogue.servers.slams.SnowBotMoveServer#
+								moveTo(com.slamtec.slamware.robot.Location)
+```
+5. patrol
+	-	Start patrolling
+```
+	private void startPartol() {
+	    	Pose[] poses = new Pose[]{
+	            	new Pose(1f, 1f, 0f, 0f, 0f, 0f),
+	            	new Pose(-1f, 1f, 0f, 0f, 0f, 0f),
+	            	new Pose(1f, -1f, 0f, 0f, 0f, 0f),
+	            	new Pose(-1f, -1f, 0f, 0f, 0f, 0f),
+    		};
+
+    		SnowBotManager.getInstance().partol(Arrays.asList(poses));
+	}
+```
+	-	Stop patrolling
+```
+SnowBotManager.getInstance().stopPartol();
+```
+6. Go back charging
+```
+SnowBotManager.getInstance().goHome();
+```
